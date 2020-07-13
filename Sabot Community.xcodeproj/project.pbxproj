@@ -1,0 +1,595 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E081F35A24BBE9470049AB0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E081F35924BBE9470049AB0F /* AppDelegate.swift */; };
+		E081F35C24BBE9470049AB0F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E081F35B24BBE9470049AB0F /* SceneDelegate.swift */; };
+		E081F35E24BBE9470049AB0F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E081F35D24BBE9470049AB0F /* ViewController.swift */; };
+		E081F36124BBE9470049AB0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E081F35F24BBE9470049AB0F /* Main.storyboard */; };
+		E081F36324BBE95A0049AB0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E081F36224BBE95A0049AB0F /* Assets.xcassets */; };
+		E081F36624BBE95A0049AB0F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E081F36424BBE95A0049AB0F /* LaunchScreen.storyboard */; };
+		E081F37124BBE95A0049AB0F /* Sabot_CommunityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E081F37024BBE95A0049AB0F /* Sabot_CommunityTests.swift */; };
+		E081F37C24BBE95A0049AB0F /* Sabot_CommunityUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E081F37B24BBE95A0049AB0F /* Sabot_CommunityUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E081F36D24BBE95A0049AB0F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E081F34E24BBE9470049AB0F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E081F35524BBE9470049AB0F;
+			remoteInfo = "Sabot Community";
+		};
+		E081F37824BBE95A0049AB0F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E081F34E24BBE9470049AB0F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E081F35524BBE9470049AB0F;
+			remoteInfo = "Sabot Community";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		E081F35624BBE9470049AB0F /* Sabot Community.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sabot Community.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E081F35924BBE9470049AB0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E081F35B24BBE9470049AB0F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		E081F35D24BBE9470049AB0F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E081F36024BBE9470049AB0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E081F36224BBE95A0049AB0F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E081F36524BBE95A0049AB0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E081F36724BBE95A0049AB0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E081F36C24BBE95A0049AB0F /* Sabot CommunityTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Sabot CommunityTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E081F37024BBE95A0049AB0F /* Sabot_CommunityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sabot_CommunityTests.swift; sourceTree = "<group>"; };
+		E081F37224BBE95A0049AB0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E081F37724BBE95A0049AB0F /* Sabot CommunityUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Sabot CommunityUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E081F37B24BBE95A0049AB0F /* Sabot_CommunityUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sabot_CommunityUITests.swift; sourceTree = "<group>"; };
+		E081F37D24BBE95A0049AB0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E081F35324BBE9470049AB0F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E081F36924BBE95A0049AB0F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E081F37424BBE95A0049AB0F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E081F34D24BBE9470049AB0F = {
+			isa = PBXGroup;
+			children = (
+				E081F35824BBE9470049AB0F /* Sabot Community */,
+				E081F36F24BBE95A0049AB0F /* Sabot CommunityTests */,
+				E081F37A24BBE95A0049AB0F /* Sabot CommunityUITests */,
+				E081F35724BBE9470049AB0F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E081F35724BBE9470049AB0F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E081F35624BBE9470049AB0F /* Sabot Community.app */,
+				E081F36C24BBE95A0049AB0F /* Sabot CommunityTests.xctest */,
+				E081F37724BBE95A0049AB0F /* Sabot CommunityUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E081F35824BBE9470049AB0F /* Sabot Community */ = {
+			isa = PBXGroup;
+			children = (
+				E081F35924BBE9470049AB0F /* AppDelegate.swift */,
+				E081F35B24BBE9470049AB0F /* SceneDelegate.swift */,
+				E081F35D24BBE9470049AB0F /* ViewController.swift */,
+				E081F35F24BBE9470049AB0F /* Main.storyboard */,
+				E081F36224BBE95A0049AB0F /* Assets.xcassets */,
+				E081F36424BBE95A0049AB0F /* LaunchScreen.storyboard */,
+				E081F36724BBE95A0049AB0F /* Info.plist */,
+			);
+			path = "Sabot Community";
+			sourceTree = "<group>";
+		};
+		E081F36F24BBE95A0049AB0F /* Sabot CommunityTests */ = {
+			isa = PBXGroup;
+			children = (
+				E081F37024BBE95A0049AB0F /* Sabot_CommunityTests.swift */,
+				E081F37224BBE95A0049AB0F /* Info.plist */,
+			);
+			path = "Sabot CommunityTests";
+			sourceTree = "<group>";
+		};
+		E081F37A24BBE95A0049AB0F /* Sabot CommunityUITests */ = {
+			isa = PBXGroup;
+			children = (
+				E081F37B24BBE95A0049AB0F /* Sabot_CommunityUITests.swift */,
+				E081F37D24BBE95A0049AB0F /* Info.plist */,
+			);
+			path = "Sabot CommunityUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E081F35524BBE9470049AB0F /* Sabot Community */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E081F38024BBE95A0049AB0F /* Build configuration list for PBXNativeTarget "Sabot Community" */;
+			buildPhases = (
+				E081F35224BBE9470049AB0F /* Sources */,
+				E081F35324BBE9470049AB0F /* Frameworks */,
+				E081F35424BBE9470049AB0F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Sabot Community";
+			productName = "Sabot Community";
+			productReference = E081F35624BBE9470049AB0F /* Sabot Community.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E081F36B24BBE95A0049AB0F /* Sabot CommunityTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E081F38324BBE95A0049AB0F /* Build configuration list for PBXNativeTarget "Sabot CommunityTests" */;
+			buildPhases = (
+				E081F36824BBE95A0049AB0F /* Sources */,
+				E081F36924BBE95A0049AB0F /* Frameworks */,
+				E081F36A24BBE95A0049AB0F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E081F36E24BBE95A0049AB0F /* PBXTargetDependency */,
+			);
+			name = "Sabot CommunityTests";
+			productName = "Sabot CommunityTests";
+			productReference = E081F36C24BBE95A0049AB0F /* Sabot CommunityTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E081F37624BBE95A0049AB0F /* Sabot CommunityUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E081F38624BBE95A0049AB0F /* Build configuration list for PBXNativeTarget "Sabot CommunityUITests" */;
+			buildPhases = (
+				E081F37324BBE95A0049AB0F /* Sources */,
+				E081F37424BBE95A0049AB0F /* Frameworks */,
+				E081F37524BBE95A0049AB0F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E081F37924BBE95A0049AB0F /* PBXTargetDependency */,
+			);
+			name = "Sabot CommunityUITests";
+			productName = "Sabot CommunityUITests";
+			productReference = E081F37724BBE95A0049AB0F /* Sabot CommunityUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E081F34E24BBE9470049AB0F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1150;
+				LastUpgradeCheck = 1150;
+				ORGANIZATIONNAME = LucidSoftworksLLC;
+				TargetAttributes = {
+					E081F35524BBE9470049AB0F = {
+						CreatedOnToolsVersion = 11.5;
+					};
+					E081F36B24BBE95A0049AB0F = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = E081F35524BBE9470049AB0F;
+					};
+					E081F37624BBE95A0049AB0F = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = E081F35524BBE9470049AB0F;
+					};
+				};
+			};
+			buildConfigurationList = E081F35124BBE9470049AB0F /* Build configuration list for PBXProject "Sabot Community" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E081F34D24BBE9470049AB0F;
+			productRefGroup = E081F35724BBE9470049AB0F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E081F35524BBE9470049AB0F /* Sabot Community */,
+				E081F36B24BBE95A0049AB0F /* Sabot CommunityTests */,
+				E081F37624BBE95A0049AB0F /* Sabot CommunityUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E081F35424BBE9470049AB0F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E081F36624BBE95A0049AB0F /* LaunchScreen.storyboard in Resources */,
+				E081F36324BBE95A0049AB0F /* Assets.xcassets in Resources */,
+				E081F36124BBE9470049AB0F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E081F36A24BBE95A0049AB0F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E081F37524BBE95A0049AB0F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E081F35224BBE9470049AB0F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E081F35E24BBE9470049AB0F /* ViewController.swift in Sources */,
+				E081F35A24BBE9470049AB0F /* AppDelegate.swift in Sources */,
+				E081F35C24BBE9470049AB0F /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E081F36824BBE95A0049AB0F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E081F37124BBE95A0049AB0F /* Sabot_CommunityTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E081F37324BBE95A0049AB0F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E081F37C24BBE95A0049AB0F /* Sabot_CommunityUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E081F36E24BBE95A0049AB0F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E081F35524BBE9470049AB0F /* Sabot Community */;
+			targetProxy = E081F36D24BBE95A0049AB0F /* PBXContainerItemProxy */;
+		};
+		E081F37924BBE95A0049AB0F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E081F35524BBE9470049AB0F /* Sabot Community */;
+			targetProxy = E081F37824BBE95A0049AB0F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E081F35F24BBE9470049AB0F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E081F36024BBE9470049AB0F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E081F36424BBE95A0049AB0F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E081F36524BBE95A0049AB0F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E081F37E24BBE95A0049AB0F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E081F37F24BBE95A0049AB0F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E081F38124BBE95A0049AB0F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7DZZN6US83;
+				INFOPLIST_FILE = "Sabot Community/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sabotcommunity.Sabot-Community";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E081F38224BBE95A0049AB0F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7DZZN6US83;
+				INFOPLIST_FILE = "Sabot Community/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sabotcommunity.Sabot-Community";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		E081F38424BBE95A0049AB0F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7DZZN6US83;
+				INFOPLIST_FILE = "Sabot CommunityTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sabotcommunity.Sabot-CommunityTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sabot Community.app/Sabot Community";
+			};
+			name = Debug;
+		};
+		E081F38524BBE95A0049AB0F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7DZZN6US83;
+				INFOPLIST_FILE = "Sabot CommunityTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sabotcommunity.Sabot-CommunityTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sabot Community.app/Sabot Community";
+			};
+			name = Release;
+		};
+		E081F38724BBE95A0049AB0F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7DZZN6US83;
+				INFOPLIST_FILE = "Sabot CommunityUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sabotcommunity.Sabot-CommunityUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Sabot Community";
+			};
+			name = Debug;
+		};
+		E081F38824BBE95A0049AB0F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7DZZN6US83;
+				INFOPLIST_FILE = "Sabot CommunityUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sabotcommunity.Sabot-CommunityUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Sabot Community";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E081F35124BBE9470049AB0F /* Build configuration list for PBXProject "Sabot Community" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E081F37E24BBE95A0049AB0F /* Debug */,
+				E081F37F24BBE95A0049AB0F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E081F38024BBE95A0049AB0F /* Build configuration list for PBXNativeTarget "Sabot Community" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E081F38124BBE95A0049AB0F /* Debug */,
+				E081F38224BBE95A0049AB0F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E081F38324BBE95A0049AB0F /* Build configuration list for PBXNativeTarget "Sabot CommunityTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E081F38424BBE95A0049AB0F /* Debug */,
+				E081F38524BBE95A0049AB0F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E081F38624BBE95A0049AB0F /* Build configuration list for PBXNativeTarget "Sabot CommunityUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E081F38724BBE95A0049AB0F /* Debug */,
+				E081F38824BBE95A0049AB0F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E081F34E24BBE9470049AB0F /* Project object */;
+}
