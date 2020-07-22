@@ -1,0 +1,37 @@
+PODS:
+  - AARatingBar (1.1)
+  - Alamofire (5.2.2)
+  - AlamofireImage (4.1.0):
+    - Alamofire (~> 5.1)
+  - EnhancedCircleImageView (0.1)
+  - NavigationDrawer (1.0.3)
+  - SwiftyJSON (5.0.0)
+
+DEPENDENCIES:
+  - AARatingBar
+  - Alamofire
+  - AlamofireImage
+  - EnhancedCircleImageView
+  - NavigationDrawer
+  - SwiftyJSON
+
+SPEC REPOS:
+  trunk:
+    - AARatingBar
+    - Alamofire
+    - AlamofireImage
+    - EnhancedCircleImageView
+    - NavigationDrawer
+    - SwiftyJSON
+
+SPEC CHECKSUMS:
+  AARatingBar: 62f56244aaa436c0379dc54e398e90d337f097b8
+  Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
+  AlamofireImage: c4a2ba349885fb3064feb74d2e547bd42ce9be10
+  EnhancedCircleImageView: 1069bbc14526d89502cc0e48b45f5da6a3317a47
+  NavigationDrawer: ad87622628ed59589f8fe8e2338d27109ca51a64
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+
+PODFILE CHECKSUM: 1811435cdc2d93bf9a544629bd325e6976c177ee
+
+COCOAPODS: 1.9.1
