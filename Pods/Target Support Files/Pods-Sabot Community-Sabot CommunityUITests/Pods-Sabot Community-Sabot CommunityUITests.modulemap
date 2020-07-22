@@ -1,0 +1,6 @@
+framework module Pods_Sabot_Community_Sabot_CommunityUITests {
+  umbrella header "Pods-Sabot Community-Sabot CommunityUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
