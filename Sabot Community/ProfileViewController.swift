@@ -322,10 +322,12 @@ class ProfileViewController: UIViewController {
             //printing response
             print(response)
             
+            //yeet
+            
             switch response.result {
             case .success(let value):
                 let jsonData = JSON(value)
-                //self.labelMessage.text = jsonData["message"].string
+                ///self.labelMessage.text = jsonData["message"].string
                 if (!((jsonData["error"].string != nil))) {
                     if (jsonData["error"].string=="false"){
                         self.userProfileID = jsonData["userid"].rawString()!
