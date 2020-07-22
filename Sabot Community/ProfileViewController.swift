@@ -58,6 +58,8 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var userDiscordProfile: UILabel!
     @IBOutlet weak var userTwitter: UILabel!
     @IBOutlet weak var userSwitch: UILabel!
+    @IBOutlet weak var profileStatusContainer: UIStackView!
+    @IBOutlet weak var labelDescription: UILabel!
     
     
     @IBAction func buttonLogout(_ sender: UIButton) {
@@ -272,7 +274,9 @@ class ProfileViewController: UIViewController {
                     //TODO addedFriendButton on click
                     
                     if description != "" {
-                        //
+                        self.labelDescription.text = description!
+                    }else{
+                        self.profileStatusContainer.isHidden = true
                     }
                     if verified != "yes" {
                         self.ivVerified.isHidden = true
