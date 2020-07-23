@@ -15,6 +15,7 @@ import AARatingBar
 
 class ProfileViewController: UIViewController {
     
+    //test here by putting in either user id or username to load profile, or leave blank to load ours
     var userProfileID: String = ""
     var userUsername: String = ""
     let defaultValues = UserDefaults.standard
@@ -60,6 +61,20 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var userSwitch: UILabel!
     @IBOutlet weak var profileStatusContainer: UIStackView!
     @IBOutlet weak var labelDescription: UILabel!
+    @IBOutlet weak var addPostStack: UIStackView!
+    @IBOutlet weak var followProfileStack: UIStackView!
+    @IBOutlet weak var followedProfileStack: UIStackView!
+    @IBOutlet weak var editProfileStack: UIStackView!
+    @IBOutlet weak var addFriendProgress: UIStackView!
+    @IBOutlet weak var addFriendStack: UIStackView!
+    @IBOutlet weak var connectedStack: UIStackView!
+    @IBOutlet weak var requestedFriendStack: UIStackView!
+    @IBOutlet weak var requestSentStack: UIStackView!
+    @IBOutlet weak var sendMessageStack: UIStackView!
+    @IBOutlet weak var moreStack: UIStackView!
+    @IBOutlet weak var profileWebsiteContainer: UIStackView!
+    @IBOutlet weak var profileWebsiteLabel: UILabel!
+    @IBOutlet weak var noProfileView: UIView!
     
     
     @IBAction func buttonLogout(_ sender: UIButton) {
@@ -86,13 +101,13 @@ class ProfileViewController: UIViewController {
         AF.request(URLConstants.ROOT_URL+"profiletop_api.php?userid="+deviceuserid+"&userid2="+userProfileIDS+"&deviceusername="+deviceusername, method: .get).responseJSON{
             response in
             //printing response
-            //print(response)
+            print(response)
             
             switch response.result {
             case .success(let value):
                 let jsonObject = JSON(value)
                 let jsonData = jsonObject[0]
-                if (!((jsonData["id"].string != nil))) {
+                if (jsonData["id"].rawString() == userProfileIDS) {
                     let thisProfileID = jsonData["id"]
                     let nickname = jsonData["nickname"].rawString()
                     let username = jsonData["username"].rawString()
@@ -133,28 +148,33 @@ class ProfileViewController: UIViewController {
                     self.userUsername = username!
                     if(self.deviceuserid == self.userProfileID){
                         //TODO: Profile buttons turn off/on
-                        //addMessageButton.isHidden = true
-                        //addFriendButton.isHidden = true
-                        //addFriendProgress.isHidden = true
-                        //followProfileButton.isHidden = true
-                        //editProfileButton.isHidden = false
+                        self.sendMessageStack.isHidden = true
+                        self.addFriendStack.isHidden = true
+                        self.addFriendProgress.isHidden = true
+                        self.followProfileStack.isHidden = true
+                        self.editProfileStack.isHidden = false
                         self.ivCoverPhotoPicker.isHidden = false
                         self.ivProfilePhotoPicker.isHidden = false
+                        
+                        let fGuesture = UITapGestureRecognizer(target: self, action: #selector(ProfileViewController.showF(_:)))
+                        self.ivCoverPhotoPicker.addGestureRecognizer(fGuesture)
+
+                        
                     }else{
-                        //addMessageButton.isHidden = false
-                        //addFriendButton.isHidden = false
-                        //addFriendProgress.isHidden = false
-                        //followProfileButton.isHidden = false
-                        //editProfileButton.isHidden = true
+                        self.sendMessageStack.isHidden = false
+                        self.addFriendStack.isHidden = false
+                        self.addFriendProgress.isHidden = false
+                        self.followProfileStack.isHidden = false
+                        self.editProfileStack.isHidden = true
                         self.ivCoverPhotoPicker.isHidden = true
                         self.ivProfilePhotoPicker.isHidden = true
                     }
                     
                     //TODO: parse out user defaults for if user is blocked, then add || isUserBlocked
                     if(blocked=="yes"){
-                        
+                        self.noProfileView.isHidden = false
                     }else if (user_closed=="yes"||user_banned=="yes"){
-                        
+                        self.noProfileView.isHidden = false
                     }else{
                         //TODO: load profile posts
                         //postsQueryButtonClicked(profilePostsButton)
@@ -181,7 +201,9 @@ class ProfileViewController: UIViewController {
                         self.userTwitterDetails.isHidden = true
                     }
                     if (website != "") {
-                        //
+                        self.profileWebsiteLabel.text = website!
+                    }else{
+                        self.profileWebsiteContainer.isHidden = true
                     }
                     if (nintendo != "") {
                         self.userSwitch.text = nintendo
@@ -310,10 +332,13 @@ class ProfileViewController: UIViewController {
                     self.profileScrollView.isHidden = false
                     
                 }else{
-                    self.view.showToast(toastMessage: "Network Error!", duration:2)
+                    self.indicator.stopAnimating()
+                    self.noProfileView.isHidden = false
                 }
             case let .failure(error):
                 print(error)
+                self.indicator.stopAnimating()
+                self.noProfileView.isHidden = false
                 self.view.showToast(toastMessage: "Network Error!", duration:2)
             }
         }
@@ -428,6 +453,10 @@ class ProfileViewController: UIViewController {
         
         
         
+    }
+    
+    @objc func showF(_ sender: UITapGestureRecognizer){
+        print("Yeetus SKeetus")
     }
     
     override func didReceiveMemoryWarning() {
