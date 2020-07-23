@@ -17,7 +17,7 @@ class ProfileViewController: UIViewController {
     
     //test here by putting in either user id or username to load profile, or leave blank to load ours
     var userProfileID: String = ""
-    var userUsername: String = ""
+    var userUsername: String = "vesanity322"
     let defaultValues = UserDefaults.standard
     let deviceusername = UserDefaults.standard.string(forKey: "device_username")!
     let deviceuserid = UserDefaults.standard.string(forKey: "device_userid")!
@@ -346,7 +346,7 @@ class ProfileViewController: UIViewController {
     
     func getUserID(_ userUsernameS:String){
         let parameters: Parameters=["username":userUsernameS]
-        AF.request(URLConstants.BASE_URL+"get_userid.php", method: .post, parameters: parameters).responseJSON{
+        AF.request(URLConstants.ROOT_URL+"get_userid.php", method: .post, parameters: parameters).responseJSON{
             response in
             //printing response
             print(response)
