@@ -15,9 +15,9 @@ import AARatingBar
 
 class ProfileViewController: UIViewController {
     
-    //test here by putting in either user id or username to load profile, or leave blank to load ours
+    //test here by putting in either user id or username to load profile, or leave blank to load yours
     var userProfileID: String = ""
-    var userUsername: String = "vesanity322"
+    var userUsername: String = ""
     let defaultValues = UserDefaults.standard
     let deviceusername = UserDefaults.standard.string(forKey: "device_username")!
     let deviceuserid = UserDefaults.standard.string(forKey: "device_userid")!
