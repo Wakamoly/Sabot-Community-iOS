@@ -160,16 +160,15 @@ class ProfileViewController: UIViewController {
                         self.ivCoverPhotoPicker.addGestureRecognizer(fGuesture)
                         
                         
-                    }
-                    /*else{
-                        self.sendMessageStack.isHidden = false
+                    }else{
+                        /*self.sendMessageStack.isHidden = false
                         self.addFriendStack.isHidden = false
                         self.addFriendProgress.isHidden = false
-                        self.followProfileStack.isHidden = false
+                        self.followProfileStack.isHidden = false*/
                         self.editProfileStack.isHidden = true
                         self.ivCoverPhotoPicker.isHidden = true
                         self.ivProfilePhotoPicker.isHidden = true
-                    }*/
+                    }
                     
                     //TODO: parse out user defaults for if user is blocked, then add || isUserBlocked
                     if(blocked=="yes"){
@@ -272,14 +271,13 @@ class ProfileViewController: UIViewController {
                         }
 
                         if (isConnected == "yes") {
-                            print("Is connected")
                             self.connectedStack.isHidden = false
                             self.addFriendProgress.isHidden = true
                             self.addPostStack.isHidden = false
                         }else{
                             //connectionRequest(username)
                         }
-                        if (!(isConnected == "no")) && !(userProfileIDS == self.deviceuserid) {
+                        if (!(isConnected == "yes")) && !(userProfileIDS == self.deviceuserid) {
                             self.addPostStack.isHidden = true
                         }
                     }else{
