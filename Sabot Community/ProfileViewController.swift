@@ -158,9 +158,10 @@ class ProfileViewController: UIViewController {
                         
                         let fGuesture = UITapGestureRecognizer(target: self, action: #selector(ProfileViewController.showF(_:)))
                         self.ivCoverPhotoPicker.addGestureRecognizer(fGuesture)
-
                         
-                    }else{
+                        
+                    }
+                    /*else{
                         self.sendMessageStack.isHidden = false
                         self.addFriendStack.isHidden = false
                         self.addFriendProgress.isHidden = false
@@ -168,7 +169,7 @@ class ProfileViewController: UIViewController {
                         self.editProfileStack.isHidden = true
                         self.ivCoverPhotoPicker.isHidden = true
                         self.ivProfilePhotoPicker.isHidden = true
-                    }
+                    }*/
                     
                     //TODO: parse out user defaults for if user is blocked, then add || isUserBlocked
                     if(blocked=="yes"){
@@ -263,18 +264,23 @@ class ProfileViewController: UIViewController {
                     self.reviewCount.text = String(count!)
                     
                     var username_to = ""
-                    if self.deviceusername == username {
+                    if !(self.deviceusername == username) {
                         username_to = username!
-                        if isFollowing == "yes" {
-                            //
+                        if (isFollowing == "yes") {
+                            self.followProfileStack.isHidden = true
+                            self.followedProfileStack.isHidden = false
                         }
-                        if isConnected == "yes" {
-                            //
+
+                        if (isConnected == "yes") {
+                            print("Is connected")
+                            self.connectedStack.isHidden = false
+                            self.addFriendProgress.isHidden = true
+                            self.addPostStack.isHidden = false
                         }else{
                             //connectionRequest(username)
                         }
                         if (!(isConnected == "no")) && !(userProfileIDS == self.deviceuserid) {
-                            //
+                            self.addPostStack.isHidden = true
                         }
                     }else{
                         // profile is device user's
@@ -358,16 +364,12 @@ class ProfileViewController: UIViewController {
             case .success(let value):
                 let jsonData = JSON(value)
                 ///self.labelMessage.text = jsonData["message"].string
-                if (!((jsonData["error"].string != nil))) {
-                    if (jsonData["error"].string=="false"){
-                        self.userProfileID = jsonData["userid"].rawString()!
-                        self.loadProfileTop(self.userProfileID)
-                    }else{
-                        let message = jsonData["message"].string
-                        self.view.showToast(toastMessage: message!, duration:2)
-                    }
+                if (jsonData["error"]==false){
+                    self.userProfileID = jsonData["userid"].rawString()!
+                    self.loadProfileTop(self.userProfileID)
                 }else{
-                    self.view.showToast(toastMessage: "An error occured!", duration:2)
+                    let message = jsonData["message"].string
+                    self.view.showToast(toastMessage: message!, duration:2)
                 }
             case let .failure(error):
                 print(error)
