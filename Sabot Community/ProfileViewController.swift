@@ -15,7 +15,7 @@ import AARatingBar
 
 class ProfileViewController: UIViewController {
     
-    //test here by putting in either user id or username to load profile, or leave blank to load ours
+    //test here by putting in either user id or username to load profile, or leave blank to load yours
     var userProfileID: String = ""
     var userUsername: String = ""
     let defaultValues = UserDefaults.standard
@@ -275,7 +275,7 @@ class ProfileViewController: UIViewController {
                             self.addFriendProgress.isHidden = true
                             self.addPostStack.isHidden = false
                         }else{
-                            //connectionRequest(username)
+                            self.connectionRequest(username!)
                         }
                         if (!(isConnected == "yes")) && !(userProfileIDS == self.deviceuserid) {
                             self.addPostStack.isHidden = true
@@ -453,6 +453,123 @@ class ProfileViewController: UIViewController {
         
         
         
+    }
+    
+    func followUser(_ usernameThis:String, _ followersThis:String, _ method:String){
+        if(method == "follow"){
+            self.followProfileStack.isHidden = true
+            self.followedProfileStack.isHidden = false
+            var numFollowers = Int(followersThis)
+            numFollowers! += 1
+            self.followersCount.text = String(numFollowers!)
+        }else if (method == "unfollow"){
+            self.followedProfileStack.isHidden = true
+            self.followProfileStack.isHidden = false
+            var numFollowers = Int(followersThis)
+            numFollowers! -= 1
+            self.followersCount.text = String(numFollowers!)
+        }
+        let parameters: Parameters=["username":deviceusername,"user_followed":usernameThis,"user_id":deviceuserid,"method":method]
+        AF.request(URLConstants.ROOT_URL+"user_follow_api.php", method: .post, parameters: parameters).responseJSON{
+            response in
+            print(response)
+            
+            switch response.result {
+            case .success(let value):
+                let jsonData = JSON(value)
+                if (jsonData["error"]==false){
+                    self.view.showToast(toastMessage: jsonData["message"].string!, duration:2)
+                }else{
+                    self.view.showToast(toastMessage: "Server error!", duration:2)
+                }
+            case let .failure(error):
+                print(error)
+                self.view.showToast(toastMessage: "Could not un/follow user, please try again!", duration:2)
+            }
+        }
+    }
+    
+    func connectionRequest(_ usernameQuery:String){
+        let parameters: Parameters=["username":deviceusername,"thisusername":usernameQuery]
+        AF.request(URLConstants.ROOT_URL+"get_profile_requests.php", method: .post, parameters: parameters).responseJSON{
+            response in
+            //printing response
+            print(response)
+            
+            switch response.result {
+            case .success(let value):
+                let jsonData = JSON(value)
+                if (jsonData["error"]==false){
+                    if(jsonData["request_sent"].string == "yes"){
+                        self.requestSentStack.isHidden = false
+                        self.addFriendStack.isHidden = true
+                        self.addFriendProgress.isHidden = true
+                    }else if (jsonData["request_received"].string == "yes"){
+                        self.requestedFriendStack.isHidden = false
+                        self.addFriendStack.isHidden = true
+                        self.addFriendProgress.isHidden = true
+                    }else if (!(self.addFriendStack.isHidden || self.userProfileID == self.deviceuserid)){
+                        self.addFriendStack.isHidden = false
+                        self.addFriendProgress.isHidden = true
+                    }
+                }else{
+                    let message = jsonData["message"].string
+                    self.view.showToast(toastMessage: message!, duration:2)
+                }
+            case let .failure(error):
+                print(error)
+                self.view.showToast(toastMessage: "Network error!", duration:2)
+            }
+        }
+    }
+    
+    func addConnection(_ usernameQuery:String){
+        let parameters: Parameters=["username":deviceusername,"thisusername":usernameQuery]
+        AF.request(URLConstants.ROOT_URL+"add_connection.php", method: .post, parameters: parameters).responseJSON{
+            response in
+            print(response)
+            
+            switch response.result {
+            case .success(let value):
+                let jsonData = JSON(value)
+                if (jsonData["error"]==false){
+                    if(jsonData["request_sent"] == "yes"){
+                        self.view.showToast(toastMessage: "Request Sent!", duration:2)
+                    }
+                }else{
+                    let message = jsonData["message"].string
+                    self.view.showToast(toastMessage: message!, duration:2)
+                }
+            case let .failure(error):
+                print(error)
+                self.view.showToast(toastMessage: "Network error!", duration:2)
+            }
+        }
+    }
+    
+    func acceptConnection(_ usernameQuery:String){
+        let parameters: Parameters=["username":deviceusername,"thisusername":usernameQuery]
+        AF.request(URLConstants.ROOT_URL+"accept_connection.php", method: .post, parameters: parameters).responseJSON{
+            response in
+            print(response)
+            
+            switch response.result {
+            case .success(let value):
+                let jsonData = JSON(value)
+                if (jsonData["error"]==false){
+                    if(jsonData["request_accepted"] == "yes"){
+                        self.connectedStack.isHidden = false
+                        self.requestedFriendStack.isHidden = true
+                    }
+                }else{
+                    let message = jsonData["message"].string
+                    self.view.showToast(toastMessage: message!, duration:2)
+                }
+            case let .failure(error):
+                print(error)
+                self.view.showToast(toastMessage: "Network error!", duration:2)
+            }
+        }
     }
     
     @objc func showF(_ sender: UITapGestureRecognizer){

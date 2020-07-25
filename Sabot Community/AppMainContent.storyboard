@@ -883,7 +883,7 @@
                         <outlet property="userPSN" destination="j8i-uL-29c" id="T5X-5l-ByO"/>
                         <outlet property="userPSNDetails" destination="UwV-MQ-Z3o" id="odS-8I-Lr1"/>
                         <outlet property="userSteam" destination="biQ-jS-kBh" id="ptt-ZN-cXN"/>
-                        <outlet property="userSteamDetails" destination="dq7-0W-0Na" id="iog-nE-nwV"/>
+                        <outlet property="userSteamDetails" destination="dog-qv-Uc6" id="Fls-fZ-1i6"/>
                         <outlet property="userSwitch" destination="sx7-kp-eKu" id="jpb-n6-WVE"/>
                         <outlet property="userSwitchDetails" destination="vFZ-m6-CFa" id="cVn-Qn-mrF"/>
                         <outlet property="userTwitch" destination="IBV-Oe-0II" id="lp5-ah-gDx"/>
