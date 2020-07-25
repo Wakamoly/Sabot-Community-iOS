@@ -7,16 +7,36 @@
 //
 
 import UIKit
+import Alamofire
 
 class SideMenuController: UIViewController {
-
+   
+    @IBOutlet weak var trailing: NSLayoutConstraint!
+    @IBOutlet weak var leading: NSLayoutConstraint!
+    @IBOutlet weak var bigPP: UIImageView!
+    @IBOutlet weak var menuPress: UIBarButtonItem!
+    
+    var menuOut = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        
     }
     
-
+    @IBAction func menuPress(_ sender: Any) {
+        
+    //      if menuOut == false (
+    //         leading.Constraint = 250
+    //        trailing.Constraint = -250
+    //  )
+    
+    // TODO: Find out why this is being a pain in the ass and not working properly when its not 2am.
+    // Why does this open as a seperate tab rather than side / overlay? Fix and test contraints and see if this resolves this issue.
+    // gather profile picture display using Alamofire.
+        
+    }
+    
     /*
     // MARK: - Navigation
 
