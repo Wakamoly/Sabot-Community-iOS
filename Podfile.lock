@@ -5,7 +5,9 @@ PODS:
     - Alamofire (~> 5.1)
   - EnhancedCircleImageView (0.1)
   - NavigationDrawer (1.0.3)
+  - NJDropDown (0.1.1)
   - SwiftyJSON (5.0.0)
+  - ZGRatingView (0.1.8)
 
 DEPENDENCIES:
   - AARatingBar
@@ -13,7 +15,9 @@ DEPENDENCIES:
   - AlamofireImage
   - EnhancedCircleImageView
   - NavigationDrawer
+  - NJDropDown
   - SwiftyJSON
+  - ZGRatingView
 
 SPEC REPOS:
   trunk:
@@ -22,7 +26,9 @@ SPEC REPOS:
     - AlamofireImage
     - EnhancedCircleImageView
     - NavigationDrawer
+    - NJDropDown
     - SwiftyJSON
+    - ZGRatingView
 
 SPEC CHECKSUMS:
   AARatingBar: 62f56244aaa436c0379dc54e398e90d337f097b8
@@ -30,8 +36,10 @@ SPEC CHECKSUMS:
   AlamofireImage: c4a2ba349885fb3064feb74d2e547bd42ce9be10
   EnhancedCircleImageView: 1069bbc14526d89502cc0e48b45f5da6a3317a47
   NavigationDrawer: ad87622628ed59589f8fe8e2338d27109ca51a64
+  NJDropDown: 029eb99b9acf7d8634d8ae9dd948e502f1f6535d
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+  ZGRatingView: 6071cbf18d3450616fb095422ab84552ed4e377d
 
-PODFILE CHECKSUM: 1811435cdc2d93bf9a544629bd325e6976c177ee
+PODFILE CHECKSUM: e6a94a50b9266887aceb051a0ee5c64a33d17986
 
 COCOAPODS: 1.9.1
