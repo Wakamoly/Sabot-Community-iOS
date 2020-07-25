@@ -13,7 +13,7 @@ import AlamofireImage
 import SwiftyJSON
 import AARatingBar
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UITextViewDelegate {
     
     //test here by putting in either user id or username to load profile, or leave blank to load yours
     var userProfileID: String = ""
@@ -24,7 +24,6 @@ class ProfileViewController: UIViewController {
     let indicator: UIActivityIndicatorView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
     
     @IBOutlet weak var profileScrollView: UIScrollView!
-    @IBOutlet weak var labelUsername: UILabel!
     @IBOutlet weak var ivCoverPhotoPicker: UIImageView!
     @IBOutlet weak var ivProfilePhotoPicker: UIImageView!
     @IBOutlet weak var ivSupporter: UIImageView!
@@ -75,6 +74,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var profileWebsiteContainer: UIStackView!
     @IBOutlet weak var profileWebsiteLabel: UILabel!
     @IBOutlet weak var noProfileView: UIView!
+    @IBOutlet weak var statusUpdate: UITextView!
     
     
     @IBAction func buttonLogout(_ sender: UIButton) {
@@ -310,7 +310,7 @@ class ProfileViewController: UIViewController {
                     if last_online != "yes" {
                         self.ivOnline.isHidden = true
                     }
-                    self.labelUsername.text = "@"+username!
+                    self.navigationItem.title = "@"+username!
                     self.labelNickname.text = nickname
                     //self.postsnum set text num_posts
                     
@@ -378,13 +378,10 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //ivVerified.circled.image = UIImage()
-        //ivCoverPhotoPicker.circled.image = UIImage()
-        //ivProfilePhotoPicker.circled.image = UIImage()
-        //profilePic.circled.image = UIImage()
-        //hiding back button -- no need since nav controller is set to be invisible in storyboard
-        /*let backButton = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: navigationController, action: nil)
-         navigationItem.leftBarButtonItem = backButton*/
+        
+        statusUpdate.delegate = self
+        statusUpdate.text = "Let your followers know what you're up to..."
+        statusUpdate.textColor = UIColor.lightGray
         
         profileScrollView.isHidden = true
         indicator.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
@@ -574,6 +571,20 @@ class ProfileViewController: UIViewController {
     
     @objc func showF(_ sender: UITapGestureRecognizer){
         print("Yeetus SKeetus")
+    }
+    
+    func textViewDidBeginEditing(_ statusUpdate: UITextView) {
+        if statusUpdate.textColor == UIColor.lightGray {
+            statusUpdate.text = nil
+            statusUpdate.textColor = UIColor.white
+        }
+    }
+    
+    func textViewDidEndEditing(_ statusUpdate: UITextView) {
+        if statusUpdate.text.isEmpty {
+            statusUpdate.text = "Let your followers know what you're up to..."
+            statusUpdate.textColor = UIColor.lightGray
+        }
     }
     
     override func didReceiveMemoryWarning() {

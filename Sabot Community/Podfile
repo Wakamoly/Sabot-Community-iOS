@@ -13,6 +13,7 @@ target 'Sabot Community' do
   pod 'EnhancedCircleImageView'
   pod 'AlamofireImage'
   pod 'ZGRatingView'
+  pod 'NJDropDown'
 
   target 'Sabot CommunityTests' do
     inherit! :search_paths
