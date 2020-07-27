@@ -75,6 +75,12 @@ class ProfileViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var profileWebsiteLabel: UILabel!
     @IBOutlet weak var noProfileView: UIView!
     @IBOutlet weak var statusUpdate: UITextView!
+    @IBOutlet weak var addPostView: UIView!
+    @IBOutlet weak var postsQueryButton: UIButton!
+    @IBOutlet weak var publicsPostsQueryButton: UIButton!
+    @IBOutlet weak var clansQueryButton: UIButton!
+    @IBOutlet weak var postsNumLabel: UILabel!
+    @IBOutlet weak var seeAllButton: UIButton!
     
     
     @IBAction func buttonLogout(_ sender: UIButton) {

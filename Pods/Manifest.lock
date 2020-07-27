@@ -1,5 +1,6 @@
 PODS:
   - AARatingBar (1.1)
+  - ActiveLabel (1.1.0)
   - Alamofire (5.2.2)
   - AlamofireImage (4.1.0):
     - Alamofire (~> 5.1)
@@ -11,6 +12,7 @@ PODS:
 
 DEPENDENCIES:
   - AARatingBar
+  - ActiveLabel
   - Alamofire
   - AlamofireImage
   - EnhancedCircleImageView
@@ -22,6 +24,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - AARatingBar
+    - ActiveLabel
     - Alamofire
     - AlamofireImage
     - EnhancedCircleImageView
@@ -32,6 +35,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AARatingBar: 62f56244aaa436c0379dc54e398e90d337f097b8
+  ActiveLabel: 5e3f4de79a1952d4604b845a0610d4776e4b82b3
   Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
   AlamofireImage: c4a2ba349885fb3064feb74d2e547bd42ce9be10
   EnhancedCircleImageView: 1069bbc14526d89502cc0e48b45f5da6a3317a47
@@ -40,6 +44,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   ZGRatingView: 6071cbf18d3450616fb095422ab84552ed4e377d
 
-PODFILE CHECKSUM: e6a94a50b9266887aceb051a0ee5c64a33d17986
+PODFILE CHECKSUM: 08f88d999bcd3607dccb976961b9003618691019
 
 COCOAPODS: 1.9.1

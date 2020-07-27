@@ -14,6 +14,7 @@ target 'Sabot Community' do
   pod 'AlamofireImage'
   pod 'ZGRatingView'
   pod 'NJDropDown'
+  pod 'ActiveLabel'
 
   target 'Sabot CommunityTests' do
     inherit! :search_paths
