@@ -14,16 +14,76 @@ import SwiftyJSON
 import AARatingBar
 
 class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-         return data.count
+    //the method returning size of the list
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        return profileNews.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "postsReuse") as! ProfilePostsTVC //1.
            
-        let text = data[indexPath.row] //2.
-           
-        cell.nicknameLabel.text = text //3.
+        //getting the hero for the specified position
+        let profilesNewsI: ProfileNewsModel
+        profilesNewsI = profileNews[indexPath.row]
+        
+        //displaying values
+        cell.usernameLabel.text = profilesNewsI.username
+        cell.nicknameLabel.text = profilesNewsI.nickname
+        cell.postBody.text = profilesNewsI.body
+        
+        if profilesNewsI.user_to != "none"{
+            cell.toUsernameLabel.text = "to "+profilesNewsI.user_to!
+        }else{
+            cell.toUsernameLabel.isHidden = true
+        }
+        
+        switch profilesNewsI.type{
+            case "Xbox":
+                cell.platformType.image = UIImage(named: "icons8_xbox_50")
+                break
+            
+            case "PlayStation":
+                cell.platformType.image = UIImage(named: "icons8_playstation_50")
+                break
+            
+            case "Steam":
+                cell.platformType.image = UIImage(named: "icons8_steam_48")
+                break
+            
+            case "PC":
+                cell.platformType.image = UIImage(named: "icons8_workstation_48")
+                break
+            
+            case "Mobile":
+                cell.platformType.image = UIImage(named: "icons8_mobile_48")
+                break
+            
+            case "Switch":
+                cell.platformType.image = UIImage(named: "icons8_nintendo_switch_48")
+                break
+            
+            case "General":
+                cell.platformType.isHidden = true
+                break
+            
+        default:
+            cell.platformType.image = UIImage(named: "icons8_question_mark_64")
+        }
+        
+        cell.profilePhoto.af.setImage(
+            withURL: URL(string:URLConstants.BASE_URL+profilesNewsI.profile_pic!)!,
+            imageTransition: .crossDissolve(0.2)
+        )
+        
+        if profilesNewsI.image != "" {
+            cell.postImage.isHidden = false
+            cell.postImage!.af.setImage(
+                withURL: URL(string:URLConstants.BASE_URL+profilesNewsI.image!)!,
+                imageTransition: .crossDissolve(0.2)
+            )
+        }else{
+            cell.postImage.isHidden = true
+        }
            
         return cell //4.
     }
@@ -46,7 +106,7 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
     
     
 
-    private var data: [String] = []
+    private var profileNews = [ProfileNewsModel]()
     //test here by putting in either user id or username to load profile, or leave blank to load yours
     var userProfileID: String = ""
     var userUsername: String = ""
@@ -397,46 +457,32 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
             switch response.result {
             case .success(let value):
                 let jsonObject = JSON(value)
-                /*let jsonData = jsonObject[0]
-                if (jsonData["id"].rawString() == userProfileIDS) {
-                    let thisProfileID = jsonData["id"].int
-                    let nickname = jsonData["nickname"].rawString()
-                    let username = jsonData["username"].rawString()
-                    let description = jsonData["description"].string
-                    let verified = jsonData["verified"].string
-                    let profile_pic = jsonData["profile_pic"].string
-                    let cover_pic = jsonData["cover_pic"].string
-                    //let num_posts = jsonData["num_posts"].rawString()
-                    let user_closed = jsonData["user_closed"].string
-                    let user_banned = jsonData["user_banned"].string
-                    let num_friends = jsonData["num_friends"].rawString()
-                    let followings = jsonData["followings"].rawString()
-                    let followers = jsonData["followers"].rawString()
-                    let twitch = jsonData["twitch"].string
-                    //let mixer = jsonData["mixer"].string
-                    let psn = jsonData["psn"].string
-                    let xbox = jsonData["xbox"].string
-                    let discord = jsonData["discord"].string
-                    let steam = jsonData["steam"].string
-                    let instagram = jsonData["instagram"].string
-                    let youtube = jsonData["youtube"].string
-                    let last_online = jsonData["last_online"].string
-                    let count = jsonData["count"].int
-                    let average = jsonData["average"].int
-                    let clantag = jsonData["clantag"].string
-                    let blocked = jsonData["blocked"].string
-                    let supporter = jsonData["supporter"].string
-                    let discord_user = jsonData["discord_user"].string
-                    let twitter = jsonData["twitter"].string
-                    let website = jsonData["website"].string
-                    let nintendo = jsonData["nintendo"].string
-                    let isFollowing = jsonData["isFollowing"].string
-                    let isConnected = jsonData["isConnected"].string
-                    let connections = jsonData["connections"].string
-                    
-                }else{
-                    //error
-                }*/
+                for i in 0..<jsonObject.count{
+                    let jsonData = jsonObject[i]
+                    self.profileNews.append(ProfileNewsModel(
+                        id: jsonData["id"].int,
+                        type: jsonData["type"].string,
+                        likes: jsonData["likes"].rawString(),
+                        body: jsonData["body"].rawString(),
+                        added_by: jsonData["added_by"].rawString(),
+                        user_to: jsonData["user_to"].rawString(),
+                        date_added: jsonData["date_added"].rawString(),
+                        user_closed: jsonData["user_closed"].rawString(),
+                        deleted: jsonData["deleted"].rawString(),
+                        image: jsonData["image"].rawString(),
+                        user_id: jsonData["user_id"].rawString(),
+                        profile_pic: jsonData["profile_pic"].rawString(),
+                        verified: jsonData["verified"].rawString(),
+                        online: jsonData["online"].rawString(),
+                        nickname: jsonData["nickname"].rawString(),
+                        username: jsonData["username"].rawString(),
+                        commentcount: jsonData["commentcount"].rawString(),
+                        likedbyuser: jsonData["likedbyuseryes"].rawString(),
+                        form: jsonData["form"].rawString(),
+                        edited: jsonData["edited"].rawString()))
+                }
+                //displaying data in tableview
+                self.profilePostsTableView.reloadData()
             case let .failure(error):
                 print(error)
             }
@@ -510,9 +556,9 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
         statusUpdate.text = "Let your followers know what you're up to..."
         statusUpdate.textColor = UIColor.lightGray
         
-        for i in 0...1000 {
+        /*for i in 0...1000 {
              data.append("\(i)")
-        }
+        }*/
         //profilePostsTableView.register(UINib(nibName: "ProfilePostsTVC", bundle: nil), forCellReuseIdentifier: "postsReuse")
         profilePostsTableView.dataSource = self
         profilePostsTableView.delegate = self
