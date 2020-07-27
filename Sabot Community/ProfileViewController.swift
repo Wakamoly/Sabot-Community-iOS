@@ -13,8 +13,40 @@ import AlamofireImage
 import SwiftyJSON
 import AARatingBar
 
-class ProfileViewController: UIViewController, UITextViewDelegate {
+class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+         return data.count
+    }
     
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "postsReuse") as! ProfilePostsTVC //1.
+           
+        let text = data[indexPath.row] //2.
+           
+        cell.nicknameLabel.text = text //3.
+           
+        return cell //4.
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            
+         let alertController = UIAlertController(title: "Hint", message: "You have selected row \(indexPath.row).", preferredStyle: .alert)
+            
+         let alertAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+            
+         alertController.addAction(alertAction)
+            
+         present(alertController, animated: true, completion: nil)
+            
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    
+
+    private var data: [String] = []
     //test here by putting in either user id or username to load profile, or leave blank to load yours
     var userProfileID: String = ""
     var userUsername: String = ""
@@ -79,8 +111,10 @@ class ProfileViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var postsQueryButton: UIButton!
     @IBOutlet weak var publicsPostsQueryButton: UIButton!
     @IBOutlet weak var clansQueryButton: UIButton!
-    @IBOutlet weak var postsNumLabel: UILabel!
+    //@IBOutlet weak var postsNumLabel: UILabel!
     @IBOutlet weak var seeAllButton: UIButton!
+    @IBOutlet weak var profilePostsTableView: UITableView!
+    @IBOutlet weak var profileItemsLabel: UILabel!
     
     
     @IBAction func buttonLogout(_ sender: UIButton) {
@@ -114,14 +148,14 @@ class ProfileViewController: UIViewController, UITextViewDelegate {
                 let jsonObject = JSON(value)
                 let jsonData = jsonObject[0]
                 if (jsonData["id"].rawString() == userProfileIDS) {
-                    let thisProfileID = jsonData["id"]
+                    let thisProfileID = jsonData["id"].int
                     let nickname = jsonData["nickname"].rawString()
                     let username = jsonData["username"].rawString()
                     let description = jsonData["description"].string
                     let verified = jsonData["verified"].string
                     let profile_pic = jsonData["profile_pic"].string
                     let cover_pic = jsonData["cover_pic"].string
-                    let num_posts = jsonData["num_posts"].rawString()
+                    //let num_posts = jsonData["num_posts"].rawString()
                     let user_closed = jsonData["user_closed"].string
                     let user_banned = jsonData["user_banned"].string
                     let num_friends = jsonData["num_friends"].rawString()
@@ -150,7 +184,6 @@ class ProfileViewController: UIViewController, UITextViewDelegate {
                     let connections = jsonData["connections"].string
                     
                     
-                    
                     self.userUsername = username!
                     if(self.deviceuserid == self.userProfileID){
                         //TODO: Profile buttons turn off/on
@@ -164,7 +197,6 @@ class ProfileViewController: UIViewController, UITextViewDelegate {
                         
                         let fGuesture = UITapGestureRecognizer(target: self, action: #selector(ProfileViewController.showF(_:)))
                         self.ivCoverPhotoPicker.addGestureRecognizer(fGuesture)
-                        
                         
                     }else{
                         /*self.sendMessageStack.isHidden = false
@@ -182,8 +214,7 @@ class ProfileViewController: UIViewController, UITextViewDelegate {
                     }else if (user_closed=="yes"||user_banned=="yes"){
                         self.noProfileView.isHidden = false
                     }else{
-                        //TODO: load profile posts
-                        //postsQueryButtonClicked(profilePostsButton)
+                        self.postsQueryButtonClicked(self.postsQueryButton)
                     }
                     
                     if(clantag != ""){
@@ -270,20 +301,23 @@ class ProfileViewController: UIViewController, UITextViewDelegate {
                     
                     var username_to = ""
                     if !(self.deviceusername == username) {
+                        //not our device's profile
                         username_to = username!
                         if (isFollowing == "yes") {
                             self.followProfileStack.isHidden = true
                             self.followedProfileStack.isHidden = false
                         }
-
                         if (isConnected == "yes") {
+                            // we are connected
                             self.connectedStack.isHidden = false
                             self.addFriendProgress.isHidden = true
                             self.addPostStack.isHidden = false
                         }else{
+                            // we are not connected
                             self.connectionRequest(username!)
                         }
                         if (!(isConnected == "yes")) && !(userProfileIDS == self.deviceuserid) {
+                            // we are not connected and this is not our device's profile
                             self.addPostStack.isHidden = true
                         }
                     }else{
@@ -318,7 +352,7 @@ class ProfileViewController: UIViewController, UITextViewDelegate {
                     }
                     self.navigationItem.title = "@"+username!
                     self.labelNickname.text = nickname
-                    //self.postsnum set text num_posts
+                    //self.postsNumLabel.text = num_posts
                     
                     let filter = AspectScaledToFillSizeWithRoundedCornersFilter(
                         size: self.profileCoverPic.frame.size,
@@ -354,15 +388,100 @@ class ProfileViewController: UIViewController, UITextViewDelegate {
         }
     }
     
+    func loadProfileNews(){
+        AF.request(URLConstants.ROOT_URL+"profilenews_api.php?userid="+deviceuserid+"&userprofileid="+userProfileID+"&thisusername="+deviceusername, method: .get).responseJSON{
+            response in
+            //printing response
+            print(response)
+            
+            switch response.result {
+            case .success(let value):
+                let jsonObject = JSON(value)
+                /*let jsonData = jsonObject[0]
+                if (jsonData["id"].rawString() == userProfileIDS) {
+                    let thisProfileID = jsonData["id"].int
+                    let nickname = jsonData["nickname"].rawString()
+                    let username = jsonData["username"].rawString()
+                    let description = jsonData["description"].string
+                    let verified = jsonData["verified"].string
+                    let profile_pic = jsonData["profile_pic"].string
+                    let cover_pic = jsonData["cover_pic"].string
+                    //let num_posts = jsonData["num_posts"].rawString()
+                    let user_closed = jsonData["user_closed"].string
+                    let user_banned = jsonData["user_banned"].string
+                    let num_friends = jsonData["num_friends"].rawString()
+                    let followings = jsonData["followings"].rawString()
+                    let followers = jsonData["followers"].rawString()
+                    let twitch = jsonData["twitch"].string
+                    //let mixer = jsonData["mixer"].string
+                    let psn = jsonData["psn"].string
+                    let xbox = jsonData["xbox"].string
+                    let discord = jsonData["discord"].string
+                    let steam = jsonData["steam"].string
+                    let instagram = jsonData["instagram"].string
+                    let youtube = jsonData["youtube"].string
+                    let last_online = jsonData["last_online"].string
+                    let count = jsonData["count"].int
+                    let average = jsonData["average"].int
+                    let clantag = jsonData["clantag"].string
+                    let blocked = jsonData["blocked"].string
+                    let supporter = jsonData["supporter"].string
+                    let discord_user = jsonData["discord_user"].string
+                    let twitter = jsonData["twitter"].string
+                    let website = jsonData["website"].string
+                    let nintendo = jsonData["nintendo"].string
+                    let isFollowing = jsonData["isFollowing"].string
+                    let isConnected = jsonData["isConnected"].string
+                    let connections = jsonData["connections"].string
+                    
+                }else{
+                    //error
+                }*/
+            case let .failure(error):
+                print(error)
+            }
+        }
+    }
+    
+    func loadJoinedClans(){
+        
+    }
+    
+    func loadProfilePublics(){
+        
+    }
+    
+    func postsQueryButtonClicked(_ buttonPressed:UIButton){
+        if(buttonPressed == self.postsQueryButton){
+            self.postsQueryButton.backgroundColor = UIColor(named: "green")
+            self.clansQueryButton.backgroundColor = UIColor(named: "grey_80")
+            self.publicsPostsQueryButton.backgroundColor = UIColor(named: "grey_80")
+            loadProfileNews()
+            self.profileItemsLabel.text = "Profile Posts"
+            self.seeAllButton.isHidden = false
+        }else if (buttonPressed == self.clansQueryButton){
+            self.postsQueryButton.backgroundColor = UIColor(named: "grey_80")
+            self.clansQueryButton.backgroundColor = UIColor(named: "green")
+            self.publicsPostsQueryButton.backgroundColor = UIColor(named: "grey_80")
+            //loadJoinedClans()
+            self.profileItemsLabel.text = "Clans Joined"
+            self.seeAllButton.isHidden = true
+        }else if (buttonPressed == self.publicsPostsQueryButton){
+            self.postsQueryButton.backgroundColor = UIColor(named: "grey_80")
+            self.clansQueryButton.backgroundColor = UIColor(named: "grey_80")
+            self.publicsPostsQueryButton.backgroundColor = UIColor(named: "green")
+            //loadProfilePublics()
+            self.profileItemsLabel.text = "Clans Joined"
+            self.seeAllButton.isHidden = true
+        }
+    }
+    
     func getUserID(_ userUsernameS:String){
         let parameters: Parameters=["username":userUsernameS]
         AF.request(URLConstants.ROOT_URL+"get_userid.php", method: .post, parameters: parameters).responseJSON{
             response in
             //printing response
             print(response)
-            
-            //yeet
-            //yeet 2
             
             switch response.result {
             case .success(let value):
@@ -382,12 +501,21 @@ class ProfileViewController: UIViewController, UITextViewDelegate {
         }
     }
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         statusUpdate.delegate = self
         statusUpdate.text = "Let your followers know what you're up to..."
         statusUpdate.textColor = UIColor.lightGray
+        
+        for i in 0...1000 {
+             data.append("\(i)")
+        }
+        //profilePostsTableView.register(UINib(nibName: "ProfilePostsTVC", bundle: nil), forCellReuseIdentifier: "postsReuse")
+        profilePostsTableView.dataSource = self
+        profilePostsTableView.delegate = self
         
         profileScrollView.isHidden = true
         indicator.frame = CGRect(x: 0, y: 0, width: 60, height: 60)

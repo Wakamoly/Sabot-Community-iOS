@@ -28,6 +28,9 @@
 		E081F39B24BEABBA0049AB0F /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E081F39A24BEABBA0049AB0F /* NotificationsViewController.swift */; };
 		E081F39D24BEABE60049AB0F /* PublicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E081F39C24BEABE60049AB0F /* PublicsViewController.swift */; };
 		E081F39F24BEAC060049AB0F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E081F39E24BEAC060049AB0F /* SearchViewController.swift */; };
+		E0A7E7E524CF3E380033C510 /* ProfilePostsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A7E7E424CF3E380033C510 /* ProfilePostsTVC.swift */; };
+		E0A7E7E724CF4B920033C510 /* ProfileNewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A7E7E624CF4B920033C510 /* ProfileNewsModel.swift */; };
+		E0A7E7E924CF50F20033C510 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0A7E7E824CF50F20033C510 /* Media.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +84,9 @@
 		E081F39A24BEABBA0049AB0F /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		E081F39C24BEABE60049AB0F /* PublicsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicsViewController.swift; sourceTree = "<group>"; };
 		E081F39E24BEAC060049AB0F /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		E0A7E7E424CF3E380033C510 /* ProfilePostsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePostsTVC.swift; sourceTree = "<group>"; };
+		E0A7E7E624CF4B920033C510 /* ProfileNewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNewsModel.swift; sourceTree = "<group>"; };
+		E0A7E7E824CF50F20033C510 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,12 +174,15 @@
 				E081F38A24BBEBA00049AB0F /* RegisterViewController.swift */,
 				E081F38924BBEBA00049AB0F /* LoginViewController.swift */,
 				E081F39624BD5D8D0049AB0F /* AppMainContent.storyboard */,
+				E0A7E7E624CF4B920033C510 /* ProfileNewsModel.swift */,
 				1928761124CBCE77006A09F1 /* SideMenuController.swift */,
 				E081F39824BEAB500049AB0F /* DashboardViewController.swift */,
 				E081F39A24BEABBA0049AB0F /* NotificationsViewController.swift */,
 				E081F39C24BEABE60049AB0F /* PublicsViewController.swift */,
 				E081F39E24BEAC060049AB0F /* SearchViewController.swift */,
 				E081F38B24BBEBA00049AB0F /* ProfileViewController.swift */,
+				E0A7E7E424CF3E380033C510 /* ProfilePostsTVC.swift */,
+				E0A7E7E824CF50F20033C510 /* Media.xcassets */,
 				E081F36224BBE95A0049AB0F /* Assets.xcassets */,
 				E081F36724BBE95A0049AB0F /* Info.plist */,
 			);
@@ -307,6 +316,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0A7E7E924CF50F20033C510 /* Media.xcassets in Resources */,
 				E081F36624BBE95A0049AB0F /* LaunchScreen.storyboard in Resources */,
 				E081F39724BD5D8D0049AB0F /* AppMainContent.storyboard in Resources */,
 				E081F36324BBE95A0049AB0F /* Assets.xcassets in Resources */,
@@ -438,8 +448,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0A7E7E724CF4B920033C510 /* ProfileNewsModel.swift in Sources */,
 				E081F39B24BEABBA0049AB0F /* NotificationsViewController.swift in Sources */,
 				1928761224CBCE77006A09F1 /* SideMenuController.swift in Sources */,
+				E0A7E7E524CF3E380033C510 /* ProfilePostsTVC.swift in Sources */,
 				E081F39F24BEAC060049AB0F /* SearchViewController.swift in Sources */,
 				E081F38F24BBEBA10049AB0F /* ProfileViewController.swift in Sources */,
 				E081F38D24BBEBA10049AB0F /* LoginViewController.swift in Sources */,
