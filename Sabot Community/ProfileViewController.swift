@@ -713,6 +713,11 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
             cell.likeView.isHidden = false
             cell.likedView.isHidden = true
         }
+        if profilesNewsI.edited == "yes"{
+            cell.editedLabel.isHidden = false
+        }else{
+            cell.editedLabel.isHidden = true
+        }
         
         cell.numLikes.text = profilesNewsI.likes
         cell.numComments.text = profilesNewsI.commentcount
@@ -723,7 +728,7 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
             cell.onlineView.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1.0).cgColor
             cell.onlineView.layer.masksToBounds = true
             cell.onlineView.contentMode = .scaleToFill
-            cell.onlineView.layer.borderWidth = 2
+            cell.onlineView.layer.borderWidth = 1
         }else{
             cell.onlineView.isHidden = true
         }

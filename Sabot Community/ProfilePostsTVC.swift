@@ -24,6 +24,7 @@ class ProfilePostsTVC: UITableViewCell {
     @IBOutlet weak var dateView: UILabel!
     @IBOutlet weak var likeView: UIImageView!
     @IBOutlet weak var likedView: UIImageView!
+    @IBOutlet weak var editedLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
