@@ -14,96 +14,7 @@ import SwiftyJSON
 import AARatingBar
 
 class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDataSource, UITableViewDelegate {
-    //the method returning size of the list
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return profileNews.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "postsReuse") as! ProfilePostsTVC //1.
-           
-        //getting the hero for the specified position
-        let profilesNewsI: ProfileNewsModel
-        profilesNewsI = profileNews[indexPath.row]
-        
-        //displaying values
-        cell.usernameLabel.text = profilesNewsI.username
-        cell.nicknameLabel.text = profilesNewsI.nickname
-        cell.postBody.text = profilesNewsI.body
-        
-        if profilesNewsI.user_to != "none"{
-            cell.toUsernameLabel.text = "to "+profilesNewsI.user_to!
-        }else{
-            cell.toUsernameLabel.isHidden = true
-        }
-        
-        switch profilesNewsI.type{
-            case "Xbox":
-                cell.platformType.image = UIImage(named: "icons8_xbox_50")
-                break
-            
-            case "PlayStation":
-                cell.platformType.image = UIImage(named: "icons8_playstation_50")
-                break
-            
-            case "Steam":
-                cell.platformType.image = UIImage(named: "icons8_steam_48")
-                break
-            
-            case "PC":
-                cell.platformType.image = UIImage(named: "icons8_workstation_48")
-                break
-            
-            case "Mobile":
-                cell.platformType.image = UIImage(named: "icons8_mobile_48")
-                break
-            
-            case "Switch":
-                cell.platformType.image = UIImage(named: "icons8_nintendo_switch_48")
-                break
-            
-            case "General":
-                cell.platformType.isHidden = true
-                break
-            
-        default:
-            cell.platformType.image = UIImage(named: "icons8_question_mark_64")
-        }
-        
-        cell.profilePhoto.af.setImage(
-            withURL: URL(string:URLConstants.BASE_URL+profilesNewsI.profile_pic!)!,
-            imageTransition: .crossDissolve(0.2)
-        )
-        
-        if profilesNewsI.image != "" {
-            cell.postImage.isHidden = false
-            cell.postImage!.af.setImage(
-                withURL: URL(string:URLConstants.BASE_URL+profilesNewsI.image!)!,
-                imageTransition: .crossDissolve(0.2)
-            )
-        }else{
-            cell.postImage.isHidden = true
-        }
-           
-        return cell //4.
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            
-         let alertController = UIAlertController(title: "Hint", message: "You have selected row \(indexPath.row).", preferredStyle: .alert)
-            
-         let alertAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-            
-         alertController.addAction(alertAction)
-            
-         present(alertController, animated: true, completion: nil)
-            
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
+     
     
 
     private var profileNews = [ProfileNewsModel]()
@@ -770,6 +681,118 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    //the method returning size of the list
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        return profileNews.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "postsReuse") as! ProfilePostsTVC
+           
+        //getting the hero for the specified position
+        let profilesNewsI: ProfileNewsModel
+        profilesNewsI = profileNews[indexPath.row]
+        
+        //displaying values
+        cell.usernameLabel.text = "@"+profilesNewsI.username!
+        cell.nicknameLabel.text = profilesNewsI.nickname
+        cell.postBody.text = profilesNewsI.body
+        
+        if profilesNewsI.user_to != "none"{
+            cell.toUsernameLabel.text = "to "+profilesNewsI.user_to!
+        }else{
+            cell.toUsernameLabel.isHidden = true
+        }
+        
+        if profilesNewsI.likedbyuser == "yes"{
+            cell.likeView.isHidden = true
+            cell.likedView.isHidden = false
+        }else{
+            cell.likeView.isHidden = false
+            cell.likedView.isHidden = true
+        }
+        
+        cell.numLikes.text = profilesNewsI.likes
+        cell.numComments.text = profilesNewsI.commentcount
+        cell.dateView.text = profilesNewsI.date_added
+        
+        if profilesNewsI.online == "yes"{
+            cell.onlineView.isHidden = false
+            cell.onlineView.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1.0).cgColor
+            cell.onlineView.layer.masksToBounds = true
+            cell.onlineView.contentMode = .scaleToFill
+            cell.onlineView.layer.borderWidth = 2
+        }else{
+            cell.onlineView.isHidden = true
+        }
+        if profilesNewsI.verified == "yes"{
+            cell.verifiedView.isHidden = false
+        }else{
+            cell.verifiedView.isHidden = true
+        }
+        
+        switch profilesNewsI.type{
+            case "Xbox":
+                cell.platformType.image = UIImage(named: "icons8_xbox_50")
+                break
+            case "PlayStation":
+                cell.platformType.image = UIImage(named: "icons8_playstation_50")
+                break
+            case "Steam":
+                cell.platformType.image = UIImage(named: "icons8_steam_48")
+                break
+            case "PC":
+                cell.platformType.image = UIImage(named: "icons8_workstation_48")
+                break
+            case "Mobile":
+                cell.platformType.image = UIImage(named: "icons8_mobile_48")
+                break
+            case "Switch":
+                cell.platformType.image = UIImage(named: "icons8_nintendo_switch_48")
+                break
+            case "General":
+                cell.platformType.isHidden = true
+                break
+        default:
+            cell.platformType.image = UIImage(named: "icons8_question_mark_64")
+        }
+        
+        let profilePicIndex = profilesNewsI.profile_pic?.firstIndex(of: ".")!
+        let profile_pic = (profilesNewsI.profile_pic?.prefix(upTo: profilePicIndex!))!+"_r.JPG"
+        cell.profilePhoto.af.setImage(
+            withURL: URL(string:URLConstants.BASE_URL+profile_pic)!,
+            imageTransition: .crossDissolve(0.2)
+        )
+        
+        if profilesNewsI.image != "" {
+            cell.postImage.isHidden = false
+            cell.postImage!.af.setImage(
+                withURL: URL(string:URLConstants.BASE_URL+profilesNewsI.image!)!,
+                imageTransition: .crossDissolve(0.2)
+            )
+        }else{
+            cell.postImage.isHidden = true
+        }
+           
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            
+         let alertController = UIAlertController(title: "Hint", message: "You have selected row \(indexPath.row).", preferredStyle: .alert)
+            
+         let alertAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+            
+         alertController.addAction(alertAction)
+            
+         present(alertController, animated: true, completion: nil)
+            
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
     
     

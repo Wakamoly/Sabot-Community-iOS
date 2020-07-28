@@ -17,6 +17,13 @@ class ProfilePostsTVC: UITableViewCell {
     @IBOutlet weak var toUsernameLabel: UILabel!
     @IBOutlet weak var postBody: UILabel!
     @IBOutlet weak var postImage: UIImageView!
+    @IBOutlet weak var verifiedView: UIImageView!
+    @IBOutlet weak var onlineView: UIImageView!
+    @IBOutlet weak var numLikes: UILabel!
+    @IBOutlet weak var numComments: UILabel!
+    @IBOutlet weak var dateView: UILabel!
+    @IBOutlet weak var likeView: UIImageView!
+    @IBOutlet weak var likedView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
