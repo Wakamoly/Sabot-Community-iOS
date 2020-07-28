@@ -10,43 +10,28 @@ import UIKit
 import Alamofire
 
 class SideMenuController: UIViewController {
-   
-    @IBOutlet weak var trailing: NSLayoutConstraint!
-    @IBOutlet weak var leading: NSLayoutConstraint!
-    @IBOutlet weak var bigPP: UIImageView!
-    @IBOutlet weak var menuPress: UIBarButtonItem!
+    
+    @IBOutlet weak var trailCon: NSLayoutConstraint!
+    @IBOutlet weak var leadCon: NSLayoutConstraint!
     
     var menuOut = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
     }
-    
+
     @IBAction func menuPress(_ sender: Any) {
         
-    //      if menuOut == false (
-    //         leading.Constraint = 250
-    //        trailing.Constraint = -250
-    //  )
-    
-    // TODO: Find out why this is being a pain in the ass and not working properly when its not 2am.
-    // Why does this open as a seperate tab rather than side / overlay? Fix and test contraints and see if this resolves this issue.
-    // gather profile picture display using Alamofire.
+        if menuOut == false {
+            leadCon.constant = 300
+            trailCon.constant = -300
+            menuOut = true
+        } else {
+            leadCon.constant = 0
+            trailCon.constant = 0
+            menuOut = false
+        }
         
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-
     
 }
