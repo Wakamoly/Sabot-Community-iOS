@@ -124,7 +124,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BBH-BU-P96" userLabel="ContentView">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BBH-BU-P96" userLabel="ContentView">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="f47-ZG-8u8">
@@ -323,6 +323,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="aLE-4D-Zpj"/>
                     <connections>
+                        <outlet property="contentView" destination="BBH-BU-P96" id="9w6-cV-uyZ"/>
                         <outlet property="textFieldEmail" destination="JDC-d4-ZMC" id="Vli-bh-lVK"/>
                         <outlet property="textFieldHDYFU" destination="bFw-6K-rrI" id="MeV-47-FQN"/>
                         <outlet property="textFieldPassword" destination="83n-F5-MZ1" id="5Rt-Hk-gpe"/>

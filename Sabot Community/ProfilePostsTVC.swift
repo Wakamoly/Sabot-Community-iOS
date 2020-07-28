@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ActiveLabel
 
 class ProfilePostsTVC: UITableViewCell {
     
@@ -15,7 +16,7 @@ class ProfilePostsTVC: UITableViewCell {
     @IBOutlet weak var platformType: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var toUsernameLabel: UILabel!
-    @IBOutlet weak var postBody: UILabel!
+    @IBOutlet weak var postBody: ActiveLabel!
     @IBOutlet weak var postImage: UIImageView!
     @IBOutlet weak var verifiedView: UIImageView!
     @IBOutlet weak var onlineView: UIImageView!

@@ -567,6 +567,10 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
+                                                                <gestureRecognizers/>
+                                                                <connections>
+                                                                    <outletCollection property="gestureRecognizers" destination="FeU-49-unz" appends="YES" id="IAG-MG-QA7"/>
+                                                                </connections>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Wed-Vf-NBb" userLabel="FollowProfileStack">
                                                                 <rect key="frame" x="100.66666666666669" y="0.0" width="92.333333333333314" height="64.666666666666671"/>
@@ -1285,6 +1289,12 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ynR-eZ-Qa2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="FeU-49-unz" userLabel="ShowAddPostViewTap">
+                    <connections>
+                        <action selector="showAddPostView:" destination="5Oi-7X-xLg" id="CQw-dR-AiO"/>
+                        <outlet property="delegate" destination="l0b-CJ-mYU" id="Ko7-Lo-zQS"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="8605.7971014492759" y="1574.1847826086957"/>
         </scene>

@@ -12,11 +12,12 @@ import Alamofire
 import AlamofireImage
 import SwiftyJSON
 import AARatingBar
+import ActiveLabel
 
 class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDataSource, UITableViewDelegate {
-     
     
-
+    
+    
     private var profileNews = [ProfileNewsModel]()
     //test here by putting in either user id or username to load profile, or leave blank to load yours
     var userProfileID: String = ""
@@ -75,7 +76,7 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
     @IBOutlet weak var sendMessageStack: UIStackView!
     @IBOutlet weak var moreStack: UIStackView!
     @IBOutlet weak var profileWebsiteContainer: UIStackView!
-    @IBOutlet weak var profileWebsiteLabel: UILabel!
+    @IBOutlet weak var profileWebsiteLabel: ActiveLabel!
     @IBOutlet weak var noProfileView: UIView!
     @IBOutlet weak var statusUpdate: UITextView!
     @IBOutlet weak var addPostView: UIView!
@@ -87,6 +88,16 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
     @IBOutlet weak var profilePostsTableView: UITableView!
     @IBOutlet weak var profileItemsLabel: UILabel!
     
+    @IBAction func showAddPostView(_ sender: Any) {
+        if self.addPostView.isHidden {
+            self.addPostView.isHidden = false
+            statusUpdate.delegate = self
+            statusUpdate.text = "Let your followers know what you're up to..."
+            statusUpdate.textColor = UIColor.lightGray
+        }else{
+            self.addPostView.isHidden = true
+        }
+    }
     
     @IBAction func buttonLogout(_ sender: UIButton) {
         
@@ -171,9 +182,9 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
                         
                     }else{
                         /*self.sendMessageStack.isHidden = false
-                        self.addFriendStack.isHidden = false
-                        self.addFriendProgress.isHidden = false
-                        self.followProfileStack.isHidden = false*/
+                         self.addFriendStack.isHidden = false
+                         self.addFriendProgress.isHidden = false
+                         self.followProfileStack.isHidden = false*/
                         self.editProfileStack.isHidden = true
                         self.ivCoverPhotoPicker.isHidden = true
                         self.ivProfilePhotoPicker.isHidden = true
@@ -210,6 +221,9 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
                     }
                     if (website != "") {
                         self.profileWebsiteLabel.text = website!
+                        self.profileWebsiteLabel.handleURLTap { (URL) in
+                            UIApplication.shared.open(URL as URL, options: [:], completionHandler: nil)
+                        }
                     }else{
                         self.profileWebsiteContainer.isHidden = true
                     }
@@ -296,6 +310,9 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
                         username_to = "none"
                         //TODO: Set our profile picture here in user defaults if they don't match
                     }
+                    
+                    /*let fGuesture = UITapGestureRecognizer(target: self, action: #selector(ProfileViewController.showF(_:)))
+                     self.ivCoverPhotoPicker.addGestureRecognizer(fGuesture)*/
                     
                     //TODO submitStatusButton on click
                     
@@ -463,14 +480,6 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        statusUpdate.delegate = self
-        statusUpdate.text = "Let your followers know what you're up to..."
-        statusUpdate.textColor = UIColor.lightGray
-        
-        /*for i in 0...1000 {
-             data.append("\(i)")
-        }*/
-        //profilePostsTableView.register(UINib(nibName: "ProfilePostsTVC", bundle: nil), forCellReuseIdentifier: "postsReuse")
         profilePostsTableView.dataSource = self
         profilePostsTableView.delegate = self
         
@@ -690,7 +699,7 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "postsReuse") as! ProfilePostsTVC
-           
+        
         //getting the hero for the specified position
         let profilesNewsI: ProfileNewsModel
         profilesNewsI = profileNews[indexPath.row]
@@ -699,6 +708,9 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
         cell.usernameLabel.text = "@"+profilesNewsI.username!
         cell.nicknameLabel.text = profilesNewsI.nickname
         cell.postBody.text = profilesNewsI.body
+        cell.postBody.handleURLTap { (URL) in
+            UIApplication.shared.open(URL as URL, options: [:], completionHandler: nil)
+        }
         
         if profilesNewsI.user_to != "none"{
             cell.toUsernameLabel.text = "to "+profilesNewsI.user_to!
@@ -739,27 +751,27 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
         }
         
         switch profilesNewsI.type{
-            case "Xbox":
-                cell.platformType.image = UIImage(named: "icons8_xbox_50")
-                break
-            case "PlayStation":
-                cell.platformType.image = UIImage(named: "icons8_playstation_50")
-                break
-            case "Steam":
-                cell.platformType.image = UIImage(named: "icons8_steam_48")
-                break
-            case "PC":
-                cell.platformType.image = UIImage(named: "icons8_workstation_48")
-                break
-            case "Mobile":
-                cell.platformType.image = UIImage(named: "icons8_mobile_48")
-                break
-            case "Switch":
-                cell.platformType.image = UIImage(named: "icons8_nintendo_switch_48")
-                break
-            case "General":
-                cell.platformType.isHidden = true
-                break
+        case "Xbox":
+            cell.platformType.image = UIImage(named: "icons8_xbox_50")
+            break
+        case "PlayStation":
+            cell.platformType.image = UIImage(named: "icons8_playstation_50")
+            break
+        case "Steam":
+            cell.platformType.image = UIImage(named: "icons8_steam_48")
+            break
+        case "PC":
+            cell.platformType.image = UIImage(named: "icons8_workstation_48")
+            break
+        case "Mobile":
+            cell.platformType.image = UIImage(named: "icons8_mobile_48")
+            break
+        case "Switch":
+            cell.platformType.image = UIImage(named: "icons8_nintendo_switch_48")
+            break
+        case "General":
+            cell.platformType.isHidden = true
+            break
         default:
             cell.platformType.image = UIImage(named: "icons8_question_mark_64")
         }
@@ -780,20 +792,20 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
         }else{
             cell.postImage.isHidden = true
         }
-           
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            
-         let alertController = UIAlertController(title: "Hint", message: "You have selected row \(indexPath.row).", preferredStyle: .alert)
-            
-         let alertAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-            
-         alertController.addAction(alertAction)
-            
-         present(alertController, animated: true, completion: nil)
-            
+        
+        let alertController = UIAlertController(title: "Hint", message: "You have selected row \(indexPath.row).", preferredStyle: .alert)
+        
+        let alertAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+        
+        alertController.addAction(alertAction)
+        
+        present(alertController, animated: true, completion: nil)
+        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

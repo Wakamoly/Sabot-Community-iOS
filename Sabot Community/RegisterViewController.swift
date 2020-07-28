@@ -29,6 +29,8 @@ extension UITextField {
 
 class RegisterViewController: UIViewController, UITextFieldDelegate {
     
+    let indicator: UIActivityIndicatorView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
+    
     let URL_USER_REGISTER = URLConstants.URL_REGISTER
     let defaultValues = UserDefaults.standard
     @IBOutlet weak var textFieldUsername: UITextField!
@@ -36,6 +38,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var textFieldPassword: UITextField!
     @IBOutlet weak var textFieldHDYFU: UITextField!
     @IBOutlet weak var textFieldPasswordAgain: UITextField!
+    @IBOutlet weak var contentView: UIView!
     @IBAction func privacyButton(_ sender: Any) {
         if let privacyurl = NSURL(string: "https://app.termly.io/document/privacy-policy/96bf5c01-d39b-496c-a30e-57353b49877c"){             UIApplication.shared.open(privacyurl as URL, options: [:], completionHandler: nil) }
     }
@@ -117,6 +120,12 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        indicator.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
+        indicator.center = view.center
+        self.view.addSubview(indicator)
+        self.view.bringSubviewToFront(indicator)
+        indicator.startAnimating()
+        
         self.textFieldUsername.delegate = self
         self.textFieldPassword.delegate = self
         self.textFieldPasswordAgain.delegate = self
@@ -127,7 +136,11 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             /*let profileViewController = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
             self.navigationController?.pushViewController(profileViewController, animated: true)*/
             self.performSegue(withIdentifier: "ToAppMainContent", sender: nil)
+        }else{
+            contentView.isHidden = false
         }
+        indicator.stopAnimating()
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
