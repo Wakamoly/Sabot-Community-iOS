@@ -450,11 +450,11 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
                     self.profileCoverPic.af.setImage(
                         withURL: URL(string:URLConstants.BASE_URL+cover_pic!)!,
                         filter: filter,
-                        imageTransition: .crossDissolve(0.2)
+                        imageTransition: .crossDissolve(1.25)
                     )
                     self.profilePic.af.setImage(
                         withURL: URL(string:URLConstants.BASE_URL+profile_pic!)!,
-                        imageTransition: .crossDissolve(0.2)
+                        imageTransition: .crossDissolve(1)
                     )
                     
                     //TODO followersTextView on click
