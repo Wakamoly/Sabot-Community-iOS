@@ -88,6 +88,107 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
     @IBOutlet weak var profilePostsTableView: UITableView!
     @IBOutlet weak var profileItemsLabel: UILabel!
     
+    @IBAction func profilePicSelectorTap(_ sender: Any) {
+        print("Profile pic selector tapped")
+    }
+    @IBAction func seeAllButton(_ sender: Any) {
+        print("See all posts tapped")
+    }
+    @IBAction func clansQueryButton(_ sender: Any) {
+        postsQueryButtonClicked(clansQueryButton)
+    }
+    @IBAction func publicsQueryButton(_ sender: Any) {
+        postsQueryButtonClicked(publicsPostsQueryButton)
+    }
+    @IBAction func postQueryButton(_ sender: Any) {
+        postsQueryButtonClicked(postsQueryButton)
+    }
+    @IBAction func coverPhotoTap(_ sender: Any) {
+        print("Cover photo tapped")
+    }
+    @IBAction func profilePicTap(_ sender: Any) {
+        print("Profile pic tapped")
+    }
+    @IBAction func ReviewsTap(_ sender: Any) {
+        print("Reviews tapped")
+    }
+    @IBAction func followingTap(_ sender: Any) {
+        print("Followings tapped")
+    }
+    @IBAction func connectionsTap(_ sender: Any) {
+        print("Connections tapped")
+    }
+    @IBAction func followsTap(_ sender: Any) {
+        print("Followers tapped")
+    }
+    @IBAction func nintendoTap(_ sender: Any) {
+        print("Nintendo tapped")
+    }
+    @IBAction func twitterTap(_ sender: Any) {
+        print("Twitter tapped")
+    }
+    @IBAction func discordUserTap(_ sender: Any) {
+        print("Discord User tapped")
+    }
+    @IBAction func twitchTap(_ sender: Any) {
+        print("Twitch tapped")
+    }
+    @IBAction func instaTapped(_ sender: Any) {
+        print("Instagram tapped")
+    }
+    @IBAction func youtubeTap(_ sender: Any) {
+        print("Youtube tapped")
+    }
+    @IBAction func steamTap(_ sender: Any) {
+        print("Steam tapped")
+    }
+    @IBAction func discordTap(_ sender: Any) {
+        print("Discord Server tapped")
+    }
+    @IBAction func xboxTap(_ sender: Any) {
+        print("Xbox tapped")
+    }
+    @IBAction func psnTap(_ sender: Any) {
+        print("PSN tapped")
+    }
+    @IBAction func profileMorePressed(_ sender: Any) {
+        print("More button pressed")
+    }
+    @IBAction func sendMessagePressed(_ sender: Any) {
+        print("Send message pressed")
+    }
+    @IBAction func requestSentPressed(_ sender: Any) {
+        print("Connection request has been sent")
+    }
+    @IBAction func requestedConnectionPressed(_ sender: Any) {
+        print("Accept request?")
+    }
+    @IBAction func connectedPressed(_ sender: Any) {
+        print("Cannot disconnect, loser")
+    }
+    @IBAction func addConnectionPressed(_ sender: Any) {
+        print("Add connection")
+    }
+    @IBAction func editProfilePressed(_ sender: Any) {
+        print("Edit profile")
+    }
+    @IBAction func followedUserPressed(_ sender: Any) {
+        print("Unfollow user")
+    }
+    @IBAction func followUserPressed(_ sender: Any) {
+        print("Follow user")
+    }
+    @IBAction func postImageSelectorPressed(_ sender: Any) {
+        print("Image selector pressed")
+    }
+    @IBAction func postPlatformPressed(_ sender: Any) {
+        print("Platform Spinner pressed")
+    }
+    @IBAction func postSubmit(_ sender: Any) {
+        print("Submit button pressed")
+    }
+    
+    
     @IBAction func showAddPostView(_ sender: Any) {
         if self.addPostView.isHidden {
             self.addPostView.isHidden = false

@@ -55,6 +55,9 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="180" id="f2g-7l-1Ib"/>
                                                 </constraints>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="yqJ-n7-Nir" appends="YES" id="x8g-t0-gAm"/>
+                                                </connections>
                                             </imageView>
                                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-image-96 (1)" translatesAutoresizingMaskIntoConstraints="NO" id="UPc-0c-Spz">
                                                 <rect key="frame" x="335" y="157" width="45" height="45"/>
@@ -78,6 +81,9 @@
                                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="164" id="Ze4-rp-BAs"/>
                                                         </constraints>
                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                                        <connections>
+                                                            <outletCollection property="gestureRecognizers" destination="GpB-e8-x5h" appends="YES" id="eTV-ro-j1X"/>
+                                                        </connections>
                                                     </imageView>
                                                     <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-camera-96" translatesAutoresizingMaskIntoConstraints="NO" id="D96-1u-LRB">
                                                         <rect key="frame" x="8" y="120" width="45" height="45"/>
@@ -87,6 +93,9 @@
                                                             <constraint firstAttribute="width" constant="45" id="yOG-ET-4U3"/>
                                                         </constraints>
                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
+                                                        <connections>
+                                                            <outletCollection property="gestureRecognizers" destination="3wq-16-8W7" appends="YES" id="qnj-La-cky"/>
+                                                        </connections>
                                                     </imageView>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-foam-fingers-96" translatesAutoresizingMaskIntoConstraints="NO" id="waU-tY-XMl">
                                                         <rect key="frame" x="63" y="143" width="38" height="38"/>
@@ -168,6 +177,9 @@
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isAbsValue" value="NO"/>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isEnabled" value="NO"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="moq-hN-nm6" appends="YES" id="8ic-s4-BY9"/>
+                                                </connections>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="9By-ZA-xUq" userLabel="ReviewCountStack">
                                                 <rect key="frame" x="172.66666666666666" y="333.66666666666669" width="68.666666666666657" height="18"/>
@@ -187,7 +199,7 @@
                                                 </subviews>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="skh-vQ-LCn" userLabel="UserProfileDetails">
-                                                <rect key="frame" x="20" y="359.66666666666669" width="374" height="156.00000000000006"/>
+                                                <rect key="frame" x="20" y="359.66666666666669" width="374" height="176.00000000000006"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="HtM-6L-7Qx" userLabel="DetailsTopBar">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="38.333333333333336"/>
@@ -208,6 +220,9 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
+                                                                <connections>
+                                                                    <outletCollection property="gestureRecognizers" destination="ryU-LH-xXP" appends="YES" id="9Kf-Cw-i7a"/>
+                                                                </connections>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="WI0-S3-fsz" userLabel="ConnectionsStack">
                                                                 <rect key="frame" x="124.66666666666666" y="0.0" width="124.66666666666666" height="38.333333333333336"/>
@@ -225,6 +240,9 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
+                                                                <connections>
+                                                                    <outletCollection property="gestureRecognizers" destination="e0i-yp-8hc" appends="YES" id="YAp-eK-Bhb"/>
+                                                                </connections>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="pKK-eJ-Cev" userLabel="FollowingStack">
                                                                 <rect key="frame" x="249.33333333333329" y="0.0" width="124.66666666666666" height="38.333333333333336"/>
@@ -242,16 +260,19 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
+                                                                <connections>
+                                                                    <outletCollection property="gestureRecognizers" destination="Esd-W8-9MH" appends="YES" id="rcZ-5D-hBH"/>
+                                                                </connections>
                                                             </stackView>
                                                         </subviews>
                                                         <color key="backgroundColor" name="topbar"/>
                                                     </stackView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M1A-iv-aKY" userLabel="Background">
-                                                        <rect key="frame" x="0.0" y="38.333333333333321" width="374" height="117.66666666666669"/>
+                                                        <rect key="frame" x="0.0" y="38.333333333333314" width="374" height="137.66666666666666"/>
                                                         <color key="backgroundColor" name="colorPrimary"/>
                                                     </view>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ptS-Uw-biE" userLabel="UserSocialsStack">
-                                                        <rect key="frame" x="40" y="46" width="294" height="110"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ptS-Uw-biE" userLabel="UserSocialsStack">
+                                                        <rect key="frame" x="40" y="46" width="294" height="130"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Rx8-7E-1sP" userLabel="StackView1">
                                                                 <rect key="frame" x="0.0" y="0.0" width="294" height="22"/>
@@ -273,6 +294,9 @@
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                         </subviews>
+                                                                        <connections>
+                                                                            <outletCollection property="gestureRecognizers" destination="ifI-eq-Dm6" appends="YES" id="wO5-ua-az0"/>
+                                                                        </connections>
                                                                     </stackView>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="dq7-0W-0Na" userLabel="UserXboxDetails">
                                                                         <rect key="frame" x="202" y="0.0" width="92" height="22"/>
@@ -291,6 +315,9 @@
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                         </subviews>
+                                                                        <connections>
+                                                                            <outletCollection property="gestureRecognizers" destination="Owc-lz-H6p" appends="YES" id="hNY-Qb-hFj"/>
+                                                                        </connections>
                                                                     </stackView>
                                                                 </subviews>
                                                                 <constraints>
@@ -298,7 +325,7 @@
                                                                 </constraints>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="cF2-MS-4lv" userLabel="StackView2">
-                                                                <rect key="frame" x="0.0" y="22" width="294" height="22"/>
+                                                                <rect key="frame" x="0.0" y="27" width="294" height="22"/>
                                                                 <subviews>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="mLM-Sl-lEI" userLabel="DiscordStackView">
                                                                         <rect key="frame" x="0.0" y="0.0" width="92" height="22"/>
@@ -317,6 +344,9 @@
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                         </subviews>
+                                                                        <connections>
+                                                                            <outletCollection property="gestureRecognizers" destination="MO0-aJ-5Rq" appends="YES" id="yqR-Tv-pYc"/>
+                                                                        </connections>
                                                                     </stackView>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="dog-qv-Uc6" userLabel="UserSteamDetails">
                                                                         <rect key="frame" x="202" y="0.0" width="92" height="22"/>
@@ -335,6 +365,9 @@
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                         </subviews>
+                                                                        <connections>
+                                                                            <outletCollection property="gestureRecognizers" destination="92w-LY-9VR" appends="YES" id="jse-Q3-EPM"/>
+                                                                        </connections>
                                                                     </stackView>
                                                                 </subviews>
                                                                 <constraints>
@@ -342,7 +375,7 @@
                                                                 </constraints>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Fhs-Rb-VPB" userLabel="StackView3">
-                                                                <rect key="frame" x="0.0" y="44" width="294" height="22"/>
+                                                                <rect key="frame" x="0.0" y="54" width="294" height="22"/>
                                                                 <subviews>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Oa6-Ku-JYL" userLabel="YoutubeStackView">
                                                                         <rect key="frame" x="0.0" y="0.0" width="92" height="22"/>
@@ -361,6 +394,9 @@
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                         </subviews>
+                                                                        <connections>
+                                                                            <outletCollection property="gestureRecognizers" destination="NcK-e6-u9F" appends="YES" id="tDv-8S-mVx"/>
+                                                                        </connections>
                                                                     </stackView>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="TL2-ld-Gsj" userLabel="UserInstagramDetails">
                                                                         <rect key="frame" x="202" y="0.0" width="92" height="22"/>
@@ -379,6 +415,9 @@
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                         </subviews>
+                                                                        <connections>
+                                                                            <outletCollection property="gestureRecognizers" destination="hSW-rc-Fjn" appends="YES" id="R6l-Ew-Efd"/>
+                                                                        </connections>
                                                                     </stackView>
                                                                 </subviews>
                                                                 <constraints>
@@ -387,7 +426,7 @@
                                                                 </constraints>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="e4i-Ku-Fl4" userLabel="StackView4">
-                                                                <rect key="frame" x="0.0" y="65.999999999999943" width="294" height="22"/>
+                                                                <rect key="frame" x="0.0" y="80.999999999999943" width="294" height="22"/>
                                                                 <subviews>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="lFq-F4-inU" userLabel="TwitchStackView">
                                                                         <rect key="frame" x="0.0" y="0.0" width="92" height="22"/>
@@ -406,6 +445,9 @@
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                         </subviews>
+                                                                        <connections>
+                                                                            <outletCollection property="gestureRecognizers" destination="vbZ-FS-iLN" appends="YES" id="nqB-Jd-yHI"/>
+                                                                        </connections>
                                                                     </stackView>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="HbG-xY-lwf" userLabel="DiscordUserStackView">
                                                                         <rect key="frame" x="202" y="0.0" width="92" height="22"/>
@@ -424,6 +466,9 @@
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                         </subviews>
+                                                                        <connections>
+                                                                            <outletCollection property="gestureRecognizers" destination="Arz-Ec-mla" appends="YES" id="4ja-pL-eVS"/>
+                                                                        </connections>
                                                                     </stackView>
                                                                 </subviews>
                                                                 <constraints>
@@ -431,7 +476,7 @@
                                                                 </constraints>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="nfa-Kh-hKW" userLabel="StackView5">
-                                                                <rect key="frame" x="0.0" y="87.999999999999943" width="294" height="22"/>
+                                                                <rect key="frame" x="0.0" y="107.99999999999994" width="294" height="22"/>
                                                                 <subviews>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="ZZA-w0-0Vp" userLabel="TwitterStackView">
                                                                         <rect key="frame" x="0.0" y="0.0" width="92" height="22"/>
@@ -450,6 +495,9 @@
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                         </subviews>
+                                                                        <connections>
+                                                                            <outletCollection property="gestureRecognizers" destination="WjL-iW-Afs" appends="YES" id="LD1-bU-0Oe"/>
+                                                                        </connections>
                                                                     </stackView>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="vFZ-m6-CFa" userLabel="UserSwitchDetails">
                                                                         <rect key="frame" x="202" y="0.0" width="92" height="22"/>
@@ -468,6 +516,9 @@
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                         </subviews>
+                                                                        <connections>
+                                                                            <outletCollection property="gestureRecognizers" destination="2CC-Y1-4CR" appends="YES" id="HUA-AB-x21"/>
+                                                                        </connections>
                                                                     </stackView>
                                                                 </subviews>
                                                                 <constraints>
@@ -497,7 +548,7 @@
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="firstBaseline" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="41M-wM-aFV" userLabel="ProfileStatusStackView">
-                                                <rect key="frame" x="20" y="525.66666666666663" width="374" height="93.333333333333371"/>
+                                                <rect key="frame" x="20" y="545.66666666666663" width="374" height="93.333333333333371"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_quote" translatesAutoresizingMaskIntoConstraints="NO" id="LSo-Sh-s8v">
                                                         <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
@@ -516,7 +567,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="firstBaseline" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ewo-Q8-EQF" userLabel="ProfileWebsiteContainer">
-                                                <rect key="frame" x="20" y="629" width="374" height="20"/>
+                                                <rect key="frame" x="20" y="649" width="374" height="20"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_website" translatesAutoresizingMaskIntoConstraints="NO" id="zCy-Wq-3tX">
                                                         <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
@@ -545,7 +596,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="za4-Nx-T4m" userLabel="ProfileActionsStack">
-                                                <rect key="frame" x="10" y="669" width="394" height="64.666666666666629"/>
+                                                <rect key="frame" x="10" y="689" width="394" height="64.666666666666629"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="WGO-5e-pBb" userLabel="ActionsStackView">
                                                         <rect key="frame" x="0.0" y="0.0" width="394" height="64.666666666666671"/>
@@ -586,6 +637,9 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
+                                                                <connections>
+                                                                    <outletCollection property="gestureRecognizers" destination="X1i-dN-sXD" appends="YES" id="7IA-yc-d6T"/>
+                                                                </connections>
                                                             </stackView>
                                                             <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Img-py-4Wb" userLabel="FollowedProfileStack">
                                                                 <rect key="frame" x="197" y="0.0" width="92.666666666666686" height="64.666666666666671"/>
@@ -603,6 +657,9 @@
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <connections>
+                                                                    <outletCollection property="gestureRecognizers" destination="XtI-V8-6Vz" appends="YES" id="BDi-3f-aCx"/>
+                                                                </connections>
                                                             </stackView>
                                                             <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="k55-GF-iOt" userLabel="EditProfileStack">
                                                                 <rect key="frame" x="197" y="0.0" width="92.666666666666686" height="64.666666666666671"/>
@@ -618,6 +675,9 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
+                                                                <connections>
+                                                                    <outletCollection property="gestureRecognizers" destination="X8o-wN-Lha" appends="YES" id="nSZ-6A-Vst"/>
+                                                                </connections>
                                                             </stackView>
                                                             <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="d5s-mZ-VUv" userLabel="AddFriendProgress">
                                                                 <rect key="frame" x="197" y="0.0" width="92.666666666666686" height="64.666666666666671"/>
@@ -649,6 +709,9 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
+                                                                <connections>
+                                                                    <outletCollection property="gestureRecognizers" destination="iwq-75-0dP" appends="YES" id="lMk-UI-A1n"/>
+                                                                </connections>
                                                             </stackView>
                                                             <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="ekv-wS-WGR" userLabel="ConnectedStack">
                                                                 <rect key="frame" x="197" y="0.0" width="92.666666666666686" height="64.666666666666671"/>
@@ -664,6 +727,9 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
+                                                                <connections>
+                                                                    <outletCollection property="gestureRecognizers" destination="1uJ-gM-clw" appends="YES" id="ZBv-Bd-num"/>
+                                                                </connections>
                                                             </stackView>
                                                             <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="dNx-qO-2bT" userLabel="RequestedFriendStack">
                                                                 <rect key="frame" x="197" y="0.0" width="92.666666666666686" height="64.666666666666671"/>
@@ -679,6 +745,9 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
+                                                                <connections>
+                                                                    <outletCollection property="gestureRecognizers" destination="fNH-WW-4Ld" appends="YES" id="7Wf-hp-7uO"/>
+                                                                </connections>
                                                             </stackView>
                                                             <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="7u2-Xa-qWq" userLabel="RequestSentStack">
                                                                 <rect key="frame" x="197" y="0.0" width="92.666666666666686" height="64.666666666666671"/>
@@ -694,6 +763,10 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
+                                                                <gestureRecognizers/>
+                                                                <connections>
+                                                                    <outletCollection property="gestureRecognizers" destination="5Xu-fs-dF0" appends="YES" id="FYS-AD-IFF"/>
+                                                                </connections>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="7r9-hr-8lW" userLabel="SendMessageStack">
                                                                 <rect key="frame" x="201" y="0.0" width="92.666666666666686" height="64.666666666666671"/>
@@ -709,6 +782,9 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
+                                                                <connections>
+                                                                    <outletCollection property="gestureRecognizers" destination="2EA-MZ-kTi" appends="YES" id="1c6-jg-cQu"/>
+                                                                </connections>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="YaL-L9-Nu1" userLabel="MoreStack">
                                                                 <rect key="frame" x="301.66666666666669" y="0.0" width="92.333333333333314" height="64.666666666666671"/>
@@ -724,6 +800,9 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
+                                                                <connections>
+                                                                    <outletCollection property="gestureRecognizers" destination="E0A-4p-mE6" appends="YES" id="tok-dC-Uyj"/>
+                                                                </connections>
                                                             </stackView>
                                                         </subviews>
                                                         <constraints>
@@ -791,6 +870,9 @@
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="40" id="CXj-cx-GRE"/>
                                                                                 </constraints>
+                                                                                <connections>
+                                                                                    <outletCollection property="gestureRecognizers" destination="Heq-zF-4GP" appends="YES" id="bx4-ff-o9l"/>
+                                                                                </connections>
                                                                             </stackView>
                                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gOr-8p-3A8">
                                                                                 <rect key="frame" x="140" y="5" width="35" height="30"/>
@@ -801,10 +883,14 @@
                                                                                 <state key="normal" image="paperclip" catalog="system">
                                                                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 </state>
+                                                                                <connections>
+                                                                                    <outletCollection property="gestureRecognizers" destination="5k2-WE-Rs7" appends="YES" id="c89-2v-AUj"/>
+                                                                                </connections>
                                                                             </button>
                                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Odg-HW-xCm">
                                                                                 <rect key="frame" x="195" y="0.0" width="199" height="40"/>
                                                                                 <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                <gestureRecognizers/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="40" id="s4A-f3-yc5"/>
                                                                                 </constraints>
@@ -813,6 +899,9 @@
                                                                                 <state key="normal" title="SUBMIT">
                                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 </state>
+                                                                                <connections>
+                                                                                    <outletCollection property="gestureRecognizers" destination="PpE-zk-Ur3" appends="YES" id="scs-zu-L4K"/>
+                                                                                </connections>
                                                                             </button>
                                                                         </subviews>
                                                                         <constraints>
@@ -839,70 +928,82 @@
                                                 </subviews>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SQ9-D0-dak" userLabel="PostView">
-                                                <rect key="frame" x="0.0" y="753.66666666666652" width="414" height="1017.3333333333335"/>
+                                                <rect key="frame" x="0.0" y="773.66666666666652" width="414" height="997.33333333333348"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="wlU-c9-V2m" userLabel="PostButtons">
-                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="35"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xXj-Ek-7fg">
-                                                                <rect key="frame" x="0.0" y="0.0" width="138" height="40"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="138" height="35"/>
                                                                 <color key="backgroundColor" red="0.1137254902" green="0.1137254902" blue="0.1137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                                                 <state key="normal" title="POSTS">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="postQueryButton:" destination="5Oi-7X-xLg" eventType="touchUpInside" id="a1b-Ja-QfT"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4O2-1Q-Tst">
-                                                                <rect key="frame" x="138" y="0.0" width="138" height="40"/>
+                                                                <rect key="frame" x="138" y="0.0" width="138" height="35"/>
                                                                 <color key="backgroundColor" red="0.1137254902" green="0.1137254902" blue="0.1137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                                                 <state key="normal" title="PUBLICS POSTS">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="publicsQueryButton:" destination="5Oi-7X-xLg" eventType="touchUpInside" id="wVG-xG-uhs"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GGi-4e-Yhe">
-                                                                <rect key="frame" x="276" y="0.0" width="138" height="40"/>
+                                                                <rect key="frame" x="276" y="0.0" width="138" height="35"/>
                                                                 <color key="backgroundColor" red="0.1137254902" green="0.1137254902" blue="0.1137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                                                 <state key="normal" title="CLANS">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="clansQueryButton:" destination="5Oi-7X-xLg" eventType="touchUpInside" id="3Eq-9U-L7U"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" red="0.1137254902" green="0.1137254902" blue="0.1137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="40" id="YrP-Vw-qs4"/>
+                                                            <constraint firstAttribute="height" constant="35" id="YrP-Vw-qs4"/>
                                                         </constraints>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="wNA-N8-Wsz" userLabel="PostInfoStack">
-                                                        <rect key="frame" x="0.0" y="40" width="414" height="40"/>
+                                                        <rect key="frame" x="0.0" y="35" width="414" height="35"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile Posts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hu6-K7-48X">
-                                                                <rect key="frame" x="0.0" y="9.9999999999999982" width="262.33333333333331" height="20.333333333333329"/>
+                                                                <rect key="frame" x="0.0" y="7.3333333333333695" width="262.33333333333331" height="20.333333333333329"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wnM-nD-zgK">
-                                                                <rect key="frame" x="270.33333333333331" y="0.0" width="143.66666666666669" height="40"/>
+                                                                <rect key="frame" x="270.33333333333331" y="0.0" width="143.66666666666669" height="35"/>
                                                                 <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="40" id="bku-oG-QTQ"/>
+                                                                    <constraint firstAttribute="height" constant="35" id="bku-oG-QTQ"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                                 <state key="normal" title="SEE ALL">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="seeAllButton:" destination="5Oi-7X-xLg" eventType="touchUpInside" id="BJo-aG-wxe"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" name="grey_80"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="40" id="8Qg-uC-0Yu"/>
+                                                            <constraint firstAttribute="height" constant="35" id="8Qg-uC-0Yu"/>
                                                             <constraint firstItem="wnM-nD-zgK" firstAttribute="height" secondItem="wNA-N8-Wsz" secondAttribute="height" id="VEC-Xx-jde"/>
                                                         </constraints>
                                                     </stackView>
                                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" indicatorStyle="white" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Jw3-yT-xx8" userLabel="ProfilePosts">
-                                                        <rect key="frame" x="0.0" y="80.000000000000057" width="414" height="937.33333333333348"/>
+                                                        <rect key="frame" x="0.0" y="70.000000000000057" width="414" height="927.33333333333348"/>
                                                         <color key="backgroundColor" white="0.2576162957" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <prototypes>
                                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="postsReuse" id="C6f-nw-uAT" customClass="ProfilePostsTVC" customModule="Sabot_Community" customModuleProvider="target">
@@ -1289,10 +1390,157 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ynR-eZ-Qa2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="3wq-16-8W7" userLabel="ProfilePhotoPickerTap">
+                    <connections>
+                        <action selector="profilePicSelectorTap:" destination="5Oi-7X-xLg" id="2DO-ax-PfO"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="yqJ-n7-Nir" userLabel="CoverPhotoTap">
+                    <connections>
+                        <action selector="coverPhotoTap:" destination="5Oi-7X-xLg" id="4Si-2H-h2W"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="GpB-e8-x5h" userLabel="ProfilePicTap">
+                    <connections>
+                        <action selector="profilePicTap:" destination="5Oi-7X-xLg" id="W3A-rw-mfR"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="moq-hN-nm6" userLabel="RatingTap">
+                    <connections>
+                        <action selector="ReviewsTap:" destination="5Oi-7X-xLg" id="XU2-qC-F2g"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="Esd-W8-9MH" userLabel="FollowingTap">
+                    <connections>
+                        <action selector="followingTap:" destination="5Oi-7X-xLg" id="fa4-6u-fGG"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="e0i-yp-8hc" userLabel="ConnectionsTap">
+                    <connections>
+                        <action selector="connectionsTap:" destination="5Oi-7X-xLg" id="wbA-es-LVD"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="ryU-LH-xXP" userLabel="FollowsTap">
+                    <connections>
+                        <action selector="followsTap:" destination="5Oi-7X-xLg" id="N7l-1I-kdZ"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="2CC-Y1-4CR" userLabel="NintendoTap">
+                    <connections>
+                        <action selector="nintendoTap:" destination="5Oi-7X-xLg" id="w13-0f-ZH5"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="WjL-iW-Afs" userLabel="TwitterTap">
+                    <connections>
+                        <action selector="twitterTap:" destination="5Oi-7X-xLg" id="PVO-hr-emm"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="Arz-Ec-mla" userLabel="DiscordUserTap">
+                    <connections>
+                        <action selector="discordUserTap:" destination="5Oi-7X-xLg" id="zcU-7F-5q1"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="vbZ-FS-iLN" userLabel="TwitchTap">
+                    <connections>
+                        <action selector="twitchTap:" destination="5Oi-7X-xLg" id="e1Z-YP-3sZ"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="hSW-rc-Fjn" userLabel="InstaTap">
+                    <connections>
+                        <action selector="instaTapped:" destination="5Oi-7X-xLg" id="Dqe-Cg-8hD"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="NcK-e6-u9F" userLabel="YoutubeTap">
+                    <connections>
+                        <action selector="youtubeTap:" destination="5Oi-7X-xLg" id="Afj-Vn-DiW"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="92w-LY-9VR" userLabel="SteamTap">
+                    <connections>
+                        <action selector="steamTap:" destination="5Oi-7X-xLg" id="kfS-kf-E4n"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="MO0-aJ-5Rq" userLabel="DiscordTap">
+                    <connections>
+                        <action selector="discordTap:" destination="5Oi-7X-xLg" id="OCI-eY-Ral"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="Owc-lz-H6p" userLabel="XboxTap">
+                    <connections>
+                        <action selector="xboxTap:" destination="5Oi-7X-xLg" id="jYs-T2-T6s"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="ifI-eq-Dm6" userLabel="PSNTap">
+                    <connections>
+                        <action selector="psnTap:" destination="5Oi-7X-xLg" id="R13-2f-OUQ"/>
+                    </connections>
+                </tapGestureRecognizer>
                 <tapGestureRecognizer id="FeU-49-unz" userLabel="ShowAddPostViewTap">
                     <connections>
                         <action selector="showAddPostView:" destination="5Oi-7X-xLg" id="CQw-dR-AiO"/>
                         <outlet property="delegate" destination="l0b-CJ-mYU" id="Ko7-Lo-zQS"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="PpE-zk-Ur3" userLabel="PostSubmitButton">
+                    <connections>
+                        <action selector="postSubmit:" destination="5Oi-7X-xLg" id="Hi3-XG-Wy3"/>
+                        <outlet property="delegate" destination="Odg-HW-xCm" id="gXQ-uj-7aM"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="Heq-zF-4GP" userLabel="PostPlatformSpinner">
+                    <connections>
+                        <action selector="postPlatformPressed:" destination="5Oi-7X-xLg" id="7az-LL-jds"/>
+                        <outlet property="delegate" destination="Yly-3f-Vxh" id="H4j-gl-hj1"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="5k2-WE-Rs7" userLabel="PostImageSelectorTap">
+                    <connections>
+                        <action selector="postImageSelectorPressed:" destination="5Oi-7X-xLg" id="mtY-Qo-3zw"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="X1i-dN-sXD" userLabel="FollowUserTap">
+                    <connections>
+                        <action selector="followUserPressed:" destination="5Oi-7X-xLg" id="gBr-GC-og2"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="XtI-V8-6Vz" userLabel="FollowedUserTap">
+                    <connections>
+                        <action selector="followedUserPressed:" destination="5Oi-7X-xLg" id="LQg-jv-Pm7"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="X8o-wN-Lha" userLabel="EditProfileTap">
+                    <connections>
+                        <action selector="editProfilePressed:" destination="5Oi-7X-xLg" id="iM8-D0-W9Y"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="iwq-75-0dP" userLabel="AddConnectionTap">
+                    <connections>
+                        <action selector="addConnectionPressed:" destination="5Oi-7X-xLg" id="2BQ-TN-K3f"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="1uJ-gM-clw" userLabel="ConnectedTap">
+                    <connections>
+                        <action selector="connectedPressed:" destination="5Oi-7X-xLg" id="bKK-hV-DaU"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="fNH-WW-4Ld" userLabel="RequestedConnectionTap">
+                    <connections>
+                        <action selector="requestedConnectionPressed:" destination="5Oi-7X-xLg" id="Wrg-Up-Znc"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="5Xu-fs-dF0" userLabel="RequestSentTap">
+                    <connections>
+                        <action selector="requestSentPressed:" destination="5Oi-7X-xLg" id="Yn7-vj-Ecw"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="2EA-MZ-kTi" userLabel="SendMessageTap">
+                    <connections>
+                        <action selector="sendMessagePressed:" destination="5Oi-7X-xLg" id="plr-bz-uKg"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="E0A-4p-mE6" userLabel="ProfileMoreTap">
+                    <connections>
+                        <action selector="profileMorePressed:" destination="5Oi-7X-xLg" id="MB1-1y-7Cw"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -1413,7 +1661,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PUd-sq-eqH" userLabel="TopBar">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PUd-sq-eqH" userLabel="TopBar">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="23"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CUX-YK-exU" userLabel="optionsButton">
@@ -1482,66 +1730,132 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="2" translatesAutoresizingMaskIntoConstraints="NO" id="Q2e-Ke-wEm" userLabel="bannerPLACE">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2" translatesAutoresizingMaskIntoConstraints="NO" id="Q2e-Ke-wEm" userLabel="bannerPLACE">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="183"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile_default_photo" translatesAutoresizingMaskIntoConstraints="NO" id="pcQ-Ui-821" userLabel="ProfilePLACE">
-                                <rect key="frame" x="142" y="106" width="130" height="130"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pcQ-Ui-821" userLabel="ProfilePLACE" customClass="EnhancedCircleImageView" customModule="EnhancedCircleImageView">
+                                <rect key="frame" x="139.66666666666666" y="100" width="134.99999999999997" height="135"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="135" id="SxP-z9-EGp"/>
+                                    <constraint firstAttribute="height" constant="135" id="qDX-7e-gD0"/>
+                                </constraints>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Win-le-N0Y">
-                                <rect key="frame" x="0.0" y="244" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Win-le-N0Y" userLabel="MessagesStack">
+                                <rect key="frame" x="144.33333333333334" y="243" width="125.66666666666666" height="40"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_action_messages" translatesAutoresizingMaskIntoConstraints="NO" id="uld-uW-zeh">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="5yV-EL-p0F"/>
+                                            <constraint firstAttribute="width" constant="40" id="yb0-qE-z36"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Messages" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ins-jp-dxO">
+                                        <rect key="frame" x="48.000000000000007" y="0.0" width="77.666666666666686" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="PrL-kh-RBU"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="QdM-2N-fOs" appends="YES" id="My0-4Y-1wY"/>
+                                </connections>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LhQ-Yc-oAC">
-                                <rect key="frame" x="0.0" y="244" width="414" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                <state key="normal" title="Messages"/>
-                            </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q0s-vH-C9u">
-                                <rect key="frame" x="0.0" y="297" width="94" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q0s-vH-C9u" userLabel="AccountSettingsStack">
+                                <rect key="frame" x="121.66666666666669" y="283" width="171" height="40"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="dPE-Ax-8X7">
+                                        <rect key="frame" x="0.0" y="2" width="40" height="36.666666666666671"/>
+                                        <color key="tintColor" name="grey"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="qG6-Nr-SNQ"/>
+                                            <constraint firstAttribute="width" constant="40" id="ru9-Ir-LLm"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eJN-iw-XvU">
+                                        <rect key="frame" x="39.999999999999986" y="0.0" width="131" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h55-8z-8lG">
-                                <rect key="frame" x="0.0" y="350" width="414" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Cf-6s-egv" userLabel="ProfileStack">
+                                <rect key="frame" x="162.66666666666666" y="323" width="89" height="40"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="hBT-6J-tHx">
+                                        <rect key="frame" x="0.0" y="2" width="40" height="36.666666666666671"/>
+                                        <color key="tintColor" name="grey"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="KUs-P1-5l6"/>
+                                            <constraint firstAttribute="height" constant="40" id="jkd-Ao-cSu"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9r1-sO-62b">
+                                        <rect key="frame" x="40" y="0.0" width="49" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="c3T-RZ-Gui" appends="YES" id="yfT-bY-p8Z"/>
+                                </connections>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qlg-qv-pod">
-                                <rect key="frame" x="0.0" y="403" width="414" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r1E-PU-fD5">
-                                <rect key="frame" x="0.0" y="456" width="414" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fVv-72-KfM">
-                                <rect key="frame" x="0.0" y="509" width="414" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VbH-5a-hif">
-                                <rect key="frame" x="0.0" y="562" width="414" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uml-d9-TGV">
-                                <rect key="frame" x="0.0" y="615" width="414" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kyE-ew-XSq">
-                                <rect key="frame" x="160" y="297" width="94" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                <state key="normal" title="Messages"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" name="colorPrimaryDark"/>
+                        <constraints>
+                            <constraint firstItem="pcQ-Ui-821" firstAttribute="top" secondItem="x5b-7I-SrI" secondAttribute="top" constant="100" id="0mn-cU-dgc"/>
+                            <constraint firstItem="Q2e-Ke-wEm" firstAttribute="centerX" secondItem="x5b-7I-SrI" secondAttribute="centerX" id="2de-vk-PkS"/>
+                            <constraint firstItem="0Cf-6s-egv" firstAttribute="centerX" secondItem="x5b-7I-SrI" secondAttribute="centerX" id="BON-fW-RtM"/>
+                            <constraint firstItem="0Cf-6s-egv" firstAttribute="top" secondItem="q0s-vH-C9u" secondAttribute="bottom" id="D1p-yr-h7a"/>
+                            <constraint firstItem="pcQ-Ui-821" firstAttribute="top" secondItem="Q2e-Ke-wEm" secondAttribute="bottom" constant="-83" id="Ind-yf-HoC"/>
+                            <constraint firstItem="Win-le-N0Y" firstAttribute="top" secondItem="pcQ-Ui-821" secondAttribute="bottom" constant="8" id="NHZ-qa-s8b"/>
+                            <constraint firstItem="pcQ-Ui-821" firstAttribute="centerX" secondItem="x5b-7I-SrI" secondAttribute="centerX" id="SJv-kb-bli"/>
+                            <constraint firstItem="x5b-7I-SrI" firstAttribute="trailing" secondItem="Q2e-Ke-wEm" secondAttribute="trailing" id="Suj-Qk-9W9"/>
+                            <constraint firstItem="Q2e-Ke-wEm" firstAttribute="top" secondItem="x5b-7I-SrI" secondAttribute="top" id="XO1-zu-QsD"/>
+                            <constraint firstItem="Win-le-N0Y" firstAttribute="centerX" secondItem="x5b-7I-SrI" secondAttribute="centerX" id="f1x-qr-eU4"/>
+                            <constraint firstItem="Q2e-Ke-wEm" firstAttribute="leading" secondItem="x5b-7I-SrI" secondAttribute="leading" id="mUn-aI-3pQ"/>
+                            <constraint firstItem="q0s-vH-C9u" firstAttribute="centerX" secondItem="x5b-7I-SrI" secondAttribute="centerX" id="oxo-yp-hZ7"/>
+                            <constraint firstItem="q0s-vH-C9u" firstAttribute="top" secondItem="Win-le-N0Y" secondAttribute="bottom" id="pcz-92-Dmf"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="x5b-7I-SrI"/>
                     </view>
+                    <connections>
+                        <outlet property="bigPP" destination="pcQ-Ui-821" id="pRt-9x-gcB"/>
+                        <outlet property="profileCover" destination="Q2e-Ke-wEm" id="yyd-Qu-CL4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0mQ-zf-hxY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="QdM-2N-fOs" userLabel="MessagesTap">
+                    <connections>
+                        <action selector="messagesTap:" destination="odT-VY-VYv" id="DIz-8e-eQF"/>
+                        <segue destination="ChG-dF-0vV" kind="show" identifier="toMessages" id="Qy6-4P-mb9"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="c3T-RZ-Gui" userLabel="ProfileTap">
+                    <connections>
+                        <action selector="profileTap:" destination="odT-VY-VYv" id="aT6-bk-q5g"/>
+                        <segue destination="5Oi-7X-xLg" kind="show" id="ObE-Nz-ZZy"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="Sht-tb-8JH" userLabel="Base Tap Thingy"/>
             </objects>
-            <point key="canvasLocation" x="10376.8115942029" y="-1004.3478260869566"/>
+            <point key="canvasLocation" x="10417" y="-1004"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="0oa-j4-IGi">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="ChG-dF-0vV" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="J0w-rd-tIc"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uYL-fQ-wBh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="10761" y="-1358"/>
         </scene>
         <!--SearchViewController-->
         <scene sceneID="q8A-af-6Zw">
@@ -1608,8 +1922,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Dashboard" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xEf-S2-tfM">
-                                <rect key="frame" x="165" y="335.66666666666669" width="84" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dashboard" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xEf-S2-tfM">
+                                <rect key="frame" x="165" y="311" width="84" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -1617,7 +1931,8 @@
                         </subviews>
                         <color key="backgroundColor" red="0.098219610750000005" green="0.098300047220000006" blue="0.10827957840000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="xEf-S2-tfM" firstAttribute="centerY" secondItem="2pg-i4-c2H" secondAttribute="centerY" id="s0r-8f-Uou"/>
+                            <constraint firstItem="xEf-S2-tfM" firstAttribute="centerY" secondItem="N74-PP-LmQ" secondAttribute="centerY" id="Q8r-wf-FrY"/>
+                            <constraint firstItem="xEf-S2-tfM" firstAttribute="centerX" secondItem="N74-PP-LmQ" secondAttribute="centerX" id="oQV-uI-KKg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="N74-PP-LmQ"/>
                     </view>
@@ -1767,6 +2082,9 @@
             <point key="canvasLocation" x="8605.7971014492759" y="-1003.5326086956522"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="ObE-Nz-ZZy"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" name="white"/>
     <resources>
         <image name="2" width="800" height="500"/>
@@ -1777,6 +2095,7 @@
         <image name="circle.fill" catalog="system" width="128" height="121"/>
         <image name="ellipsis" catalog="system" width="128" height="37"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
+        <image name="ic_action_messages" width="128" height="128"/>
         <image name="ic_online" width="200" height="200"/>
         <image name="ic_quote" width="72" height="72"/>
         <image name="ic_verified" width="300" height="300"/>
@@ -1813,7 +2132,6 @@
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="plus.rectangle.fill" catalog="system" width="128" height="93"/>
-        <image name="profile_default_photo" width="462" height="462"/>
         <image name="rectangle.3.offgrid.fill" catalog="system" width="128" height="81"/>
         <image name="square.grid.2x2.fill" catalog="system" width="128" height="114"/>
         <namedColor name="colorPrimary">
