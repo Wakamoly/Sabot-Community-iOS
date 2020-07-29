@@ -5,8 +5,8 @@ PODS:
   - AlamofireImage (4.1.0):
     - Alamofire (~> 5.1)
   - EnhancedCircleImageView (0.1)
+  - iOSDropDown (0.3.4)
   - NavigationDrawer (1.0.3)
-  - NJDropDown (0.1.1)
   - SwiftyJSON (5.0.0)
   - ZGRatingView (0.1.8)
 
@@ -16,8 +16,8 @@ DEPENDENCIES:
   - Alamofire
   - AlamofireImage
   - EnhancedCircleImageView
+  - iOSDropDown
   - NavigationDrawer
-  - NJDropDown
   - SwiftyJSON
   - ZGRatingView
 
@@ -28,8 +28,8 @@ SPEC REPOS:
     - Alamofire
     - AlamofireImage
     - EnhancedCircleImageView
+    - iOSDropDown
     - NavigationDrawer
-    - NJDropDown
     - SwiftyJSON
     - ZGRatingView
 
@@ -39,11 +39,11 @@ SPEC CHECKSUMS:
   Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
   AlamofireImage: c4a2ba349885fb3064feb74d2e547bd42ce9be10
   EnhancedCircleImageView: 1069bbc14526d89502cc0e48b45f5da6a3317a47
+  iOSDropDown: c10a761f9a00c3f1cc9d3bce43ae504628e2f692
   NavigationDrawer: ad87622628ed59589f8fe8e2338d27109ca51a64
-  NJDropDown: 029eb99b9acf7d8634d8ae9dd948e502f1f6535d
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   ZGRatingView: 6071cbf18d3450616fb095422ab84552ed4e377d
 
-PODFILE CHECKSUM: 08f88d999bcd3607dccb976961b9003618691019
+PODFILE CHECKSUM: 9aaaae2de4cf21721f172df0864902df2b99cfa6
 
 COCOAPODS: 1.9.1

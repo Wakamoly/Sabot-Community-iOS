@@ -13,10 +13,9 @@ import AlamofireImage
 import SwiftyJSON
 import AARatingBar
 import ActiveLabel
+import iOSDropDown
 
 class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDataSource, UITableViewDelegate {
-    
-    
     
     private var profileNews = [ProfileNewsModel]()
     //test here by putting in either user id or username to load profile, or leave blank to load yours
@@ -26,6 +25,7 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
     let deviceusername = UserDefaults.standard.string(forKey: "device_username")!
     let deviceuserid = UserDefaults.standard.string(forKey: "device_userid")!
     let indicator: UIActivityIndicatorView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
+    //var platformDropdown:NJDropDown! = nil
     
     @IBOutlet weak var profileScrollView: UIScrollView!
     @IBOutlet weak var ivCoverPhotoPicker: UIImageView!
@@ -87,6 +87,7 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
     @IBOutlet weak var seeAllButton: UIButton!
     @IBOutlet weak var profilePostsTableView: UITableView!
     @IBOutlet weak var profileItemsLabel: UILabel!
+    @IBOutlet weak var platformDropdownTextField: DropDown!
     
     @IBAction func profilePicSelectorTap(_ sender: Any) {
         print("Profile pic selector tapped")
@@ -153,6 +154,7 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
     }
     @IBAction func profileMorePressed(_ sender: Any) {
         print("More button pressed")
+        
     }
     @IBAction func sendMessagePressed(_ sender: Any) {
         print("Send message pressed")
@@ -182,7 +184,7 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
         print("Image selector pressed")
     }
     @IBAction func postPlatformPressed(_ sender: Any) {
-        print("Platform Spinner pressed")
+        self.platformDropdownTextField.touchAction()
     }
     @IBAction func postSubmit(_ sender: Any) {
         print("Submit button pressed")
@@ -611,6 +613,13 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
         profilePic.layer.masksToBounds = true
         profilePic.contentMode = .scaleToFill
         profilePic.layer.borderWidth = 7
+        
+        platformDropdownTextField.optionArray = ["General","PlayStation","Xbox","Steam","PC","Mobile","Switch"]
+        ///platformDropdownTextField.optionImageArray = [UIImage(named: "ic_quote")!,UIImage(named: "icons8_playstation_50")!,UIImage(named: "icons8_xbox_50")!,UIImage(named: "icons8_steam_48")!,UIImage(named: "icons8_workstation_48")!,UIImage(named: "icons8_mobile_48")!,UIImage(named: "icons8_nintendo_switch_48")]
+        platformDropdownTextField.didSelect { (selectedPlatform, index, id) in
+            self.platformDropdownTextField.text = selectedPlatform
+        }
+        platformDropdownTextField.tintColor = UIColor.white
         
         /*let imageurl: String=URLConstants.BASE_URL+defaultValues.string(forKey: "device_profilepic")!
          let url = URL(string:imageurl)

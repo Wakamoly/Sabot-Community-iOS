@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double NJDropDownVersionNumber;
-FOUNDATION_EXPORT const unsigned char NJDropDownVersionString[];
+FOUNDATION_EXPORT double iOSDropDownVersionNumber;
+FOUNDATION_EXPORT const unsigned char iOSDropDownVersionString[];
 

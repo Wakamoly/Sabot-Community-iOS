@@ -202,10 +202,10 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/EnhancedCircleImageView/EnhancedCircleImageView.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/NJDropDown/NJDropDown.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/NavigationDrawer/NavigationDrawer.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ZGRatingView/ZGRatingView.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/iOSDropDown/iOSDropDown.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/AARatingBar/AARatingBar.framework"
@@ -213,10 +213,10 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/EnhancedCircleImageView/EnhancedCircleImageView.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/NJDropDown/NJDropDown.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/NavigationDrawer/NavigationDrawer.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ZGRatingView/ZGRatingView.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/iOSDropDown/iOSDropDown.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait
