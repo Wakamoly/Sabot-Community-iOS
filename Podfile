@@ -15,6 +15,7 @@ target 'Sabot Community' do
   pod 'ZGRatingView'
   pod 'ActiveLabel'
   pod 'iOSDropDown'
+  pod 'CropViewController'
 
   target 'Sabot CommunityTests' do
     inherit! :search_paths

@@ -91,6 +91,7 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
     
     @IBAction func profilePicSelectorTap(_ sender: Any) {
         print("Profile pic selector tapped")
+        performSegue(withIdentifier: "toUploadImage", sender: nil)
     }
     @IBAction func seeAllButton(_ sender: Any) {
         print("See all posts tapped")
@@ -182,6 +183,9 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
     }
     @IBAction func postImageSelectorPressed(_ sender: Any) {
         print("Image selector pressed")
+        
+        
+        
     }
     @IBAction func postPlatformPressed(_ sender: Any) {
         self.platformDropdownTextField.touchAction()
@@ -213,12 +217,6 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
          self.navigationController?.pushViewController(loginViewController, animated: true)
          self.dismiss(animated: false,completion: nil)*/
         performSegue(withIdentifier: "ToLogin", sender: nil)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ToLogin" {
-            _ = segue.destination as? LoginViewController
-        }
     }
     
     func loadProfileTop(_ userProfileIDS:String){
@@ -780,7 +778,7 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
     }
     
     @objc func showF(_ sender: UITapGestureRecognizer){
-        print("Yeetus SKeetus")
+        performSegue(withIdentifier: "toUploadCover", sender: nil)
     }
     
     func textViewDidBeginEditing(_ statusUpdate: UITextView) {
@@ -920,6 +918,20 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toUploadImage" {
+            if let destination = segue.destination as? UploadPhotoController {
+                destination.imageUploadTo = "profile_pic"
+            }
+        }else if segue.identifier == "toUploadCover" {
+            if let destination = segue.destination as? UploadPhotoController {
+                destination.imageUploadTo = "cover"
+            }
+        }else if segue.identifier == "ToLogin" {
+            _ = segue.destination as? LoginViewController
+        }
     }
     
     

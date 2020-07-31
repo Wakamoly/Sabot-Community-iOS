@@ -31,6 +31,7 @@
 		E0A7E7E524CF3E380033C510 /* ProfilePostsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A7E7E424CF3E380033C510 /* ProfilePostsTVC.swift */; };
 		E0A7E7E724CF4B920033C510 /* ProfileNewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A7E7E624CF4B920033C510 /* ProfileNewsModel.swift */; };
 		E0A7E7E924CF50F20033C510 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0A7E7E824CF50F20033C510 /* Media.xcassets */; };
+		E0DF7FB924D23A1200C5E449 /* UploadPhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DF7FB824D23A1200C5E449 /* UploadPhotoController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		E0A7E7E424CF3E380033C510 /* ProfilePostsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePostsTVC.swift; sourceTree = "<group>"; };
 		E0A7E7E624CF4B920033C510 /* ProfileNewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNewsModel.swift; sourceTree = "<group>"; };
 		E0A7E7E824CF50F20033C510 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		E0DF7FB824D23A1200C5E449 /* UploadPhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPhotoController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +180,7 @@
 				1928761124CBCE77006A09F1 /* SideMenuController.swift */,
 				E081F39824BEAB500049AB0F /* DashboardViewController.swift */,
 				E081F39A24BEABBA0049AB0F /* NotificationsViewController.swift */,
+				E0DF7FB824D23A1200C5E449 /* UploadPhotoController.swift */,
 				E081F39C24BEABE60049AB0F /* PublicsViewController.swift */,
 				E081F39E24BEAC060049AB0F /* SearchViewController.swift */,
 				E081F38B24BBEBA00049AB0F /* ProfileViewController.swift */,
@@ -454,6 +457,7 @@
 				E0A7E7E524CF3E380033C510 /* ProfilePostsTVC.swift in Sources */,
 				E081F39F24BEAC060049AB0F /* SearchViewController.swift in Sources */,
 				E081F38F24BBEBA10049AB0F /* ProfileViewController.swift in Sources */,
+				E0DF7FB924D23A1200C5E449 /* UploadPhotoController.swift in Sources */,
 				E081F38D24BBEBA10049AB0F /* LoginViewController.swift in Sources */,
 				E081F38E24BBEBA10049AB0F /* RegisterViewController.swift in Sources */,
 				E081F39024BBEBA10049AB0F /* URLConstants.swift in Sources */,

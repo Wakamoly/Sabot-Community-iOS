@@ -1401,6 +1401,8 @@
                         <outlet property="userYoutube" destination="DKF-GG-Kee" id="vaW-on-h5I"/>
                         <outlet property="userYoutubeDetails" destination="Oa6-Ku-JYL" id="dqt-V9-y1F"/>
                         <segue destination="rde-kM-3YU" kind="show" identifier="ToLogin" id="P9E-9y-LZW"/>
+                        <segue destination="RHx-iw-JwL" kind="presentation" identifier="toUploadImage" id="9UL-vX-kQd"/>
+                        <segue destination="RHx-iw-JwL" kind="presentation" identifier="toUploadCover" id="qDU-Ly-e6W"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ynR-eZ-Qa2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1557,7 +1559,82 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="8605.7971014492759" y="1574.1847826086957"/>
+            <point key="canvasLocation" x="8606" y="1577"/>
+        </scene>
+        <!--UploadImageController-->
+        <scene sceneID="xTc-ou-z7J">
+            <objects>
+                <viewController id="RHx-iw-JwL" userLabel="UploadImageController" customClass="UploadPhotoController" customModule="Sabot_Community" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="G1b-nw-yHl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dzn-tY-GTO">
+                                <rect key="frame" x="30" y="40" width="354" height="40"/>
+                                <color key="backgroundColor" name="colorAccent"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="g6j-j0-2q6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Choose Photo"/>
+                                <connections>
+                                    <action selector="choosePhotoButton:" destination="RHx-iw-JwL" eventType="touchUpInside" id="Wcu-7X-S4f"/>
+                                    <action selector="choosePhotoButton:" destination="8HS-IN-Shm" eventType="touchUpInside" id="wGd-vI-IDH"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bvM-gN-YVC" userLabel="ImageToUpload">
+                                <rect key="frame" x="57" y="208" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="U40-0Y-4UK"/>
+                                    <constraint firstAttribute="height" constant="300" id="Usc-0I-DQi"/>
+                                </constraints>
+                            </imageView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SZz-mq-UXx">
+                                <rect key="frame" x="30" y="636" width="354" height="40"/>
+                                <color key="backgroundColor" name="green"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Pad-vi-mwd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Upload"/>
+                                <connections>
+                                    <action selector="uploadButton:" destination="RHx-iw-JwL" eventType="touchUpInside" id="e9Q-7U-V7G"/>
+                                </connections>
+                            </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Uploading..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ns3-yx-GZB">
+                                <rect key="frame" x="157" y="347.66666666666669" width="100.33333333333331" height="21"/>
+                                <color key="backgroundColor" name="colorPrimary"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" name="colorPrimary"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="bvM-gN-YVC" firstAttribute="centerY" secondItem="vjS-He-iH0" secondAttribute="centerY" id="3l1-BY-Jrw"/>
+                            <constraint firstItem="ns3-yx-GZB" firstAttribute="centerX" secondItem="vjS-He-iH0" secondAttribute="centerX" id="5Aq-eI-fad"/>
+                            <constraint firstItem="vjS-He-iH0" firstAttribute="bottom" secondItem="SZz-mq-UXx" secondAttribute="bottom" constant="40" id="7Mc-lm-miA"/>
+                            <constraint firstItem="bvM-gN-YVC" firstAttribute="centerX" secondItem="vjS-He-iH0" secondAttribute="centerX" id="7YQ-Rk-J9a"/>
+                            <constraint firstItem="Dzn-tY-GTO" firstAttribute="top" secondItem="vjS-He-iH0" secondAttribute="top" constant="40" id="GBx-06-dD0"/>
+                            <constraint firstItem="SZz-mq-UXx" firstAttribute="leading" secondItem="vjS-He-iH0" secondAttribute="leading" constant="30" id="LUs-WA-nV6"/>
+                            <constraint firstItem="vjS-He-iH0" firstAttribute="trailing" secondItem="SZz-mq-UXx" secondAttribute="trailing" constant="30" id="QFw-FK-jak"/>
+                            <constraint firstItem="Dzn-tY-GTO" firstAttribute="leading" secondItem="vjS-He-iH0" secondAttribute="leading" constant="30" id="a7u-d9-X0B"/>
+                            <constraint firstItem="vjS-He-iH0" firstAttribute="trailing" secondItem="Dzn-tY-GTO" secondAttribute="trailing" constant="30" id="lVU-Kv-Ki4"/>
+                            <constraint firstItem="ns3-yx-GZB" firstAttribute="centerY" secondItem="vjS-He-iH0" secondAttribute="centerY" id="r7g-Xw-xp4"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="vjS-He-iH0"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageToUpload" destination="bvM-gN-YVC" id="yOU-Ig-64r"/>
+                        <outlet property="uploadButtonView" destination="SZz-mq-UXx" id="0LF-iV-Jdn"/>
+                        <outlet property="uploadingLabel" destination="ns3-yx-GZB" id="CO6-rT-2AD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6sj-9f-a6h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="8HS-IN-Shm" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="9348" y="1577"/>
         </scene>
         <!--NotificationsViewController-->
         <scene sceneID="8vf-1Y-23y">
@@ -2096,6 +2173,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="9UL-vX-kQd"/>
         <segue reference="ObE-Nz-ZZy"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" name="white"/>
@@ -2146,6 +2224,9 @@
         <image name="plus.rectangle.fill" catalog="system" width="128" height="93"/>
         <image name="rectangle.3.offgrid.fill" catalog="system" width="128" height="81"/>
         <image name="square.grid.2x2.fill" catalog="system" width="128" height="114"/>
+        <namedColor name="colorAccent">
+            <color red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="colorPrimary">
             <color red="0.066666666666666666" green="0.066666666666666666" blue="0.066666666666666666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
