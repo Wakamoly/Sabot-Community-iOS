@@ -13,6 +13,8 @@ import CropViewController
 
 class UploadPhotoController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate, CropViewControllerDelegate {
     
+    let indicator: UIActivityIndicatorView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
+    
     let defaultValues = UserDefaults.standard
     let deviceusername = UserDefaults.standard.string(forKey: "device_username")!
     let deviceuserid = UserDefaults.standard.string(forKey: "device_userid")!
@@ -20,29 +22,31 @@ class UploadPhotoController: UIViewController, UIImagePickerControllerDelegate &
     var imageUploadTo = ""
     var uploadURL = ""
     var imageToCrop:UIImage? = nil
+    
     @IBAction func choosePhotoButton(_ sender: Any) {
         let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self;
+        imagePicker.delegate = self
         imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
         
         self.present(imagePicker, animated: true, completion: nil)
     }
+    
     @IBOutlet weak var imageToUpload: UIImageView!
     @IBOutlet weak var uploadButtonView: UIButton!
+    
     @IBAction func uploadButton(_ sender: Any) {
         uploadImage(imageToUpload: imageToUpload.image!, uploadURLS:uploadURL)
     }
-    @IBOutlet weak var uploadingLabel: UILabel!
     
+    @IBOutlet weak var uploadingLabel: UILabel!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         if imageUploadTo == "cover" {
             uploadURL = URLConstants.ROOT_URL+"uploadCoverProfile.php"
-        }else if imageUploadTo == "profile_pic"{
+        }else if imageUploadTo == "profile_pic" {
             uploadURL = URLConstants.ROOT_URL+"uploadProfilePhoto.php"
         }
         
@@ -57,7 +61,15 @@ class UploadPhotoController: UIViewController, UIImagePickerControllerDelegate &
     
     func uploadImage(imageToUpload: UIImage, uploadURLS:String) {
         
-        self.uploadingLabel.isHidden = false
+        self.uploadButtonView.isHidden = true
+        
+        indicator.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
+        indicator.center = view.center
+        self.view.addSubview(indicator)
+        self.view.bringSubviewToFront(indicator)
+        indicator.startAnimating()
+        
+        //self.uploadingLabel.isHidden = false
         var request = URLRequest(url: NSURL(string: uploadURLS)! as URL)
         request.httpMethod = "POST";
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -84,12 +96,16 @@ class UploadPhotoController: UIViewController, UIImagePickerControllerDelegate &
                         //unwind segue?
                         let message = jsonData["message"].string
                         self.view.showToast(toastMessage: message!, duration:2)
+                        self.dismiss(animated: true, completion: nil)
                     }else{
+                        self.uploadButtonView.isHidden = false
                         let message = jsonData["message"].string
                         self.view.showToast(toastMessage: message!, duration:2)
                     }
+                    self.indicator.stopAnimating()
                 case let .failure(error):
                     print(error)
+                    self.uploadButtonView.isHidden = false
                     self.view.showToast(toastMessage: "Network error!", duration:2)
                 }
         }
@@ -97,7 +113,7 @@ class UploadPhotoController: UIViewController, UIImagePickerControllerDelegate &
     
     //MARK: ImagePicker Controller Delegate methods
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        self.dismiss(animated: true, completion: nil)
+        picker.dismiss(animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
@@ -120,11 +136,18 @@ class UploadPhotoController: UIViewController, UIImagePickerControllerDelegate &
         present(cropViewController!, animated: true, completion: nil)
     }
     
-    func cropViewController(_ cropViewController: CropViewController, didCropToImage croppedImage: UIImage, withRect cropRect: CGRect, angle: Int) {
+    public func cropViewController(_ cropViewController: CropViewController, didCropToImage croppedImage: UIImage, withRect cropRect: CGRect, angle: Int) {
         
         imageToUpload.image = croppedImage
         self.uploadButtonView.isHidden = false
-        //cropViewController.dismiss(animated: true, completion: nil)
+        cropViewController.dismiss(animated: false, completion: nil)
+    }
+    
+    public func cropViewController(_ cropViewController: CropViewController, didCropToCircularImage croppedImage: UIImage, withRect cropRect: CGRect, angle: Int) {
+        
+        imageToUpload.image = croppedImage
+        self.uploadButtonView.isHidden = false
+        cropViewController.dismiss(animated: false, completion: nil)
     }
     
 }
