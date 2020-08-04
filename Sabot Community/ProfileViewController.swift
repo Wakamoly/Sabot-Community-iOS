@@ -15,7 +15,19 @@ import AARatingBar
 import ActiveLabel
 import iOSDropDown
 
-class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDataSource, UITableViewDelegate {
+class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDataSource, UITableViewDelegate, NotifyReloadProfileData {
+    
+    func notifyDelegate() {
+        if !(userProfileID==""){
+            loadProfileTop(userProfileID)
+        }else if !(userUsername==""){
+            getUserID(userUsername)
+        }else{
+            userProfileID = defaultValues.string(forKey: "device_userid")!
+            loadProfileTop(userProfileID)
+        }
+    }
+    
     
     private var profileNews = [ProfileNewsModel]()
     //test here by putting in either user id or username to load profile, or leave blank to load yours

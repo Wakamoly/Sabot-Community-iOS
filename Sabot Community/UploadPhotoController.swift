@@ -11,7 +11,13 @@ import Alamofire
 import SwiftyJSON
 import CropViewController
 
+protocol NotifyReloadProfileData{
+    func notifyDelegate()
+}
+
 class UploadPhotoController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate, CropViewControllerDelegate {
+    
+    var delegate: NotifyReloadProfileData?
     
     let indicator: UIActivityIndicatorView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
     
@@ -96,6 +102,7 @@ class UploadPhotoController: UIViewController, UIImagePickerControllerDelegate &
                         //unwind segue?
                         let message = jsonData["message"].string
                         self.view.showToast(toastMessage: message!, duration:2)
+                        self.delegate?.notifyDelegate()
                         self.dismiss(animated: true, completion: nil)
                     }else{
                         self.uploadButtonView.isHidden = false
