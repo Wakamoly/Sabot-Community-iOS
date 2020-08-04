@@ -3,4 +3,69 @@
    uuid = "019B0845-CC0C-4FDF-B723-C45DCC6F3F7B"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7A98F016-D2C5-4D06-83AD-6C9728F21BD9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sabot Community/SideMenuController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "SideMenuController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "7A98F016-D2C5-4D06-83AD-6C9728F21BD9 - 9c481e7ffb95c793"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Sabot_Community.SideMenuController.deviceprofilepicture.getter : Swift.String"
+                  moduleName = "Sabot Community"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Vesanity/Desktop/Apps/Sabot-Community-iOS/Sabot%20Community/SideMenuController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "61">
+               </Location>
+               <Location
+                  uuid = "7A98F016-D2C5-4D06-83AD-6C9728F21BD9 - 9a3fbc18a68f97a0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Sabot_Community.SideMenuController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; Sabot_Community.SideMenuController"
+                  moduleName = "Sabot Community"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Vesanity/Desktop/Apps/Sabot-Community-iOS/Sabot%20Community/SideMenuController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "303">
+               </Location>
+               <Location
+                  uuid = "7A98F016-D2C5-4D06-83AD-6C9728F21BD9 - 8e2501a5acd101ef"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Sabot_Community.SideMenuController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Sabot_Community.SideMenuController&gt;"
+                  moduleName = "Sabot Community"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Vesanity/Desktop/Apps/Sabot-Community-iOS/Sabot%20Community/SideMenuController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "238">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

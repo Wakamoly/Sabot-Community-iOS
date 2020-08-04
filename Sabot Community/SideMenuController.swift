@@ -6,6 +6,9 @@
 //  Copyright © 2020 LucidSoftworksLLC. All rights reserved.
 //
 
+// NOTES: We need to add gesture taps for navigation to the various views. Attempted to do this and for some reason it kept crashing giving me "constraint" issues. We can add these once all the appropriate pages are built. I'll need to open a seperate project and play around with the pages opening up the right way and not in the same way this menu does. When i tried it in here it caused the entire app to crash.
+
+
 import UIKit
 import EnhancedCircleImageView
 import Alamofire
@@ -23,9 +26,6 @@ class SideMenuController: UIViewController {
 //    @IBAction func profileTap(_ sender: Any) {
 //        performSegue(withIdentifier: "toProfile", sender: nil)
 //    }
-    @IBAction func messagesTap(_ sender: Any) {
-        print("Some bullshit")
-    }
     
     func getCoverPhoto(){
         AF.request(URLConstants.ROOT_URL+"get_coverphoto.php?username="+device_username, method: .get).responseJSON{
