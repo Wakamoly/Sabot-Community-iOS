@@ -15,24 +15,19 @@ import AARatingBar
 import ActiveLabel
 import iOSDropDown
 
-class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDataSource, UITableViewDelegate, NotifyReloadProfileData {
+class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDataSource, UITableViewDelegate, NotifyReloadProfileData {    
     
     func notifyDelegate() {
-        if !(userProfileID==""){
-            loadProfileTop(userProfileID)
-        }else if !(userUsername==""){
-            getUserID(userUsername)
-        }else{
-            userProfileID = defaultValues.string(forKey: "device_userid")!
-            loadProfileTop(userProfileID)
-        }
+        userProfileID = defaultValues.string(forKey: "device_userid")!
+        loadProfileTop(userProfileID)
+        self.view .setNeedsDisplay()
     }
     
-    
+    var profileRefresh:UIRefreshControl!
     private var profileNews = [ProfileNewsModel]()
     //test here by putting in either user id or username to load profile, or leave blank to load yours
     var userProfileID: String = ""
-    var userUsername: String = ""
+    var userUsername: String = "vesanity322"
     let defaultValues = UserDefaults.standard
     let deviceusername = UserDefaults.standard.string(forKey: "device_username")!
     let deviceuserid = UserDefaults.standard.string(forKey: "device_userid")!
@@ -474,15 +469,18 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
                     //TODO connectionsTV on click
                     
                     self.indicator.stopAnimating()
+                    self.profileRefresh.endRefreshing()
                     self.profileScrollView.isHidden = false
                     
                 }else{
                     self.indicator.stopAnimating()
+                    self.profileRefresh.endRefreshing()
                     self.noProfileView.isHidden = false
                 }
             case let .failure(error):
                 print(error)
                 self.indicator.stopAnimating()
+                self.profileRefresh.endRefreshing()
                 self.noProfileView.isHidden = false
                 self.view.showToast(toastMessage: "Network Error!", duration:2)
             }
@@ -589,9 +587,32 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
     }
     
     
+    @objc func refresh(){
+        self.view.showToast(toastMessage: "Refreshing...", duration:2)
+        indicator.startAnimating()
+        if !(userProfileID==""){
+            loadProfileTop(userProfileID)
+        }else if !(userUsername==""){
+            getUserID(userUsername)
+        }else{
+            userProfileID = defaultValues.string(forKey: "device_userid")!
+            loadProfileTop(userProfileID)
+        }
+        self.view .setNeedsDisplay()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        profileRefresh = UIRefreshControl()
+        profileRefresh.addTarget(self, action: #selector(refresh), for:
+        .valueChanged)
+        profileScrollView.refreshControl = profileRefresh
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
         profilePostsTableView.dataSource = self
         profilePostsTableView.delegate = self
@@ -936,10 +957,12 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
         if segue.identifier == "toUploadImage" {
             if let destination = segue.destination as? UploadPhotoController {
                 destination.imageUploadTo = "profile_pic"
+                destination.profileDelegate = self
             }
         }else if segue.identifier == "toUploadCover" {
             if let destination = segue.destination as? UploadPhotoController {
                 destination.imageUploadTo = "cover"
+                destination.profileDelegate = self
             }
         }else if segue.identifier == "ToLogin" {
             _ = segue.destination as? LoginViewController

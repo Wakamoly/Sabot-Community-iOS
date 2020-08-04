@@ -11,13 +11,14 @@ import Alamofire
 import SwiftyJSON
 import CropViewController
 
-protocol NotifyReloadProfileData{
+protocol NotifyReloadProfileData:class{
     func notifyDelegate()
 }
 
 class UploadPhotoController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate, CropViewControllerDelegate {
     
-    var delegate: NotifyReloadProfileData?
+
+    weak var profileDelegate: NotifyReloadProfileData? = nil
     
     let indicator: UIActivityIndicatorView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
     
@@ -99,10 +100,8 @@ class UploadPhotoController: UIViewController, UIImagePickerControllerDelegate &
                 case .success(let value):
                     let jsonData = JSON(value)
                     if (jsonData["success"]==1){
-                        //unwind segue?
                         let message = jsonData["message"].string
                         self.view.showToast(toastMessage: message!, duration:2)
-                        self.delegate?.notifyDelegate()
                         self.dismiss(animated: true, completion: nil)
                     }else{
                         self.uploadButtonView.isHidden = false
@@ -112,11 +111,20 @@ class UploadPhotoController: UIViewController, UIImagePickerControllerDelegate &
                     self.indicator.stopAnimating()
                 case let .failure(error):
                     print(error)
+                    self.indicator.stopAnimating()
                     self.uploadButtonView.isHidden = false
-                    self.view.showToast(toastMessage: "Network error!", duration:2)
+                    self.view.showToast(toastMessage: "Network error! Please try again.", duration:2)
                 }
         }
     }
+    
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        if (self.isBeingDismissed || self.isMovingFromParent) {
+            self.profileDelegate?.notifyDelegate()
+        }
+    }
+
     
     //MARK: ImagePicker Controller Delegate methods
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

@@ -1301,8 +1301,8 @@
                                 </subviews>
                                 <color key="backgroundColor" name="colorPrimary"/>
                                 <constraints>
+                                    <constraint firstItem="71l-Ll-6W3" firstAttribute="top" secondItem="UPc-0c-Spz" secondAttribute="bottom" constant="39" id="0xa-In-Oab"/>
                                     <constraint firstItem="SQ9-D0-dak" firstAttribute="centerX" secondItem="3da-ex-hlr" secondAttribute="centerX" id="5L8-Xr-LQw"/>
-                                    <constraint firstItem="71l-Ll-6W3" firstAttribute="top" secondItem="3da-ex-hlr" secondAttribute="top" constant="241" id="6KB-ax-Hjr"/>
                                     <constraint firstItem="3da-ex-hlr" firstAttribute="trailing" secondItem="za4-Nx-T4m" secondAttribute="trailing" constant="10" id="B9w-cy-OkH"/>
                                     <constraint firstItem="za4-Nx-T4m" firstAttribute="centerX" secondItem="fUM-FU-tAq" secondAttribute="centerX" id="EKb-Xw-9kj"/>
                                     <constraint firstItem="SQ9-D0-dak" firstAttribute="leading" secondItem="3da-ex-hlr" secondAttribute="leading" id="Fz0-n9-o7R"/>

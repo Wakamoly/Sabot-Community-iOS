@@ -15,7 +15,7 @@ extension UIView
     {
         //View to blur bg and stopping user interaction
         let bgView = UIView(frame: self.frame)
-        bgView.backgroundColor = UIColor(red: CGFloat(255.0/255.0), green: CGFloat(255.0/255.0), blue: CGFloat(255.0/255.0), alpha: CGFloat(0.6))
+        //bgView.backgroundColor = UIColor(named: "put ya gahdamn color here")
         bgView.tag = 555
         
         //Label For showing toast text
@@ -44,7 +44,7 @@ extension UIView
         UIView.animateKeyframes(withDuration:TimeInterval(duration) , delay: 0, options: [] , animations: {
             lblMessage.alpha = 1
         }, completion: {
-            sucess in
+            success in
             UIView.animate(withDuration:TimeInterval(duration), delay: 8, options: [] , animations: {
                 lblMessage.alpha = 0
                 bgView.alpha = 0
