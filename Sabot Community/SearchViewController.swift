@@ -10,12 +10,16 @@ import UIKit
 
 class SearchViewController: UIViewController {
     
-    var search = UISearchController(searchResultsController: nil)
+    var searchBar = UISearchController(searchResultsController: nil)
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print(searchText)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationItem.searchController = search
+        self.navigationItem.searchController = searchBar
     }
     
     override func didReceiveMemoryWarning() {

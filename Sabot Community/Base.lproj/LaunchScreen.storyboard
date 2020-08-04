@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--LaunchScreenVC-->
         <scene sceneID="EHf-IW-A2E">
             <objects>
-                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                <viewController id="01J-lp-oVM" userLabel="LaunchScreenVC" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -19,34 +19,32 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="sc1" translatesAutoresizingMaskIntoConstraints="NO" id="eqX-mC-V9U">
                                 <rect key="frame" x="83" y="421.5" width="248" height="63"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="63" id="9Us-iL-E6Q"/>
                                     <constraint firstAttribute="width" constant="248" id="YLy-f9-Qs8"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="63" id="rD2-ZM-SvA"/>
+                                    <constraint firstAttribute="height" constant="63" id="rD2-ZM-SvA"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vibin" translatesAutoresizingMaskIntoConstraints="NO" id="aEF-9E-x9M">
-                                <rect key="frame" x="287" y="460" width="107" height="47"/>
+                                <rect key="frame" x="231" y="686" width="256" height="256"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="47" id="8aH-wL-30W"/>
-                                    <constraint firstAttribute="width" constant="107" id="9qC-Gf-AfF"/>
+                                    <constraint firstAttribute="height" constant="256" id="RWE-40-eCf"/>
+                                    <constraint firstAttribute="width" constant="256" id="elt-3t-N16"/>
                                 </constraints>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kindpng_5042913" translatesAutoresizingMaskIntoConstraints="NO" id="hk9-6o-GAC" userLabel="aÿ">
-                                <rect key="frame" x="216" y="413" width="95" height="57"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="kindpng_5042913" translatesAutoresizingMaskIntoConstraints="NO" id="hk9-6o-GAC" userLabel="aÿ">
+                                <rect key="frame" x="213" y="417.5" width="98" height="51.5"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" name="colorPrimary"/>
                         <constraints>
-                            <constraint firstItem="hk9-6o-GAC" firstAttribute="trailing" secondItem="eqX-mC-V9U" secondAttribute="trailing" constant="-20" id="FZg-q4-2QP"/>
-                            <constraint firstItem="hk9-6o-GAC" firstAttribute="leading" secondItem="eqX-mC-V9U" secondAttribute="leading" constant="133" id="RxE-D7-p7X"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eqX-mC-V9U" secondAttribute="trailing" constant="83" id="bEp-Uj-U9I"/>
+                            <constraint firstItem="hk9-6o-GAC" firstAttribute="top" secondItem="eqX-mC-V9U" secondAttribute="top" constant="-4" id="18b-Ca-6CB"/>
+                            <constraint firstItem="hk9-6o-GAC" firstAttribute="trailing" secondItem="eqX-mC-V9U" secondAttribute="trailing" constant="-20" id="5N4-5V-2zJ"/>
+                            <constraint firstItem="aEF-9E-x9M" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="73" id="DDT-LK-2ih"/>
+                            <constraint firstItem="aEF-9E-x9M" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="80" id="T8l-25-EEL"/>
+                            <constraint firstItem="eqX-mC-V9U" firstAttribute="firstBaseline" secondItem="hk9-6o-GAC" secondAttribute="firstBaseline" constant="4" id="a42-bt-rgh"/>
                             <constraint firstItem="eqX-mC-V9U" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="brv-Li-IXj"/>
-                            <constraint firstItem="aEF-9E-x9M" firstAttribute="leading" secondItem="eqX-mC-V9U" secondAttribute="trailing" constant="-44" id="f4L-0B-0Y2"/>
-                            <constraint firstItem="eqX-mC-V9U" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="83" id="jNT-eB-JT2"/>
-                            <constraint firstItem="aEF-9E-x9M" firstAttribute="top" secondItem="eqX-mC-V9U" secondAttribute="bottom" constant="-24.5" id="oGv-KT-NnY"/>
                             <constraint firstItem="eqX-mC-V9U" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="rS4-el-vn4"/>
-                            <constraint firstItem="hk9-6o-GAC" firstAttribute="top" secondItem="eqX-mC-V9U" secondAttribute="top" constant="-8.5" id="wZw-k4-cOG"/>
-                            <constraint firstItem="hk9-6o-GAC" firstAttribute="bottom" secondItem="eqX-mC-V9U" secondAttribute="bottom" constant="-14.5" id="x9q-9H-kxx"/>
+                            <constraint firstItem="hk9-6o-GAC" firstAttribute="leading" secondItem="eqX-mC-V9U" secondAttribute="leading" constant="130" id="vyt-VF-uF1"/>
+                            <constraint firstItem="hk9-6o-GAC" firstAttribute="bottom" secondItem="eqX-mC-V9U" secondAttribute="bottom" constant="-15.5" id="x9q-9H-kxx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

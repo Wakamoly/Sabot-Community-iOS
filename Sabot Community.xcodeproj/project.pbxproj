@@ -12,6 +12,7 @@
 		19F9E4A85C55E0EF0EDFD8E9 /* Pods_Sabot_CommunityTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2915589DBBB446991FB0B97 /* Pods_Sabot_CommunityTests.framework */; };
 		62C01013F9353EFBC4AA7CBA /* Pods_Sabot_Community_Sabot_CommunityUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89513475CBE5B6320CA4FB8E /* Pods_Sabot_Community_Sabot_CommunityUITests.framework */; };
 		C5A3477ED7C33CD4CB26FA81 /* Pods_Sabot_Community.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 862F49D25A07EBB54B81F70D /* Pods_Sabot_Community.framework */; };
+		E012DDB724DA1A4E00772678 /* EmptyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E012DDB624DA1A4E00772678 /* EmptyVC.swift */; };
 		E081F35A24BBE9470049AB0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E081F35924BBE9470049AB0F /* AppDelegate.swift */; };
 		E081F35C24BBE9470049AB0F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E081F35B24BBE9470049AB0F /* SceneDelegate.swift */; };
 		E081F36324BBE95A0049AB0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E081F36224BBE95A0049AB0F /* Assets.xcassets */; };
@@ -64,6 +65,7 @@
 		B73F64DC1D9A38ED004BA94F /* Pods-Sabot Community.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sabot Community.release.xcconfig"; path = "Target Support Files/Pods-Sabot Community/Pods-Sabot Community.release.xcconfig"; sourceTree = "<group>"; };
 		CE79FF9027F85210302752DC /* Pods-Sabot Community-Sabot CommunityUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sabot Community-Sabot CommunityUITests.debug.xcconfig"; path = "Target Support Files/Pods-Sabot Community-Sabot CommunityUITests/Pods-Sabot Community-Sabot CommunityUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DF5944EA45CE81F78C6C1964 /* Pods-Sabot CommunityTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sabot CommunityTests.debug.xcconfig"; path = "Target Support Files/Pods-Sabot CommunityTests/Pods-Sabot CommunityTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E012DDB624DA1A4E00772678 /* EmptyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyVC.swift; sourceTree = "<group>"; };
 		E081F35624BBE9470049AB0F /* Sabot Community.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sabot Community.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E081F35924BBE9470049AB0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E081F35B24BBE9470049AB0F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 				E0A7E7E824CF50F20033C510 /* Media.xcassets */,
 				E081F36224BBE95A0049AB0F /* Assets.xcassets */,
 				E081F36724BBE95A0049AB0F /* Info.plist */,
+				E012DDB624DA1A4E00772678 /* EmptyVC.swift */,
 			);
 			path = "Sabot Community";
 			sourceTree = "<group>";
@@ -456,6 +459,7 @@
 			files = (
 				E0A7E7E724CF4B920033C510 /* ProfileNewsModel.swift in Sources */,
 				E081F39B24BEABBA0049AB0F /* NotificationsViewController.swift in Sources */,
+				E012DDB724DA1A4E00772678 /* EmptyVC.swift in Sources */,
 				1928761224CBCE77006A09F1 /* SideMenuController.swift in Sources */,
 				E0A7E7E524CF3E380033C510 /* ProfilePostsTVC.swift in Sources */,
 				E081F39F24BEAC060049AB0F /* SearchViewController.swift in Sources */,
