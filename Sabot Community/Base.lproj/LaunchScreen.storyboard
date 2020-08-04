@@ -33,10 +33,6 @@
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kindpng_5042913" translatesAutoresizingMaskIntoConstraints="NO" id="hk9-6o-GAC" userLabel="aÿ">
                                 <rect key="frame" x="216" y="413" width="95" height="57"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="57" id="1Tl-zd-RZP"/>
-                                    <constraint firstAttribute="width" constant="95" id="wZe-P5-1fi"/>
-                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" name="colorPrimary"/>
