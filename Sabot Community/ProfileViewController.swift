@@ -1,6 +1,6 @@
 //
 //  ProfileViewController.swift
-//  SecondIphoneApp
+//  Sabot Community
 //
 //  Created by Wakamoly on 5/20/20.
 //  Copyright © 2020 LucidSoftworksLLC. All rights reserved.
@@ -17,6 +17,7 @@ import iOSDropDown
 
 class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDataSource, UITableViewDelegate, NotifyReloadProfileData {    
     
+    //resetting view for returning from another VC, most likely when settings/profile images are changed
     func notifyDelegate() {
         userProfileID = defaultValues.string(forKey: "device_userid")!
         loadProfileTop(userProfileID)
@@ -25,6 +26,7 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
     
     var profileRefresh:UIRefreshControl!
     private var profileNews = [ProfileNewsModel]()
+    
     //test here by putting in either user id or username to load profile, or leave blank to load yours
     var userProfileID: String = ""
     var userUsername: String = ""
@@ -112,23 +114,35 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
     @IBAction func postQueryButton(_ sender: Any) {
         postsQueryButtonClicked(postsQueryButton)
     }
+    
+    
+    //These two can't be tapped for some reason
     @IBAction func coverPhotoTap(_ sender: Any) {
         print("Cover photo tapped")
     }
     @IBAction func profilePicTap(_ sender: Any) {
         print("Profile pic tapped")
     }
+    
+    
     @IBAction func ReviewsTap(_ sender: Any) {
         print("Reviews tapped")
+        //Go to reviews VC
     }
     @IBAction func followingTap(_ sender: Any) {
         print("Followings tapped")
+        //Go to user list VC
+        performSegue(withIdentifier: "toUserListFollowing", sender: nil)
     }
     @IBAction func connectionsTap(_ sender: Any) {
         print("Connections tapped")
+        //Go to user list VC
+        performSegue(withIdentifier: "toUserListConnections", sender: nil)
     }
     @IBAction func followsTap(_ sender: Any) {
         print("Followers tapped")
+        //Go to user list VC
+        performSegue(withIdentifier: "toUserListFollowers", sender: nil)
     }
     @IBAction func nintendoTap(_ sender: Any) {
         print("Nintendo tapped")
@@ -213,19 +227,17 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
         }
     }
     
+    
+    //Logging out device user
     @IBAction func buttonLogout(_ sender: UIButton) {
-        
         //removing values from default
         defaultValues.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
         defaultValues.synchronize()
-        
-        //switching to login screen
-        /*let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-         self.navigationController?.pushViewController(loginViewController, animated: true)
-         self.dismiss(animated: false,completion: nil)*/
         performSegue(withIdentifier: "ToLogin", sender: nil)
     }
     
+    
+    //Load profile from user id
     func loadProfileTop(_ userProfileIDS:String){
         indicator.startAnimating()
         AF.request(URLConstants.ROOT_URL+"profiletop_api.php?userid="+deviceuserid+"&userid2="+userProfileIDS+"&deviceusername="+deviceusername, method: .get).responseJSON{
@@ -487,6 +499,7 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
         }
     }
     
+    
     func loadProfileNews(){
         AF.request(URLConstants.ROOT_URL+"profilenews_api.php?userid="+deviceuserid+"&userprofileid="+userProfileID+"&thisusername="+deviceusername, method: .get).responseJSON{
             response in
@@ -536,6 +549,8 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
         
     }
     
+    
+    //Buttons to load different post cells in tableview
     func postsQueryButtonClicked(_ buttonPressed:UIButton){
         if(buttonPressed == self.postsQueryButton){
             self.postsQueryButton.backgroundColor = UIColor(named: "green")
@@ -561,6 +576,8 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
         }
     }
     
+    
+    //Getting username's user id and moving it to load profile
     func getUserID(_ userUsernameS:String){
         let parameters: Parameters=["username":userUsernameS]
         AF.request(URLConstants.ROOT_URL+"get_userid.php", method: .post, parameters: parameters).responseJSON{
@@ -587,6 +604,7 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
     }
     
     
+    //Refreshing profile when pulled down from top, and redrawing views with ".setNeedsDisplay()" <--- essential
     @objc func refresh(){
         self.view.showToast(toastMessage: "Refreshing...", duration:2)
         indicator.startAnimating()
@@ -601,6 +619,7 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
         self.view .setNeedsDisplay()
     }
     
+    //may not be necessary, but adding refresh control to UIScrollView when pulled down from top, currently pretty basic setup
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         profileRefresh = UIRefreshControl()
@@ -612,16 +631,15 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
-        profilePostsTableView.dataSource = self
-        profilePostsTableView.delegate = self
-        
         profileScrollView.isHidden = true
         indicator.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
         indicator.center = view.center
         self.view.addSubview(indicator)
         self.view.bringSubviewToFront(indicator)
+
+        //setting up post table view
+        profilePostsTableView.dataSource = self
+        profilePostsTableView.delegate = self
         
         //getting user data from defaults
         if defaultValues.string(forKey: "device_userid") == nil{
@@ -631,6 +649,7 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
             performSegue(withIdentifier: "ToLogin", sender: nil)
         }
         
+        //figuring out what user to load, if user id is given, load that profile, else get user id of username if given, then pass to load that profile from the received id, else load device user's profile
         if !(userProfileID==""){
             loadProfileTop(userProfileID)
         }else if !(userUsername==""){
@@ -640,11 +659,13 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
             loadProfileTop(userProfileID)
         }
         
+        //placing border around user's profile pic
         profilePic.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1.0).cgColor
         profilePic.layer.masksToBounds = true
         profilePic.contentMode = .scaleToFill
         profilePic.layer.borderWidth = 7
         
+        //new post's platform option button
         platformDropdownTextField.optionArray = ["General","PlayStation","Xbox","Steam","PC","Mobile","Switch"]
         ///platformDropdownTextField.optionImageArray = [UIImage(named: "ic_quote")!,UIImage(named: "icons8_playstation_50")!,UIImage(named: "icons8_xbox_50")!,UIImage(named: "icons8_steam_48")!,UIImage(named: "icons8_workstation_48")!,UIImage(named: "icons8_mobile_48")!,UIImage(named: "icons8_nintendo_switch_48")]
         platformDropdownTextField.didSelect { (selectedPlatform, index, id) in
@@ -652,47 +673,10 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
         }
         platformDropdownTextField.tintColor = UIColor.white
         
-        /*let imageurl: String=URLConstants.BASE_URL+defaultValues.string(forKey: "device_profilepic")!
-         let url = URL(string:imageurl)
-         
-         let filter = AspectScaledToFillSizeWithRoundedCornersFilter(
-         size: profileCoverPic.frame.size,
-         radius:0
-         )
-         
-         profileCoverPic.af.setImage(
-         withURL: url!,
-         filter: filter,
-         imageTransition: .crossDissolve(0.2)
-         )
-         
-         AF.request(URLConstants.BASE_URL+defaultValues.string(forKey: "device_profilepic")!,method: .get).response{ response in
-         
-         switch response.result {
-         case .success(let responseData):
-         self.profilePic.image = UIImage(data: responseData!, scale:1)
-         self.profilePic.af.setImage(withURL: url!)
-         print("Image set",response.result)
-         case .failure(let error):
-         print("error--->",error)
-         }
-         }*/
-        
-        /*AF.request( "https://robohash.org/123.png",method: .get).response{ response in
-         
-         switch response.result {
-         case .success(let responseData):
-         self.bottomImageView.image = UIImage(data: responseData!, scale:1)
-         print("bottomImage set",response.result)
-         case .failure(let error):
-         print("error--->",error)
-         }
-         }*/
-        
-        
-        
     }
     
+    
+    //Device user to follow profile user
     func followUser(_ usernameThis:String, _ followersThis:String, _ method:String){
         if(method == "follow"){
             self.followProfileStack.isHidden = true
@@ -727,6 +711,8 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
         }
     }
     
+    
+    //View to tell us whether or not user has been requested/requested the device user
     func connectionRequest(_ usernameQuery:String){
         let parameters: Parameters=["username":deviceusername,"thisusername":usernameQuery]
         AF.request(URLConstants.ROOT_URL+"get_profile_requests.php", method: .post, parameters: parameters).responseJSON{
@@ -761,6 +747,7 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
         }
     }
     
+    //Request to add connection
     func addConnection(_ usernameQuery:String){
         let parameters: Parameters=["username":deviceusername,"thisusername":usernameQuery]
         AF.request(URLConstants.ROOT_URL+"add_connection.php", method: .post, parameters: parameters).responseJSON{
@@ -785,6 +772,7 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
         }
     }
     
+    //Accept user's connection request
     func acceptConnection(_ usernameQuery:String){
         let parameters: Parameters=["username":deviceusername,"thisusername":usernameQuery]
         AF.request(URLConstants.ROOT_URL+"accept_connection.php", method: .post, parameters: parameters).responseJSON{
@@ -810,10 +798,14 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
         }
     }
     
+    
+    //alternative tap gesture function for segue to cover image upload
     @objc func showF(_ sender: UITapGestureRecognizer){
         performSegue(withIdentifier: "toUploadCover", sender: nil)
     }
     
+    
+    //New post view handling of textview
     func textViewDidBeginEditing(_ statusUpdate: UITextView) {
         if statusUpdate.textColor == UIColor.lightGray {
             statusUpdate.text = nil
@@ -833,11 +825,18 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
         // Dispose of any resources that can be recreated.
     }
     
-    //the method returning size of the list
+    
+    
+    
+    //Profile posts table view
+    
+    
+    ///the method returning size of the list
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return profileNews.count
     }
     
+    ///handling cell view for table
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "postsReuse") as! ProfilePostsTVC
         
@@ -937,6 +936,7 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
         return cell
     }
     
+    ///handling cell view taps
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let alertController = UIAlertController(title: "Hint", message: "You have selected row \(indexPath.row).", preferredStyle: .alert)
@@ -949,10 +949,14 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
         
     }
     
+    ///number of sections in table view
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
+    
+    
+    //Segue handling
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toUploadImage" {
             if let destination = segue.destination as? UploadPhotoController {
@@ -966,7 +970,24 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
             }
         }else if segue.identifier == "ToLogin" {
             _ = segue.destination as? LoginViewController
+        }else if segue.identifier == "toUserListFollowing" {
+            if let destination = segue.destination as? UserListViewController {
+                destination.query = "following"
+                destination.queryID = self.userUsername
+            }
+        }else if segue.identifier == "toUserListConnections" {
+            if let destination = segue.destination as? UserListViewController {
+                destination.query = "connections"
+                destination.queryID = self.userUsername
+            }
+        }else if segue.identifier == "toUserListFollowers" {
+            if let destination = segue.destination as? UserListViewController {
+                destination.query = "followers"
+                destination.queryID = self.userUsername
+            }
         }
+        
+        
     }
     
     

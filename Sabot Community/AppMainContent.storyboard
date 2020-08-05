@@ -1407,6 +1407,9 @@
                         <segue destination="rde-kM-3YU" kind="show" identifier="ToLogin" id="P9E-9y-LZW"/>
                         <segue destination="RHx-iw-JwL" kind="presentation" identifier="toUploadImage" id="9UL-vX-kQd"/>
                         <segue destination="RHx-iw-JwL" kind="presentation" identifier="toUploadCover" id="qDU-Ly-e6W"/>
+                        <segue destination="nYN-QP-mJP" kind="show" identifier="toUserListFollowing" id="O3y-gI-xnp"/>
+                        <segue destination="nYN-QP-mJP" kind="show" identifier="toUserListConnections" id="CI8-e4-iyS"/>
+                        <segue destination="nYN-QP-mJP" kind="show" identifier="toUserListFollowers" id="OVy-Bs-bTe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ynR-eZ-Qa2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1563,7 +1566,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="8606" y="1577"/>
+            <point key="canvasLocation" x="8630" y="1577"/>
         </scene>
         <!--UploadImageController-->
         <scene sceneID="xTc-ou-z7J">
@@ -1640,6 +1643,44 @@
                 <exit id="8HS-IN-Shm" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="9348" y="1577"/>
+        </scene>
+        <!--User List View Controller-->
+        <scene sceneID="orC-cG-fSR">
+            <objects>
+                <viewController id="nYN-QP-mJP" customClass="UserListViewController" customModule="Sabot_Community" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bdg-tQ-rud">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="n56-Zu-mMR" userLabel="UserListTableView">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                                <color key="backgroundColor" name="colorPrimary"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="ENf-ET-nep" userLabel="UserTableCell">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ENf-ET-nep" id="g2t-9s-BHE">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" name="colorPrimary"/>
+                        <constraints>
+                            <constraint firstItem="NWg-nc-Yye" firstAttribute="trailing" secondItem="n56-Zu-mMR" secondAttribute="trailing" id="Si6-ZJ-zwO"/>
+                            <constraint firstItem="n56-Zu-mMR" firstAttribute="leading" secondItem="NWg-nc-Yye" secondAttribute="leading" id="T9V-fM-SqN"/>
+                            <constraint firstItem="n56-Zu-mMR" firstAttribute="top" secondItem="NWg-nc-Yye" secondAttribute="top" id="mU3-WA-QV8"/>
+                            <constraint firstItem="NWg-nc-Yye" firstAttribute="bottom" secondItem="n56-Zu-mMR" secondAttribute="bottom" id="mmG-ly-qm3"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="NWg-nc-Yye"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="7gr-GN-ZaQ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fVa-xm-Spt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="10030" y="1576"/>
         </scene>
         <!--NotificationsViewController-->
         <scene sceneID="8vf-1Y-23y">
@@ -1807,7 +1848,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8xV-a5-MdI"/>
                     </view>
-                    <navigationItem key="navigationItem" id="mF4-RY-azW">
+                    <navigationItem key="navigationItem" title="Publics" id="mF4-RY-azW">
                         <barButtonItem key="leftBarButtonItem" title="Add" image="plus" catalog="system" id="fv3-Bz-Phy">
                             <color key="tintColor" name="green"/>
                         </barButtonItem>
@@ -2384,6 +2425,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="OVy-Bs-bTe"/>
         <segue reference="qDU-Ly-e6W"/>
         <segue reference="zkG-c2-ajw"/>
     </inferredMetricsTieBreakers>
