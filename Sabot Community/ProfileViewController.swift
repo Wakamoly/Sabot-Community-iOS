@@ -606,7 +606,7 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
     
     //Refreshing profile when pulled down from top, and redrawing views with ".setNeedsDisplay()" <--- essential
     @objc func refresh(){
-        self.view.showToast(toastMessage: "Refreshing...", duration:2)
+        //self.view.showToast(toastMessage: "Refreshing...", duration:2)
         indicator.startAnimating()
         if !(userProfileID==""){
             loadProfileTop(userProfileID)
@@ -632,10 +632,16 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
         super.viewDidLoad()
         
         profileScrollView.isHidden = true
+        
+        //start loading indicator
         indicator.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
         indicator.center = view.center
         self.view.addSubview(indicator)
         self.view.bringSubviewToFront(indicator)
+        self.indicator.isOpaque = false
+        self.indicator.layer.cornerRadius = 05
+        self.indicator.backgroundColor = (UIColor .black .withAlphaComponent(0.6))
+        self.indicator.startAnimating()
 
         //setting up post table view
         profilePostsTableView.dataSource = self

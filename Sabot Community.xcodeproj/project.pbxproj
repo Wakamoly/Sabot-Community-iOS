@@ -14,6 +14,8 @@
 		C5A3477ED7C33CD4CB26FA81 /* Pods_Sabot_Community.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 862F49D25A07EBB54B81F70D /* Pods_Sabot_Community.framework */; };
 		E012DDB724DA1A4E00772678 /* EmptyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E012DDB624DA1A4E00772678 /* EmptyVC.swift */; };
 		E012DDB924DB132000772678 /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E012DDB824DB132000772678 /* UserListViewController.swift */; };
+		E012DDBB24DB631700772678 /* UserListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E012DDBA24DB631700772678 /* UserListModel.swift */; };
+		E012DDBD24DC867C00772678 /* UserListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E012DDBC24DC867C00772678 /* UserListTVC.swift */; };
 		E081F35A24BBE9470049AB0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E081F35924BBE9470049AB0F /* AppDelegate.swift */; };
 		E081F35C24BBE9470049AB0F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E081F35B24BBE9470049AB0F /* SceneDelegate.swift */; };
 		E081F36324BBE95A0049AB0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E081F36224BBE95A0049AB0F /* Assets.xcassets */; };
@@ -68,6 +70,8 @@
 		DF5944EA45CE81F78C6C1964 /* Pods-Sabot CommunityTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sabot CommunityTests.debug.xcconfig"; path = "Target Support Files/Pods-Sabot CommunityTests/Pods-Sabot CommunityTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E012DDB624DA1A4E00772678 /* EmptyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyVC.swift; sourceTree = "<group>"; };
 		E012DDB824DB132000772678 /* UserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
+		E012DDBA24DB631700772678 /* UserListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListModel.swift; sourceTree = "<group>"; };
+		E012DDBC24DC867C00772678 /* UserListTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListTVC.swift; sourceTree = "<group>"; };
 		E081F35624BBE9470049AB0F /* Sabot Community.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sabot Community.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E081F35924BBE9470049AB0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E081F35B24BBE9470049AB0F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -197,6 +201,8 @@
 				E081F36724BBE95A0049AB0F /* Info.plist */,
 				E012DDB624DA1A4E00772678 /* EmptyVC.swift */,
 				E012DDB824DB132000772678 /* UserListViewController.swift */,
+				E012DDBA24DB631700772678 /* UserListModel.swift */,
+				E012DDBC24DC867C00772678 /* UserListTVC.swift */,
 			);
 			path = "Sabot Community";
 			sourceTree = "<group>";
@@ -468,6 +474,7 @@
 				E012DDB924DB132000772678 /* UserListViewController.swift in Sources */,
 				E081F39F24BEAC060049AB0F /* SearchViewController.swift in Sources */,
 				E081F38F24BBEBA10049AB0F /* ProfileViewController.swift in Sources */,
+				E012DDBB24DB631700772678 /* UserListModel.swift in Sources */,
 				E0DF7FB924D23A1200C5E449 /* UploadPhotoController.swift in Sources */,
 				E081F38D24BBEBA10049AB0F /* LoginViewController.swift in Sources */,
 				E081F38E24BBEBA10049AB0F /* RegisterViewController.swift in Sources */,
@@ -475,6 +482,7 @@
 				E081F39524BCE9FD0049AB0F /* ToastMessage.swift in Sources */,
 				E081F35A24BBE9470049AB0F /* AppDelegate.swift in Sources */,
 				1961684624D8B9FC00E5669E /* ContactUsController.swift in Sources */,
+				E012DDBD24DC867C00772678 /* UserListTVC.swift in Sources */,
 				E081F39D24BEABE60049AB0F /* PublicsViewController.swift in Sources */,
 				E081F35C24BBE9470049AB0F /* SceneDelegate.swift in Sources */,
 				E081F39924BEAB500049AB0F /* DashboardViewController.swift in Sources */,

@@ -120,11 +120,16 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //start loading indicator
         indicator.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
         indicator.center = view.center
         self.view.addSubview(indicator)
         self.view.bringSubviewToFront(indicator)
-        indicator.startAnimating()
+        self.indicator.isOpaque = false
+        self.indicator.layer.cornerRadius = 05
+        self.indicator.backgroundColor = (UIColor .black .withAlphaComponent(0.6))
+        self.indicator.startAnimating()
         
         self.textFieldUsername.delegate = self
         self.textFieldPassword.delegate = self
