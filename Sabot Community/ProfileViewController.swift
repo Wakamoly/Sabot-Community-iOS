@@ -97,6 +97,7 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
     @IBOutlet weak var profilePostsTableView: UITableView!
     @IBOutlet weak var profileItemsLabel: UILabel!
     @IBOutlet weak var platformDropdownTextField: DropDown!
+    @IBOutlet weak var noPostsToShowView: UILabel!
     
     @IBAction func profilePicSelectorTap(_ sender: Any) {
         print("Profile pic selector tapped")
@@ -509,32 +510,39 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
             switch response.result {
             case .success(let value):
                 let jsonObject = JSON(value)
-                for i in 0..<jsonObject.count{
-                    let jsonData = jsonObject[i]
-                    self.profileNews.append(ProfileNewsModel(
-                        id: jsonData["id"].int,
-                        type: jsonData["type"].string,
-                        likes: jsonData["likes"].rawString(),
-                        body: jsonData["body"].rawString(),
-                        added_by: jsonData["added_by"].rawString(),
-                        user_to: jsonData["user_to"].rawString(),
-                        date_added: jsonData["date_added"].rawString(),
-                        user_closed: jsonData["user_closed"].rawString(),
-                        deleted: jsonData["deleted"].rawString(),
-                        image: jsonData["image"].rawString(),
-                        user_id: jsonData["user_id"].rawString(),
-                        profile_pic: jsonData["profile_pic"].rawString(),
-                        verified: jsonData["verified"].rawString(),
-                        online: jsonData["online"].rawString(),
-                        nickname: jsonData["nickname"].rawString(),
-                        username: jsonData["username"].rawString(),
-                        commentcount: jsonData["commentcount"].rawString(),
-                        likedbyuser: jsonData["likedbyuseryes"].rawString(),
-                        form: jsonData["form"].rawString(),
-                        edited: jsonData["edited"].rawString()))
+                if jsonObject.count == 0 {
+                    self.profilePostsTableView.isHidden = true
+                    self.noPostsToShowView.isHidden = false
+                }else{
+                    self.noPostsToShowView.isHidden = true
+                    for i in 0..<jsonObject.count{
+                        let jsonData = jsonObject[i]
+                        self.profileNews.append(ProfileNewsModel(
+                            id: jsonData["id"].int,
+                            type: jsonData["type"].string,
+                            likes: jsonData["likes"].rawString(),
+                            body: jsonData["body"].rawString(),
+                            added_by: jsonData["added_by"].rawString(),
+                            user_to: jsonData["user_to"].rawString(),
+                            date_added: jsonData["date_added"].rawString(),
+                            user_closed: jsonData["user_closed"].rawString(),
+                            deleted: jsonData["deleted"].rawString(),
+                            image: jsonData["image"].rawString(),
+                            user_id: jsonData["user_id"].rawString(),
+                            profile_pic: jsonData["profile_pic"].rawString(),
+                            verified: jsonData["verified"].rawString(),
+                            online: jsonData["online"].rawString(),
+                            nickname: jsonData["nickname"].rawString(),
+                            username: jsonData["username"].rawString(),
+                            commentcount: jsonData["commentcount"].rawString(),
+                            likedbyuser: jsonData["likedbyuseryes"].rawString(),
+                            form: jsonData["form"].rawString(),
+                            edited: jsonData["edited"].rawString()))
+                    }
+                    //displaying data in tableview
+                    self.profilePostsTableView.reloadData()
                 }
-                //displaying data in tableview
-                self.profilePostsTableView.reloadData()
+                
             case let .failure(error):
                 print(error)
             }
