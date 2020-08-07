@@ -16,6 +16,7 @@
 		E012DDB924DB132000772678 /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E012DDB824DB132000772678 /* UserListViewController.swift */; };
 		E012DDBB24DB631700772678 /* UserListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E012DDBA24DB631700772678 /* UserListModel.swift */; };
 		E012DDBD24DC867C00772678 /* UserListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E012DDBC24DC867C00772678 /* UserListTVC.swift */; };
+		E012DDC124DCECD300772678 /* ReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E012DDC024DCECD300772678 /* ReviewsViewController.swift */; };
 		E081F35A24BBE9470049AB0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E081F35924BBE9470049AB0F /* AppDelegate.swift */; };
 		E081F35C24BBE9470049AB0F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E081F35B24BBE9470049AB0F /* SceneDelegate.swift */; };
 		E081F36324BBE95A0049AB0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E081F36224BBE95A0049AB0F /* Assets.xcassets */; };
@@ -72,6 +73,7 @@
 		E012DDB824DB132000772678 /* UserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
 		E012DDBA24DB631700772678 /* UserListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListModel.swift; sourceTree = "<group>"; };
 		E012DDBC24DC867C00772678 /* UserListTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListTVC.swift; sourceTree = "<group>"; };
+		E012DDC024DCECD300772678 /* ReviewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsViewController.swift; sourceTree = "<group>"; };
 		E081F35624BBE9470049AB0F /* Sabot Community.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sabot Community.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E081F35924BBE9470049AB0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E081F35B24BBE9470049AB0F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 				E012DDB824DB132000772678 /* UserListViewController.swift */,
 				E012DDBA24DB631700772678 /* UserListModel.swift */,
 				E012DDBC24DC867C00772678 /* UserListTVC.swift */,
+				E012DDC024DCECD300772678 /* ReviewsViewController.swift */,
 			);
 			path = "Sabot Community";
 			sourceTree = "<group>";
@@ -470,6 +473,7 @@
 				E081F39B24BEABBA0049AB0F /* NotificationsViewController.swift in Sources */,
 				E012DDB724DA1A4E00772678 /* EmptyVC.swift in Sources */,
 				1928761224CBCE77006A09F1 /* SideMenuController.swift in Sources */,
+				E012DDC124DCECD300772678 /* ReviewsViewController.swift in Sources */,
 				E0A7E7E524CF3E380033C510 /* ProfilePostsTVC.swift in Sources */,
 				E012DDB924DB132000772678 /* UserListViewController.swift in Sources */,
 				E081F39F24BEAC060049AB0F /* SearchViewController.swift in Sources */,

@@ -129,6 +129,7 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
     @IBAction func ReviewsTap(_ sender: Any) {
         print("Reviews tapped")
         //Go to reviews VC
+        performSegue(withIdentifier: "toReviews", sender: nil)
     }
     @IBAction func followingTap(_ sender: Any) {
         print("Followings tapped")
