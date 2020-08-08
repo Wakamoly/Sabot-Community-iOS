@@ -12,7 +12,6 @@ target 'Sabot Community' do
   pod 'AARatingBar'
   pod 'EnhancedCircleImageView'
   pod 'AlamofireImage'
-  pod 'ZGRatingView'
   pod 'ActiveLabel'
   pod 'iOSDropDown'
   pod 'CropViewController'

@@ -1000,6 +1000,12 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
                 destination.query = "followers"
                 destination.queryID = self.userUsername
             }
+        }else if segue.identifier == "toReviews" {
+            if let destination = segue.destination as? ReviewsViewController {
+                destination.query = "profile"
+                destination.queryID = self.userProfileID
+                destination.queryName = self.userUsername
+            }
         }
         
         
