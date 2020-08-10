@@ -2293,10 +2293,10 @@
                                 <color key="tintColor" name="colorAccent"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="uNE-Ky-hu1" userLabel="NotificationCell">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="129.33332824707031"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="130"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uNE-Ky-hu1" id="Kq1-SS-0pA">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="129.33332824707031"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="130"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="jfp-nP-sQX" userLabel="profileImage" customClass="EnhancedCircleImageView" customModule="EnhancedCircleImageView">
@@ -2328,7 +2328,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="isz-wn-mq5">
-                                                    <rect key="frame" x="51" y="1.9999999999999991" width="58" height="14.666666666666664"/>
+                                                    <rect key="frame" x="51" y="2.0000000000000009" width="58" height="15.333333333333336"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" name="green"/>
                                                     <nil key="highlightedColor"/>
@@ -2340,7 +2340,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f7z-Tl-fI2">
-                                                    <rect key="frame" x="50" y="18.666666666666664" width="359" height="107.66666666666669"/>
+                                                    <rect key="frame" x="50" y="19.333333333333336" width="359" height="107.66666666666666"/>
                                                     <string key="text">Text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2635,6 +2635,9 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Etc-iR-Zcd" appends="YES" id="4kT-3N-vHQ"/>
+                                </connections>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nicholas Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j79-Gg-N8M">
                                 <rect key="frame" x="7" y="191" width="91.333333333333329" height="15.666666666666657"/>
@@ -2697,6 +2700,11 @@
                         <segue destination="5Oi-7X-xLg" kind="show" id="zkG-c2-ajw"/>
                     </connections>
                 </tapGestureRecognizer>
+                <tapGestureRecognizer id="Etc-iR-Zcd" userLabel="AboutTap">
+                    <connections>
+                        <segue destination="7An-TO-Czr" kind="presentation" modalPresentationStyle="fullScreen" id="VJS-kw-HR8"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="10415.942028985508" y="-1004.3478260869566"/>
         </scene>
@@ -2724,7 +2732,95 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nls-Gv-gkl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9974" y="-2769"/>
+            <point key="canvasLocation" x="11246" y="-2935"/>
+        </scene>
+        <!--About Us Controller-->
+        <scene sceneID="E5o-DZ-lGP">
+            <objects>
+                <viewController id="pfO-vt-Beu" userLabel="About Us Controller" customClass="AboutUsController" customModule="Sabot_Community" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SIB-DO-kAs">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0oq-cr-9fC">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="96"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="414" id="7CK-aT-Rnq"/>
+                                    <constraint firstAttribute="height" constant="96" id="7yu-W2-IvL"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="96" id="iiX-u6-SDK"/>
+                                </constraints>
+                                <string key="text">There are quite a few libraries Sabot uses to provide our users with this experience. Many of them require us to mention them and we're more than happy to do so!</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" name="white"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rcR-wI-Hcx" userLabel="RList">
+                                <rect key="frame" x="0.0" y="130" width="414" height="285"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="414" id="2xe-fr-y92"/>
+                                    <constraint firstAttribute="height" constant="285" id="zkc-dk-j7Q"/>
+                                </constraints>
+                                <mutableString key="text">Icons povided by Icons8 Karumi / Dexter hdodenhof / CircleImageView bumptech / glide balysv / material-ripple FlyingPumba / SimpleRatingBar Chabbal / slidingdotsplash One Signal Push Notifications square / Retrofit ACRA / acra jhy / jsoup yarolegovich / LovelyDialog ArthurHub / Android-Image-Cropper</mutableString>
+                                <color key="textColor" name="green"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Pk-WH-9Ul">
+                                <rect key="frame" x="74.666666666666686" y="502" width="265" height="33"/>
+                                <color key="backgroundColor" name="green"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="265" id="uR2-uc-q6R"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <state key="normal" title="Privacy Policy">
+                                    <color key="titleColor" name="white"/>
+                                </state>
+                                <connections>
+                                    <action selector="ppTap:" destination="pfO-vt-Beu" eventType="touchUpInside" id="Es2-Su-oOQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uth-oJ-i8J">
+                                <rect key="frame" x="74.666666666666686" y="557" width="265" height="33"/>
+                                <color key="backgroundColor" name="green"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="265" id="Y78-vl-3wu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <state key="normal" title="Terms and Conditions">
+                                    <color key="titleColor" name="white"/>
+                                </state>
+                                <connections>
+                                    <action selector="tcTap:" destination="pfO-vt-Beu" eventType="touchUpInside" id="PKB-Yl-avj"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" name="colorPrimaryDark"/>
+                        <constraints>
+                            <constraint firstItem="rcR-wI-Hcx" firstAttribute="top" secondItem="0oq-cr-9fC" secondAttribute="bottom" constant="34" id="3g1-FV-QYo"/>
+                            <constraint firstItem="7Pk-WH-9Ul" firstAttribute="centerX" secondItem="KsG-Y6-Ps6" secondAttribute="centerX" id="6Vq-qb-GDT"/>
+                            <constraint firstItem="KsG-Y6-Ps6" firstAttribute="trailing" secondItem="0oq-cr-9fC" secondAttribute="trailing" id="BGi-cW-W3C"/>
+                            <constraint firstItem="7Pk-WH-9Ul" firstAttribute="top" secondItem="rcR-wI-Hcx" secondAttribute="bottom" constant="87" id="Wrk-su-wIQ"/>
+                            <constraint firstItem="0oq-cr-9fC" firstAttribute="top" secondItem="KsG-Y6-Ps6" secondAttribute="top" id="chC-Fd-1oq"/>
+                            <constraint firstItem="0oq-cr-9fC" firstAttribute="leading" secondItem="KsG-Y6-Ps6" secondAttribute="leading" id="fpy-MM-i1b"/>
+                            <constraint firstItem="rcR-wI-Hcx" firstAttribute="leading" secondItem="KsG-Y6-Ps6" secondAttribute="leading" id="hc6-Cu-0gK"/>
+                            <constraint firstItem="Uth-oJ-i8J" firstAttribute="top" secondItem="7Pk-WH-9Ul" secondAttribute="bottom" constant="22" id="hmp-g8-V3C"/>
+                            <constraint firstItem="Uth-oJ-i8J" firstAttribute="centerX" secondItem="KsG-Y6-Ps6" secondAttribute="centerX" id="pz1-mJ-YeI"/>
+                            <constraint firstItem="KsG-Y6-Ps6" firstAttribute="trailing" secondItem="rcR-wI-Hcx" secondAttribute="trailing" id="twe-vj-y8o"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="KsG-Y6-Ps6"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="About Us" id="gzJ-Bb-UhN">
+                        <barButtonItem key="leftBarButtonItem" title="Back" image="arrow.left" catalog="system" id="c3d-Eo-Wu4">
+                            <connections>
+                                <segue destination="Gfq-gW-A8Q" kind="presentation" modalPresentationStyle="fullScreen" id="jlg-D4-kVI"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="80K-4k-JSz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="11447.826086956522" y="-2433.4239130434785"/>
         </scene>
         <!--Contact Controller-->
         <scene sceneID="67V-Vl-m8C">
@@ -2834,7 +2930,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A8y-SF-dJ0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10415.942028985508" y="-2433.4239130434785"/>
+            <point key="canvasLocation" x="10416" y="-2433"/>
         </scene>
         <!--DashboardViewController-->
         <scene sceneID="tZU-Jk-qKV">
@@ -2998,10 +3094,10 @@
             </objects>
             <point key="canvasLocation" x="8606" y="-1004"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Contact Us-->
         <scene sceneID="nOH-oE-Zg3">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BwV-ay-9bG" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BwV-ay-9bG" userLabel="Contact Us" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="wpf-Pq-qgd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -3020,11 +3116,37 @@
             </objects>
             <point key="canvasLocation" x="10416" y="-1719"/>
         </scene>
+        <!--About Us-->
+        <scene sceneID="c8R-z7-iKL">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7An-TO-Czr" userLabel="About Us" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="Kzs-2I-TKw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" name="topbar"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" name="white"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" name="white"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="pfO-vt-Beu" kind="relationship" relationship="rootViewController" id="75J-fU-jQw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S2h-fw-exz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="11448" y="-1719"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="jlg-D4-kVI"/>
         <segue reference="CI8-e4-iyS"/>
         <segue reference="qDU-Ly-e6W"/>
-        <segue reference="dNm-ey-olM"/>
+        <segue reference="zkG-c2-ajw"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" name="white"/>
     <resources>
