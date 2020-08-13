@@ -20,6 +20,7 @@
 		E012DDC124DCECD300772678 /* ReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E012DDC024DCECD300772678 /* ReviewsViewController.swift */; };
 		E0477B7A24E35A2100671827 /* ReviewsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0477B7924E35A2000671827 /* ReviewsTVC.swift */; };
 		E0477B7C24E35B4200671827 /* ReviewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0477B7B24E35B4200671827 /* ReviewsModel.swift */; };
+		E0477B7E24E4A1C100671827 /* RatingActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0477B7D24E4A1C100671827 /* RatingActionViewController.swift */; };
 		E081F35A24BBE9470049AB0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E081F35924BBE9470049AB0F /* AppDelegate.swift */; };
 		E081F35C24BBE9470049AB0F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E081F35B24BBE9470049AB0F /* SceneDelegate.swift */; };
 		E081F36324BBE95A0049AB0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E081F36224BBE95A0049AB0F /* Assets.xcassets */; };
@@ -80,6 +81,7 @@
 		E012DDC024DCECD300772678 /* ReviewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsViewController.swift; sourceTree = "<group>"; };
 		E0477B7924E35A2000671827 /* ReviewsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsTVC.swift; sourceTree = "<group>"; };
 		E0477B7B24E35B4200671827 /* ReviewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsModel.swift; sourceTree = "<group>"; };
+		E0477B7D24E4A1C100671827 /* RatingActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingActionViewController.swift; sourceTree = "<group>"; };
 		E081F35624BBE9470049AB0F /* Sabot Community.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sabot Community.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E081F35924BBE9470049AB0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E081F35B24BBE9470049AB0F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 				E012DDC024DCECD300772678 /* ReviewsViewController.swift */,
 				E0477B7924E35A2000671827 /* ReviewsTVC.swift */,
 				E0477B7B24E35B4200671827 /* ReviewsModel.swift */,
+				E0477B7D24E4A1C100671827 /* RatingActionViewController.swift */,
 			);
 			path = "Sabot Community";
 			sourceTree = "<group>";
@@ -497,6 +500,7 @@
 				E081F35A24BBE9470049AB0F /* AppDelegate.swift in Sources */,
 				1961684624D8B9FC00E5669E /* ContactUsController.swift in Sources */,
 				E012DDBD24DC867C00772678 /* UserListTVC.swift in Sources */,
+				E0477B7E24E4A1C100671827 /* RatingActionViewController.swift in Sources */,
 				E0477B7C24E35B4200671827 /* ReviewsModel.swift in Sources */,
 				E081F39D24BEABE60049AB0F /* PublicsViewController.swift in Sources */,
 				E081F35C24BBE9470049AB0F /* SceneDelegate.swift in Sources */,
