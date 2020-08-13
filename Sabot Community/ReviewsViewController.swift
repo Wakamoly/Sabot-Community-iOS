@@ -14,13 +14,33 @@ import SwiftyJSON
 import ZGRatingView
 import AARatingBar
 
-class ReviewsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ReviewsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NotifyReloadReviews {
     
+    //resetting view for returning from another VC
+    func notifyDelegate() {
+        loadReviewsTop()
+        self.view .setNeedsDisplay()
+    }
+    
+    //segue to this VC variables
     var query:String = ""
     var queryName:String = ""
     var queryID:String = ""
+    
+    //segue to profile variables
     var toProfileID:String = ""
+    
+    //segue to review variables
+    var canReviewThis:String = ""
+    var subnameToReview:String = ""
+    var tagnameToReview:String = ""
+    var verifiedToReview:String = ""
+    var imageToReview:String = ""
+    var onlineToReview:String = ""
+    
+    //table view cell model
     private var reviews = [ReviewsModel]()
+    
     let defaultValues = UserDefaults.standard
     let deviceusername = UserDefaults.standard.string(forKey: "device_username")!
     let deviceuserid = UserDefaults.standard.string(forKey: "device_userid")!
@@ -44,6 +64,17 @@ class ReviewsViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var reviewsTableView: UITableView!
     @IBOutlet weak var noReviewsLabel: UILabel!
     @IBOutlet weak var cannotLoadView: UIView!
+    @IBAction func toReviewButton(_ sender: Any) {
+        if canReviewThis == "yes" {
+            performSegue(withIdentifier: "toReview", sender: nil)
+        }else{
+            if query == "profile" {
+                self.view.showToast(toastMessage: "You must connect with this user before creating a review!", duration:2)
+            }else if query == "public"{
+                self.view.showToast(toastMessage: "You must follow this game before creating a review!", duration:2)
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,6 +98,7 @@ class ReviewsViewController: UIViewController, UITableViewDataSource, UITableVie
         
         self.navigationItem.title = "@"+queryName
         
+        //start UI query loading
         loadReviewsTop()
     }
     
@@ -124,8 +156,9 @@ class ReviewsViewController: UIViewController, UITableViewDataSource, UITableVie
                 if canReview == "yes"{
                     self.toReviewThisButton.backgroundColor = UIColor(named: "green")
                     self.toReviewThisButton.titleLabel!.text = "CREATE A REVIEW"
-                    let toReviewGesture = UITapGestureRecognizer(target: self, action: #selector(ReviewsViewController.toReview(_:)))
-                    self.toReviewThisButton.addGestureRecognizer(toReviewGesture)
+                    self.canReviewThis = canReview!
+//                    let toReviewGesture = UITapGestureRecognizer(target: self, action: #selector(ReviewsViewController.toReview(_:)))
+//                    self.toReviewThisButton.addGestureRecognizer(toReviewGesture)
                 }else if self.queryID == self.deviceusername && self.query == "profile"{
                     self.toReviewThisButton.isHidden = true
                 }
@@ -149,6 +182,13 @@ class ReviewsViewController: UIViewController, UITableViewDataSource, UITableVie
                 
                 self.reviewsScrollView.isHidden = false
                 self.loadReviews()
+                
+                
+                self.subnameToReview = subname!
+                self.tagnameToReview = tagname!
+                self.verifiedToReview = verified!
+                self.imageToReview = image!
+                self.onlineToReview = online!
                 
             case let .failure(error):
                 print(error)
@@ -205,8 +245,7 @@ class ReviewsViewController: UIViewController, UITableViewDataSource, UITableVie
     
     //alternative tap gesture function for segue
     @objc func toReview(_ sender: UITapGestureRecognizer){
-        // Segue to review controller
-        //performSegue(withIdentifier: "toUploadCover", sender: nil)
+        performSegue(withIdentifier: "toReview", sender: nil)
     }
     
     override func didReceiveMemoryWarning() {
@@ -282,9 +321,14 @@ class ReviewsViewController: UIViewController, UITableViewDataSource, UITableVie
     //Segue handling
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toReview" {
-            if let destination = segue.destination as? UploadPhotoController {
-                //destination.imageUploadTo = "profile_pic"
-                //destination.profileDelegate = self
+            if let destination = segue.destination as? RatingActionViewController {
+                destination.query = self.query
+                destination.queryID = self.queryID
+                destination.subname = self.subnameToReview
+                destination.tagname = self.tagnameToReview
+                destination.verified = self.verifiedToReview
+                destination.image = self.imageToReview
+                destination.online = self.onlineToReview
             }
         }else if segue.identifier == "toProfile" {
             if let destination = segue.destination as? ProfileViewController {
