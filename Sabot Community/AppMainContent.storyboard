@@ -1970,6 +1970,7 @@
                                                                     </userDefinedRuntimeAttribute>
                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isEnabled" value="NO"/>
                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="canAnimate" value="YES"/>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isAbsValue" value="NO"/>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                         </subviews>
@@ -2241,17 +2242,17 @@
                                                         <color key="backgroundColor" name="colorPrimary"/>
                                                         <prototypes>
                                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="reviewTableCell" id="Q3Z-ZS-xg0" customClass="ReviewsTVC" customModule="Sabot_Community" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="28" width="414" height="263.66665649414062"/>
+                                                                <rect key="frame" x="0.0" y="28" width="414" height="267.33334350585938"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Q3Z-ZS-xg0" id="s1U-o3-07P">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="263.66665649414062"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="267.33334350585938"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vLN-zf-oAR" userLabel="ContentStackView">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="414" height="263.66666666666669"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="414" height="267.33333333333331"/>
                                                                             <subviews>
                                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YDt-1c-7i7" userLabel="ReviewLayout">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="263.66666666666669"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="267.33333333333331"/>
                                                                                     <subviews>
                                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qtd-85-38g" userLabel="ProfileImageView">
                                                                                             <rect key="frame" x="5" y="5" width="65" height="65"/>
@@ -2296,13 +2297,13 @@
                                                                                             <nil key="highlightedColor"/>
                                                                                         </label>
                                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="249" text="Review body here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jPZ-wO-yBb" userLabel="Body">
-                                                                                            <rect key="frame" x="75" y="25.333333333333329" width="339" height="195.33333333333337"/>
+                                                                                            <rect key="frame" x="75" y="25.333333333333329" width="339" height="199"/>
                                                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                             <nil key="highlightedColor"/>
                                                                                         </label>
                                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BEk-Fh-8d9" userLabel="RatingView" customClass="AARatingBar" customModule="AARatingBar">
-                                                                                            <rect key="frame" x="75" y="223.66666666666666" width="80" height="20"/>
+                                                                                            <rect key="frame" x="75" y="227.33333333333334" width="80" height="20"/>
                                                                                             <color key="tintColor" name="green"/>
                                                                                             <constraints>
                                                                                                 <constraint firstAttribute="width" constant="80" id="FHz-iJ-Oin"/>
@@ -2316,13 +2317,13 @@
                                                                                             </userDefinedRuntimeAttributes>
                                                                                         </view>
                                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Profile Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xsu-Pd-bUz" userLabel="ProfileName">
-                                                                                            <rect key="frame" x="75" y="243.66666666666666" width="83" height="16.999999999999972"/>
+                                                                                            <rect key="frame" x="75" y="247.33333333333334" width="83" height="17.000000000000028"/>
                                                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                             <color key="textColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                             <nil key="highlightedColor"/>
                                                                                         </label>
                                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="A little while ago" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wt0-Bd-p4o" userLabel="Date">
-                                                                                            <rect key="frame" x="309.33333333333331" y="244.33333333333334" width="99.666666666666686" height="15.666666666666657"/>
+                                                                                            <rect key="frame" x="309.33333333333331" y="248" width="99.666666666666686" height="15.666666666666686"/>
                                                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                             <nil key="highlightedColor"/>
@@ -2349,7 +2350,7 @@
                                                                                     </constraints>
                                                                                 </view>
                                                                                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cGo-sH-5tz" userLabel="ReplyLayout">
-                                                                                    <rect key="frame" x="0.0" y="263.66666666666669" width="414" height="0.0"/>
+                                                                                    <rect key="frame" x="0.0" y="267.33333333333331" width="414" height="0.0"/>
                                                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                                                 </view>
                                                                             </subviews>
@@ -2551,6 +2552,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                 <state key="normal" title="SUBMIT REVIEW"/>
+                                <connections>
+                                    <action selector="submitButtonAction:" destination="GiI-KV-NWs" eventType="touchUpInside" id="v2N-Y6-iAE"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" name="colorPrimary"/>
@@ -2594,6 +2598,7 @@
                         <viewLayoutGuide key="safeArea" id="VrV-Ua-LQS"/>
                     </view>
                     <connections>
+                        <outlet property="barLabel" destination="O3e-Eh-Iqi" id="o3p-WZ-3v2"/>
                         <outlet property="descBox" destination="GT2-hs-9QN" id="w5W-y6-XJ4"/>
                         <outlet property="onlineIV" destination="gab-pA-iMK" id="chj-1z-bjr"/>
                         <outlet property="reviewedImage" destination="tGi-wg-Kx8" id="hzB-aw-a9S"/>

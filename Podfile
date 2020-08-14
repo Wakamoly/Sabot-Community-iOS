@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+ platform :ios, '13.6'
 
 target 'Sabot Community' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -15,6 +15,8 @@ target 'Sabot Community' do
   pod 'ActiveLabel'
   pod 'iOSDropDown'
   pod 'CropViewController'
+  pod 'RSSelectionMenu'
+  pod 'PopupDialog'
 
   target 'Sabot CommunityTests' do
     inherit! :search_paths

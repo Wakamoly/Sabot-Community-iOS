@@ -11,7 +11,6 @@ import EnhancedCircleImageView
 import AlamofireImage
 import Alamofire
 import SwiftyJSON
-import ZGRatingView
 import AARatingBar
 
 class ReviewsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NotifyReloadReviews {

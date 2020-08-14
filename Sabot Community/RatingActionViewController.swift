@@ -11,6 +11,8 @@ import AARatingBar
 import EnhancedCircleImageView
 import Alamofire
 import AlamofireImage
+import PopupDialog
+import SwiftyJSON
 
 protocol NotifyReloadReviews:class{
     func notifyDelegate()
@@ -18,6 +20,11 @@ protocol NotifyReloadReviews:class{
 
 class RatingActionViewController: UIViewController {
     
+    
+    let defaultValues = UserDefaults.standard
+    let deviceusername = UserDefaults.standard.string(forKey: "device_username")!
+    let deviceuserid = UserDefaults.standard.string(forKey: "device_userid")!
+    let indicator: UIActivityIndicatorView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
     
     weak var reviewDelegate: NotifyReloadReviews? = nil
     
@@ -28,16 +35,115 @@ class RatingActionViewController: UIViewController {
     var verified:String = ""
     var image:String = ""
     var online:String = ""
+    var currentStarRating:CGFloat = 0.0
     
     @IBOutlet weak var reviewedImage: EnhancedCircleImageView!
     @IBOutlet weak var subnameLabel: UILabel!
     @IBOutlet weak var tagnameLabel: UILabel!
     @IBOutlet weak var starBar: AARatingBar!
+    @IBOutlet weak var barLabel: UILabel!
     @IBOutlet weak var titleBox: UITextField!
     @IBOutlet weak var descBox: UITextField!
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var verifiedIV: EnhancedCircleImageView!
     @IBOutlet weak var onlineIV: EnhancedCircleImageView!
+    @IBAction func submitButtonAction(_ sender: Any) {
+        if !(descBox.text == "") && !(titleBox.text == "") && !(starBar.value == 0.0) {
+            
+            // Dialog box view
+            
+            // Prepare the popup assets
+            let title = "Submit review?"
+            let message = "WARNING: You risk immediate account termination if your submitted review goes against our code of conduct.\nExamples of inappropriate content include (but are not limited to):\n" +
+            "•Content that could be considered violent or threatening.\n" +
+            "•References to illegal use of alcohol, illegal drugs/illicit substances.\n" +
+            "•Content that is sexually suggestive or revealing, or could be considered objectionable.\n" +
+            "•Content that may be considered insulting, non-constructive, defamatory to individuals/organizations.\n" +
+            "•Staff/users' confidential or private information.\n" +
+            "•Any other content that is inconsistent with Sabot Community policies, code of conduct, or mission statement.\n\nSubmit Review?"
+            //let image = UIImage(named: "icons8_question_mark_64")
+
+            // Create the dialog
+            let popup = PopupDialog(title: title, message: message)
+
+            // Create buttons
+            let buttonNo = CancelButton(title: "Cancel") {
+                print("Canceled")
+                self.submitButton.isEnabled = true
+            }
+
+            // This button will not the dismiss the dialog
+//            let buttonTwo = DefaultButton(title: "ADMIRE CAR", dismissOnTap: false) {
+//                print("What a beauty!")
+//            }
+
+            let buttonYes = DefaultButton(title: "Submit", height: 60) {
+                print("Submitted")
+                self.indicator.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
+                self.indicator.center = self.view.center
+                self.view.addSubview(self.indicator)
+                self.view.bringSubviewToFront(self.indicator)
+                self.indicator.startAnimating()
+                self.submitButton.isEnabled = false
+                
+                let body = self.descBox.text
+                let added_by = self.deviceusername
+                let review_to = self.queryID
+                let rating = self.starBar.value
+                let title = self.titleBox.text
+                self.submitReview(body!,added_by,review_to,rating,title!)
+            }
+
+            // Add buttons to dialog
+            // Alternatively, you can use popup.addButton(buttonOne)
+            // to add a single button
+            popup.addButtons([buttonNo,buttonYes])
+
+            // Present dialog
+            self.present(popup, animated: true, completion: nil)
+            
+            
+            
+            
+        }else{
+            self.view.showToast(toastMessage: "You must enter the required fields!", duration:2)
+            if starBar.value == 0.0 {
+                barLabel.textColor = UIColor(named: "pin")
+            }
+        }
+    }
+    
+    func submitReview(_ body:String,_ added_by:String,_ review_to:String,_ rating:CGFloat,_ title:String){
+        let parameters: Parameters=["body":body,
+            "added_by":added_by,
+            "review_to":review_to,
+            "rating":rating,
+            "title":title]
+        self.dismiss(animated: true, completion: nil)
+        self.reviewDelegate?.notifyDelegate()
+//        AF.request(URLConstants.ROOT_URL+"reviewsTopGet.php", method: .post, parameters: parameters).responseJSON{
+//            response in
+//            //printing response
+//            print(response)
+//
+//            switch response.result {
+//            case .success(let value):
+//                let jsonData = JSON(value)
+//                if (!((jsonData["error"].string != nil))) {
+//                    if (jsonData["error"]==false){
+//                          
+//                    }else{
+//                        let message = jsonData["message"].string
+//                        self.view.showToast(toastMessage: message!, duration:2)
+//                    }
+//                }else{
+//                    self.view.showToast(toastMessage: "Network Error!", duration:2)
+//                }
+//            case let .failure(error):
+//                print(error)
+//            }
+//        }
+    }
     
 
     override func viewDidLoad() {
@@ -55,6 +161,31 @@ class RatingActionViewController: UIViewController {
             withURL: URL(string:URLConstants.BASE_URL+image)!,
             imageTransition: .crossDissolve(1)
         )
+        
+        starBar.ratingDidChange = {
+            self.currentStarRating = $0
+            print(self.currentStarRating)
+            switch self.currentStarRating {
+            case 1.0:
+                self.barLabel.text = "Bad"
+                break
+            case 2.0:
+                self.barLabel.text = "Could use some improvement"
+                break
+            case 3.0:
+                self.barLabel.text = "Average"
+                break
+            case 4.0:
+                self.barLabel.text = "Good"
+                break
+            case 5.0:
+                self.barLabel.text = "Great!"
+                break
+            default:
+                self.barLabel.text = "Please select a rating!"
+                break
+            }
+        }
         
     }
     
