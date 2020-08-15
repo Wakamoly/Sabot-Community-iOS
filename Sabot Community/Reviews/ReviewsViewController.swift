@@ -146,7 +146,7 @@ class ReviewsViewController: UIViewController, UITableViewDataSource, UITableVie
                 
                 
                 let infoarray = jsonObject["infoarray"][0]
-                let thisID = infoarray["id"].int
+                // let thisID = infoarray["id"].int
                 let image = infoarray["image"].rawString()
                 let verified = infoarray["verified"].string
                 let online = infoarray["online"].string

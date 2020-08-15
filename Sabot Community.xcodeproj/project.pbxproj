@@ -162,6 +162,91 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		E0477B8024E8683300671827 /* UserList */ = {
+			isa = PBXGroup;
+			children = (
+				E012DDB824DB132000772678 /* UserListViewController.swift */,
+				E012DDBA24DB631700772678 /* UserListModel.swift */,
+				E012DDBC24DC867C00772678 /* UserListTVC.swift */,
+			);
+			path = UserList;
+			sourceTree = "<group>";
+		};
+		E0477B8124E8685100671827 /* Reviews */ = {
+			isa = PBXGroup;
+			children = (
+				E0477B7D24E4A1C100671827 /* RatingActionViewController.swift */,
+				E012DDC024DCECD300772678 /* ReviewsViewController.swift */,
+				E0477B7924E35A2000671827 /* ReviewsTVC.swift */,
+				E0477B7B24E35B4200671827 /* ReviewsModel.swift */,
+			);
+			path = Reviews;
+			sourceTree = "<group>";
+		};
+		E0477B8224E8688900671827 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				E081F38B24BBEBA00049AB0F /* ProfileViewController.swift */,
+				E0DF7FB824D23A1200C5E449 /* UploadPhotoController.swift */,
+				E0A7E7E424CF3E380033C510 /* ProfilePostsTVC.swift */,
+				E0A7E7E624CF4B920033C510 /* ProfileNewsModel.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		E0477B8324E86B5200671827 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				1961684724E1EA2500E5669E /* AboutUsController.swift */,
+				1961684524D8B9FC00E5669E /* ContactUsController.swift */,
+				1928761124CBCE77006A09F1 /* SideMenuController.swift */,
+				E081F39824BEAB500049AB0F /* DashboardViewController.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		E0477B8424E86B6800671827 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				E081F38A24BBEBA00049AB0F /* RegisterViewController.swift */,
+				E081F38924BBEBA00049AB0F /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		E0477B8524E86B9200671827 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				E081F38C24BBEBA10049AB0F /* URLConstants.swift */,
+				E081F39424BCE9FC0049AB0F /* ToastMessage.swift */,
+			);
+			path = Libraries;
+			sourceTree = "<group>";
+		};
+		E0477B8624E86BA400671827 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				E081F39A24BEABBA0049AB0F /* NotificationsViewController.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
+		E0477B8724E86BAE00671827 /* Publics */ = {
+			isa = PBXGroup;
+			children = (
+				E081F39C24BEABE60049AB0F /* PublicsViewController.swift */,
+			);
+			path = Publics;
+			sourceTree = "<group>";
+		};
+		E0477B8824E86BBC00671827 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				E081F39E24BEAC060049AB0F /* SearchViewController.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		E081F34D24BBE9470049AB0F = {
 			isa = PBXGroup;
 			children = (
@@ -187,37 +272,24 @@
 		E081F35824BBE9470049AB0F /* Sabot Community */ = {
 			isa = PBXGroup;
 			children = (
-				E081F38C24BBEBA10049AB0F /* URLConstants.swift */,
+				E0477B8524E86B9200671827 /* Libraries */,
 				E081F35924BBE9470049AB0F /* AppDelegate.swift */,
 				E081F35B24BBE9470049AB0F /* SceneDelegate.swift */,
-				E081F39424BCE9FC0049AB0F /* ToastMessage.swift */,
 				E081F36424BBE95A0049AB0F /* LaunchScreen.storyboard */,
 				E081F39124BBEBA80049AB0F /* Main.storyboard */,
-				E081F38A24BBEBA00049AB0F /* RegisterViewController.swift */,
-				E081F38924BBEBA00049AB0F /* LoginViewController.swift */,
+				E0477B8424E86B6800671827 /* Login */,
 				E081F39624BD5D8D0049AB0F /* AppMainContent.storyboard */,
-				1961684724E1EA2500E5669E /* AboutUsController.swift */,
-				1961684524D8B9FC00E5669E /* ContactUsController.swift */,
-				E0A7E7E624CF4B920033C510 /* ProfileNewsModel.swift */,
-				1928761124CBCE77006A09F1 /* SideMenuController.swift */,
-				E081F39824BEAB500049AB0F /* DashboardViewController.swift */,
-				E081F39A24BEABBA0049AB0F /* NotificationsViewController.swift */,
-				E0DF7FB824D23A1200C5E449 /* UploadPhotoController.swift */,
-				E081F39C24BEABE60049AB0F /* PublicsViewController.swift */,
-				E081F39E24BEAC060049AB0F /* SearchViewController.swift */,
-				E081F38B24BBEBA00049AB0F /* ProfileViewController.swift */,
-				E0A7E7E424CF3E380033C510 /* ProfilePostsTVC.swift */,
+				E0477B8324E86B5200671827 /* Dashboard */,
+				E0477B8024E8683300671827 /* UserList */,
+				E0477B8224E8688900671827 /* Profile */,
+				E0477B8124E8685100671827 /* Reviews */,
+				E0477B8624E86BA400671827 /* Notifications */,
+				E0477B8724E86BAE00671827 /* Publics */,
+				E0477B8824E86BBC00671827 /* Search */,
 				E0A7E7E824CF50F20033C510 /* Media.xcassets */,
 				E081F36224BBE95A0049AB0F /* Assets.xcassets */,
 				E081F36724BBE95A0049AB0F /* Info.plist */,
 				E012DDB624DA1A4E00772678 /* EmptyVC.swift */,
-				E012DDB824DB132000772678 /* UserListViewController.swift */,
-				E012DDBA24DB631700772678 /* UserListModel.swift */,
-				E012DDBC24DC867C00772678 /* UserListTVC.swift */,
-				E012DDC024DCECD300772678 /* ReviewsViewController.swift */,
-				E0477B7924E35A2000671827 /* ReviewsTVC.swift */,
-				E0477B7B24E35B4200671827 /* ReviewsModel.swift */,
-				E0477B7D24E4A1C100671827 /* RatingActionViewController.swift */,
 			);
 			path = "Sabot Community";
 			sourceTree = "<group>";

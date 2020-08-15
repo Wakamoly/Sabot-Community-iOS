@@ -252,7 +252,7 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
                 let jsonObject = JSON(value)
                 let jsonData = jsonObject[0]
                 if (jsonData["id"].rawString() == userProfileIDS) {
-                    let thisProfileID = jsonData["id"].int
+                    //let thisProfileID = jsonData["id"].int
                     let nickname = jsonData["nickname"].rawString()
                     let username = jsonData["username"].rawString()
                     let description = jsonData["description"].string
@@ -285,7 +285,7 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
                     let nintendo = jsonData["nintendo"].string
                     let isFollowing = jsonData["isFollowing"].string
                     let isConnected = jsonData["isConnected"].string
-                    let connections = jsonData["connections"].string
+                    //let connections = jsonData["connections"].string
                     
                     
                     self.userUsername = username!

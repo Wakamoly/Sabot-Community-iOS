@@ -29,7 +29,6 @@ class UserListViewController: UIViewController, UITableViewDataSource, UITableVi
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        ///print("Query: "+query+" QueryID: "+queryID)
         
         //type of query, set title of navigation controller (doesn't work for some reason)
         switch query {
@@ -75,7 +74,7 @@ class UserListViewController: UIViewController, UITableViewDataSource, UITableVi
         AF.request(URLConstants.ROOT_URL+"user_list_query.php?queryid="+queryID+"&query="+query+"&userid="+deviceuserid+"&deviceusername="+deviceusername, method: .get).responseJSON{
             response in
             //printing response
-            print(response)
+            //print(response)
             
             switch response.result {
             case .success(let value):
