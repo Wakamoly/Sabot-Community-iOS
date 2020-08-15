@@ -15,10 +15,12 @@ import AARatingBar
 
 class ReviewsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NotifyReloadReviews {
     
+    
     //resetting view for returning from another VC
     func notifyDelegate() {
         loadReviewsTop()
         self.view .setNeedsDisplay()
+        print("Shit worked")
     }
     
     //segue to this VC variables
@@ -270,6 +272,7 @@ class ReviewsViewController: UIViewController, UITableViewDataSource, UITableVie
         //displaying values
         cell.profileName.text = reviewI.nickname
         cell.bodyLabel.text = reviewI.comments
+        cell.titleLabel.text = reviewI.title
         
         cell.time.text = reviewI.time
         
