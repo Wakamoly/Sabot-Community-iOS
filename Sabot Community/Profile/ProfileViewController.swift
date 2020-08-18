@@ -22,6 +22,7 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
         userProfileID = defaultValues.string(forKey: "device_userid")!
         loadProfileTop(userProfileID)
         self.view .setNeedsDisplay()
+        print("This is working")
     }
     
     var profileRefresh:UIRefreshControl!

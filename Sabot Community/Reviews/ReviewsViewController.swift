@@ -15,7 +15,6 @@ import AARatingBar
 
 class ReviewsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NotifyReloadReviews {
     
-    
     //resetting view for returning from another VC
     func notifyDelegate() {
         loadReviewsTop()
@@ -201,6 +200,7 @@ class ReviewsViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func loadReviews(){
+        self.reviews.removeAll()
         AF.request(URLConstants.ROOT_URL+"reviewsGet.php?userid="+deviceuserid+"&queryID="+queryID+"&query="+query+"&username="+deviceusername, method: .get).responseJSON{
             response in
             //printing response
@@ -331,6 +331,7 @@ class ReviewsViewController: UIViewController, UITableViewDataSource, UITableVie
                 destination.verified = self.verifiedToReview
                 destination.image = self.imageToReview
                 destination.online = self.onlineToReview
+                destination.reviewDelegate = self
             }
         }else if segue.identifier == "toProfile" {
             if let destination = segue.destination as? ProfileViewController {
