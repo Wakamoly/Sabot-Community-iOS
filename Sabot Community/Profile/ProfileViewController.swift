@@ -14,14 +14,45 @@ import SwiftyJSON
 import AARatingBar
 import ActiveLabel
 import iOSDropDown
+import SafariServices
+import CropViewController
 
-class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDataSource, UITableViewDelegate, NotifyReloadProfileData {    
+extension UIViewController {
+    var isModal: Bool {
+        if let index = navigationController?.viewControllers.firstIndex(of: self), index > 0 {
+            return false
+        } else if presentingViewController != nil {
+            return true
+        } else if let navigationController = navigationController, navigationController.presentingViewController?.presentedViewController == navigationController {
+            return true
+        } else if let tabBarController = tabBarController, tabBarController.presentingViewController is UITabBarController {
+            return true
+        } else {
+            return false
+        }
+    }
+}
+
+class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDataSource, UITableViewDelegate, NotifyReloadProfileData, UIImagePickerControllerDelegate & UINavigationControllerDelegate, CropViewControllerDelegate {
+    
     
     //resetting view for returning from another VC, most likely when settings/profile images are changed
     func notifyDelegate() {
         userProfileID = defaultValues.string(forKey: "device_userid")!
         loadProfileTop(userProfileID)
         self.view .setNeedsDisplay()
+    }
+    //resetting view after post submit
+    func postSubmitReset() {
+        let storyboard = UIStoryboard(name: "AppMainContent", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "ProfileViewController")
+        var viewcontrollers = self.navigationController!.viewControllers
+        viewcontrollers.removeLast()
+        viewcontrollers.append(vc)
+        self.navigationController?.setViewControllers(viewcontrollers, animated: true)
+        userProfileID = defaultValues.string(forKey: "device_userid")!
+        loadProfileTop(userProfileID)
+        newPostImage = nil
     }
     
     var profileRefresh:UIRefreshControl!
@@ -30,6 +61,8 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
     //test here by putting in either user id or username to load profile, or leave blank to load yours
     var userProfileID: String = ""
     var userUsername: String = ""
+    
+    var username_to:String = ""
     let defaultValues = UserDefaults.standard
     let deviceusername = UserDefaults.standard.string(forKey: "device_username")!
     let deviceuserid = UserDefaults.standard.string(forKey: "device_userid")!
@@ -39,6 +72,20 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
     //segue variables
     var coverPhotoURL:String = ""
     var profilePhotoURL:String = ""
+    var profileWebsiteURL:String = ""
+    var twitchURL:String = ""
+    var psnURL:String = ""
+    var xboxURL:String = ""
+    var discordURL:String = ""
+    var steamURL:String = ""
+    var youtubeURL:String = ""
+    var instagramURL:String = ""
+    var twitterURL:String = ""
+    var discordUserURL:String = ""
+    
+    //profile post image variable
+    var newPostImage:UIImage? = nil
+    
     
     //view setup
     @IBOutlet weak var profileScrollView: UIScrollView!
@@ -153,42 +200,38 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
         performSegue(withIdentifier: "toUserListConnections", sender: nil)
     }
     @IBAction func followsTap(_ sender: Any) {
-        print("Followers tapped")
-        //Go to user list VC
         performSegue(withIdentifier: "toUserListFollowers", sender: nil)
     }
     @IBAction func nintendoTap(_ sender: Any) {
         print("Nintendo tapped")
     }
     @IBAction func twitterTap(_ sender: Any) {
-        print("Twitter tapped")
+        showWebView(for: "https://twitter.com/"+twitterURL)
     }
     @IBAction func discordUserTap(_ sender: Any) {
         print("Discord User tapped")
+        //TODO: Add popup with copy-able text
     }
     @IBAction func twitchTap(_ sender: Any) {
-        print("Twitch tapped")
+        showWebView(for: "https://www.twitch.tv/"+twitchURL)
     }
     @IBAction func instaTapped(_ sender: Any) {
-        print("Instagram tapped")
+        showWebView(for: "https://instagram.com/"+instagramURL)
     }
     @IBAction func youtubeTap(_ sender: Any) {
-        print("Youtube tapped")
-        let zoomvc = ZoomImageViewController(nibName: "ZoomImageViewController", bundle: nil)
-        zoomvc.image = self.profilePhotoURL
-        navigationController?.pushViewController(zoomvc, animated: true)
+        showWebView(for: "https://youtube.com/channel/"+youtubeURL)
     }
     @IBAction func steamTap(_ sender: Any) {
-        print("Steam tapped")
+        showWebView(for: "https://steamcommunity.com/id/"+steamURL)
     }
     @IBAction func discordTap(_ sender: Any) {
-        print("Discord Server tapped")
+        showWebView(for: "https://www.discord.gg/"+discordURL)
     }
     @IBAction func xboxTap(_ sender: Any) {
-        print("Xbox tapped")
+        showWebView(for: "https://account.xbox.com/en-us/profile?gamertag="+xboxURL)
     }
     @IBAction func psnTap(_ sender: Any) {
-        print("PSN tapped")
+        showWebView(for: "https://psnprofiles.com/"+psnURL)
     }
     @IBAction func profileMorePressed(_ sender: Any) {
         print("More button pressed")
@@ -218,17 +261,134 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
     @IBAction func followUserPressed(_ sender: Any) {
         print("Follow user")
     }
+    
+    //new post image selecting
     @IBAction func postImageSelectorPressed(_ sender: Any) {
-        print("Image selector pressed")
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
         
-        
-        
+        self.present(imagePicker, animated: true, completion: nil)
     }
+    @IBOutlet weak var newPostImageButton: UIButton!
+    //MARK: ImagePicker Controller Delegate methods
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
+        
+        newPostImage = (info[.originalImage] as? UIImage)!
+        picker.dismiss(animated: true, completion: nil)
+        presentCropViewController()
+    }
+    
+    func presentCropViewController() {
+        let image: UIImage = newPostImage!
+        
+        var cropViewController:CropViewController? = nil
+        cropViewController = CropViewController(image: image)
+        cropViewController!.delegate = self
+        present(cropViewController!, animated: true, completion: nil)
+    }
+    
+    public func cropViewController(_ cropViewController: CropViewController, didCropToImage croppedImage: UIImage, withRect cropRect: CGRect, angle: Int) {
+        
+        newPostImageButton.setImage(croppedImage, for: .normal)
+        newPostImage = croppedImage
+        cropViewController.dismiss(animated: false, completion: nil)
+    }
+    
+    
+    
     @IBAction func postPlatformPressed(_ sender: Any) {
         self.platformDropdownTextField.touchAction()
     }
     @IBAction func postSubmit(_ sender: Any) {
         print("Submit button pressed")
+        let spinnerText = self.platformDropdownTextField.text!
+        let form = "user"
+        if(!(statusUpdate.text == "") && !(statusUpdate.text == "Let your followers know what you're up to...") && !(platformDropdownTextField.text == "")){
+            self.profileScrollView.isHidden = true
+            self.indicator.startAnimating()
+            self.submitStatus(self.statusUpdate.text!,self.deviceusername,self.userUsername,spinnerText,form)
+            self.view.endEditing(true)
+        }
+    }
+    
+    func submitStatus(_ body:String, _ added_by:String, _ user_to:String, _ type:String, _ form:String){
+        //print("body:"+body+" added_by:"+added_by+" user_to:"+user_to+" type:"+type+" form:"+form)
+        
+        
+        let parameters: Parameters=["body":body,
+            "added_by":added_by,
+            "user_to":user_to,
+            "user_id":deviceuserid,
+            "type":type,
+            "form":form]
+        AF.request(URLConstants.ROOT_URL+"new_post.php", method: .post, parameters: parameters).responseJSON{
+            response in
+            //printing response
+            //print(response)
+
+            switch response.result {
+            case .success(let value):
+                let jsonData = JSON(value)
+                if (!((jsonData["error"].string != nil))) {
+                    if (jsonData["error"]==false){
+                        if(self.newPostImage != nil){
+                            let post_id = jsonData["postid"].int
+                            self.postImageUpload(self.newPostImage!, String(post_id!))
+                        }
+                        self.postSubmitReset()
+                    }else{
+                        self.view.showToast(toastMessage: "Network error! (E.2)", duration:2)
+                        self.profileScrollView.isHidden = false
+                        self.indicator.stopAnimating()
+                    }
+                }else{
+                    self.view.showToast(toastMessage: "Network Error! (E.1)", duration:2)
+                    self.profileScrollView.isHidden = false
+                    self.indicator.stopAnimating()
+                }
+            case let .failure(error):
+                print(error)
+            }
+        }
+    }
+    
+    func postImageUpload(_ imageToUpload: UIImage, _ post_id:String) {
+        var request = URLRequest(url: NSURL(string: URLConstants.ROOT_URL+"new_post_image_upload.php")! as URL)
+        request.httpMethod = "POST";
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        let imageData:NSData = imageToUpload.jpegData(compressionQuality: 0.75)! as NSData
+        // convert the NSData to base64 encoding
+        let encodedImage:String = imageData.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)
+        
+        let jsonObject = ["name":Int64(Date().timeIntervalSince1970 * 1000),
+                          "post_id":post_id,
+                          "added_by":deviceusername,
+                          "image":encodedImage] as [String : Any]
+        
+        request.httpBody = try! JSONSerialization.data(withJSONObject: jsonObject)
+        // probably shouldn't uncomment this, could crash mac -> print(jsonObject)
+        
+        AF.request(request)
+            .responseJSON { response in
+                print(response)
+                
+                switch response.result {
+                case .success(let value):
+                    let jsonData = JSON(value)
+                    if (jsonData["error"].string=="true"){
+                        let message = jsonData["message"].string
+                        self.view.showToast(toastMessage: message!, duration:2)
+                    }
+                case let .failure(error):
+                    print(error)
+                    self.view.showToast(toastMessage: "Network error! Please try again.", duration:2)
+                }
+        }
     }
     
     
@@ -241,6 +401,11 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
         }else{
             self.addPostView.isHidden = true
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     
     
@@ -259,7 +424,7 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
         AF.request(URLConstants.ROOT_URL+"profiletop_api.php?userid="+deviceuserid+"&userid2="+userProfileIDS+"&deviceusername="+deviceusername, method: .get).responseJSON{
             response in
             //printing response
-            print(response)
+            //print(response)
             
             switch response.result {
             case .success(let value):
@@ -313,21 +478,20 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
                         self.ivCoverPhotoPicker.isHidden = false
                         self.ivProfilePhotoPicker.isHidden = false
                         
-                        let fGuesture = UITapGestureRecognizer(target: self, action: #selector(ProfileViewController.showF(_:)))
+                        let fGuesture = UITapGestureRecognizer(target: self, action: #selector(self.toImageUploadVC(_:)))
                         self.ivCoverPhotoPicker.addGestureRecognizer(fGuesture)
                         
                     }else{
-                        /*self.sendMessageStack.isHidden = false
-                         self.addFriendStack.isHidden = false
-                         self.addFriendProgress.isHidden = false
-                         self.followProfileStack.isHidden = false*/
                         self.editProfileStack.isHidden = true
                         self.ivCoverPhotoPicker.isHidden = true
                         self.ivProfilePhotoPicker.isHidden = true
                     }
                     
-                    //TODO: parse out user defaults for if user is blocked, then add || isUserBlocked
-                    if(blocked=="yes"){
+                    var isUserBlocked = "no"
+                    let blocked_users:String = self.defaultValues.string(forKey: "device_blockedarray")!
+                    let blocked_array = blocked_users.components(separatedBy:",")
+                    if blocked_array.contains(username!){isUserBlocked = "yes"}
+                    if(blocked=="yes" || isUserBlocked == "yes"){
                         self.noProfileView.isHidden = false
                     }else if (user_closed=="yes"||user_banned=="yes"){
                         self.noProfileView.isHidden = false
@@ -347,19 +511,22 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
                     
                     if(discord_user != ""){
                         self.userDiscordProfile.text = discord_user
+                        self.discordUserURL = discord_user!
                     }else{
                         self.userDiscordProfileDetails.isHidden = true
                     }
                     if (twitter != "") {
                         self.userTwitter.text = twitter
+                        self.twitterURL = twitter!
                     }else{
                         self.userTwitterDetails.isHidden = true
                     }
                     if (website != "") {
                         self.profileWebsiteLabel.text = website!
-                        self.profileWebsiteLabel.handleURLTap { (URL) in
-                            UIApplication.shared.open(URL as URL, options: [:], completionHandler: nil)
-                        }
+                        self.profileWebsiteURL = website!
+                        
+                        let websiteGesture = UITapGestureRecognizer(target: self, action: #selector(self.websiteTap(_:)))
+                        self.profileWebsiteLabel.addGestureRecognizer(websiteGesture)
                     }else{
                         self.profileWebsiteContainer.isHidden = true
                     }
@@ -369,10 +536,6 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
                         self.userSwitchDetails.isHidden = true
                     }
                     
-                    //TODO: add profile cover click
-                    
-                    //TODO: add profile pic click
-                    
                     //TODO: Add message button to message->user
                     
                     self.followersCount.text = followers!
@@ -381,49 +544,55 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
                     
                     if (twitch != "") {
                         self.userTwitch.text = twitch
+                        self.twitchURL = twitch!
                     }else{
                         self.userTwitchDetails.isHidden = true
                     }
                     if psn != "" {
                         self.userPSN.text = psn
+                        self.psnURL = psn!
                     }else{
                         self.userPSNDetails.isHidden  = true
                     }
                     if xbox != "" {
                         self.userXbox.text = xbox
+                        self.xboxURL = xbox!
                     }else{
                         self.userXboxDetails.isHidden = true
                     }
                     if discord != "" {
                         self.userDiscord.text = "Discord Server"
+                        self.discordURL = discord!
                     }else{
                         self.userDiscordDetails.isHidden = true
                     }
                     if steam != "" {
                         self.userSteam.text = steam
+                        self.steamURL = steam!
                     }else{
                         self.userSteamDetails.isHidden = true
                     }
                     if youtube != "" {
                         self.userYoutube.text = "YouTube"
+                        self.youtubeURL = youtube!
                     }else{
                         self.userYoutubeDetails.isHidden = true
                     }
                     if instagram != "" {
                         self.userInstagram.text = instagram
+                        self.instagramURL = instagram!
                     }else{
                         self.userInstagramDetails.isHidden = true
                     }
                     
                     let averageFloat = Float(average!)
                     self.profileRating.value = CGFloat(averageFloat)
-                    //print(self.profileRating.value)
                     self.reviewCount.text = String(count!)
                     
-                    var username_to = ""
+                    
                     if !(self.deviceusername == username) {
                         //not our device's profile
-                        username_to = username!
+                        self.username_to = username!
                         if (isFollowing == "yes") {
                             self.followProfileStack.isHidden = true
                             self.followedProfileStack.isHidden = false
@@ -443,16 +612,12 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
                         }
                     }else{
                         // profile is device user's
-                        username_to = "none"
-                        //TODO: Set our profile picture here in user defaults if they don't match
+                        self.username_to = "none"
+                        self.defaultValues.set(profile_pic, forKey: "device_profilepic")
                     }
                     
                     /*let fGuesture = UITapGestureRecognizer(target: self, action: #selector(ProfileViewController.showF(_:)))
                      self.ivCoverPhotoPicker.addGestureRecognizer(fGuesture)*/
-                    
-                    //TODO submitStatusButton on click
-                    
-                    //TODO playerratingLayout on click
                     
                     //TODO moreButtonLayout on click
                     
@@ -476,7 +641,6 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
                     }
                     self.navigationItem.title = "@"+username!
                     self.labelNickname.text = nickname
-                    //self.postsNumLabel.text = num_posts
                     
                     let filter = AspectScaledToFillSizeWithRoundedCornersFilter(
                         size: self.profileCoverPic.frame.size,
@@ -493,10 +657,6 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
                     )
                     self.coverPhotoURL = cover_pic!
                     self.profilePhotoURL = profile_pic!
-                    
-                    //TODO followersTextView on click
-                    //TODO followingTV on click
-                    //TODO connectionsTV on click
                     
                     self.indicator.stopAnimating()
                     self.profileRefresh.endRefreshing()
@@ -522,7 +682,7 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
         AF.request(URLConstants.ROOT_URL+"profilenews_api.php?userid="+deviceuserid+"&userprofileid="+userProfileID+"&thisusername="+deviceusername, method: .get).responseJSON{
             response in
             //printing response
-            print(response)
+            //print(response)
             
             switch response.result {
             case .success(let value):
@@ -567,11 +727,11 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
     }
     
     func loadJoinedClans(){
-        
+        print("loadClans")
     }
     
     func loadProfilePublics(){
-        
+        print("loadPublics")
     }
     
     
@@ -588,14 +748,14 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
             self.postsQueryButton.backgroundColor = UIColor(named: "grey_80")
             self.clansQueryButton.backgroundColor = UIColor(named: "green")
             self.publicsPostsQueryButton.backgroundColor = UIColor(named: "grey_80")
-            //loadJoinedClans()
+            loadJoinedClans()
             self.profileItemsLabel.text = "Clans Joined"
             self.seeAllButton.isHidden = true
         }else if (buttonPressed == self.publicsPostsQueryButton){
             self.postsQueryButton.backgroundColor = UIColor(named: "grey_80")
             self.clansQueryButton.backgroundColor = UIColor(named: "grey_80")
             self.publicsPostsQueryButton.backgroundColor = UIColor(named: "green")
-            //loadProfilePublics()
+            loadProfilePublics()
             self.profileItemsLabel.text = "Clans Joined"
             self.seeAllButton.isHidden = true
         }
@@ -648,9 +808,11 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         profileRefresh = UIRefreshControl()
-        profileRefresh.addTarget(self, action: #selector(refresh), for:
-        .valueChanged)
-        profileScrollView.refreshControl = profileRefresh
+        if !isModal{
+            profileRefresh.addTarget(self, action: #selector(refresh), for:
+            .valueChanged)
+            profileScrollView.refreshControl = profileRefresh
+        }
     }
     
     override func viewDidLoad() {
@@ -831,10 +993,13 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
     
     
     //alternative tap gesture function for segue to cover image upload
-    @objc func showF(_ sender: UITapGestureRecognizer){
+    @objc func toImageUploadVC(_ sender: UITapGestureRecognizer){
         performSegue(withIdentifier: "toUploadCover", sender: nil)
     }
     
+    @objc func websiteTap(_ sender: UITapGestureRecognizer){
+        showWebView(for: self.profileWebsiteURL)
+    }
     
     //New post view handling of textview
     func textViewDidBeginEditing(_ statusUpdate: UITextView) {
@@ -884,7 +1049,7 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
         }
         
         if profilesNewsI.user_to != "none"{
-            cell.toUsernameLabel.text = "to "+profilesNewsI.user_to!
+            cell.toUsernameLabel.text = "to @"+profilesNewsI.user_to!
         }else{
             cell.toUsernameLabel.isHidden = true
         }
@@ -1026,6 +1191,18 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
         
         
     }
+    
+    func showWebView(for url: String) {
+        //Thanks billhole
+        guard let url = URL(string: url) else {
+            self.view.showToast(toastMessage: "Error - Invalid URL!", duration:2)
+            return
+        }
+        
+        let webView = SFSafariViewController(url: url)
+        present(webView, animated: true)
+    }
+    
     
     
 }

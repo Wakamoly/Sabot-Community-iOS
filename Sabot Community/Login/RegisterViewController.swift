@@ -64,7 +64,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             self.view.showToast(toastMessage: "Username must be between 4 and 20 characters!", duration:2)
         }else{
             if(password==password2 && !(password!.count<4)){
-                if isValidEmail(email!) {
+                if textFieldEmail.isEmail() {
                     let parameters: Parameters=["username":username!,
                                                 "email":email!,
                                                 "password":password!,
@@ -109,9 +109,9 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         performSegue(withIdentifier: "ToLogin", sender: nil)
     }
     
-    func isValidEmail(_ email: String) -> Bool {
-        return __emailPredicate.evaluate(with: email)
-    }
+//    func isValidEmail(_ email: String) -> Bool {
+//        return __emailPredicate.evaluate(with: email)
+//    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)

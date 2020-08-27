@@ -221,6 +221,7 @@
 		E0477B8524E86B9200671827 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				E076348A24F74E210097FA71 /* ZoomImage */,
 				E081F38C24BBEBA10049AB0F /* URLConstants.swift */,
 				E081F39424BCE9FC0049AB0F /* ToastMessage.swift */,
 			);
@@ -303,7 +304,6 @@
 				E081F36224BBE95A0049AB0F /* Assets.xcassets */,
 				E081F36724BBE95A0049AB0F /* Info.plist */,
 				E012DDB624DA1A4E00772678 /* EmptyVC.swift */,
-				E076348A24F74E210097FA71 /* ZoomImage */,
 			);
 			path = "Sabot Community";
 			sourceTree = "<group>";
