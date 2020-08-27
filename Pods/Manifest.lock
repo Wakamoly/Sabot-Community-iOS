@@ -7,6 +7,7 @@ PODS:
   - CropViewController (2.5.4)
   - DynamicBlurView (4.1.0)
   - EnhancedCircleImageView (0.1)
+  - ImageScrollView (1.8)
   - iOSDropDown (0.3.4)
   - NavigationDrawer (1.0.3)
   - PopupDialog (1.1.1):
@@ -21,6 +22,7 @@ DEPENDENCIES:
   - AlamofireImage
   - CropViewController
   - EnhancedCircleImageView
+  - ImageScrollView
   - iOSDropDown
   - NavigationDrawer
   - PopupDialog
@@ -36,6 +38,7 @@ SPEC REPOS:
     - CropViewController
     - DynamicBlurView
     - EnhancedCircleImageView
+    - ImageScrollView
     - iOSDropDown
     - NavigationDrawer
     - PopupDialog
@@ -50,12 +53,13 @@ SPEC CHECKSUMS:
   CropViewController: 980df34ffc499db89755b2f307f20eca00cd40c6
   DynamicBlurView: 58e18fae80bb614e34681a4486870e7d257b62e8
   EnhancedCircleImageView: 1069bbc14526d89502cc0e48b45f5da6a3317a47
+  ImageScrollView: 82912273486297285682bdb2a806742f0d39940c
   iOSDropDown: c10a761f9a00c3f1cc9d3bce43ae504628e2f692
   NavigationDrawer: ad87622628ed59589f8fe8e2338d27109ca51a64
   PopupDialog: 720c92befd8bc23c13442254945213db5612f149
   RSSelectionMenu: df7e43e453c10a48db4b1a03fd1b0d3918d10039
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: 4ed668ac03806db3f3dba5bac31d73eee8119de2
+PODFILE CHECKSUM: 3d3d18786399e91580c8354e2f257430722d5313
 
 COCOAPODS: 1.9.1

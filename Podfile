@@ -17,6 +17,7 @@ target 'Sabot Community' do
   pod 'CropViewController'
   pod 'RSSelectionMenu'
   pod 'PopupDialog'
+  pod 'ImageScrollView'
 
   target 'Sabot CommunityTests' do
     inherit! :search_paths

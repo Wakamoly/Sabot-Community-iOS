@@ -18,6 +18,8 @@
 		E012DDBB24DB631700772678 /* UserListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E012DDBA24DB631700772678 /* UserListModel.swift */; };
 		E012DDBD24DC867C00772678 /* UserListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E012DDBC24DC867C00772678 /* UserListTVC.swift */; };
 		E012DDC124DCECD300772678 /* ReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E012DDC024DCECD300772678 /* ReviewsViewController.swift */; };
+		E034C66C24F190B4006A7949 /* ZoomImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E034C66A24F190B4006A7949 /* ZoomImageViewController.swift */; };
+		E034C66D24F190B4006A7949 /* ZoomImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E034C66B24F190B4006A7949 /* ZoomImageViewController.xib */; };
 		E0477B7A24E35A2100671827 /* ReviewsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0477B7924E35A2000671827 /* ReviewsTVC.swift */; };
 		E0477B7C24E35B4200671827 /* ReviewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0477B7B24E35B4200671827 /* ReviewsModel.swift */; };
 		E0477B7E24E4A1C100671827 /* RatingActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0477B7D24E4A1C100671827 /* RatingActionViewController.swift */; };
@@ -79,6 +81,8 @@
 		E012DDBA24DB631700772678 /* UserListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListModel.swift; sourceTree = "<group>"; };
 		E012DDBC24DC867C00772678 /* UserListTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListTVC.swift; sourceTree = "<group>"; };
 		E012DDC024DCECD300772678 /* ReviewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsViewController.swift; sourceTree = "<group>"; };
+		E034C66A24F190B4006A7949 /* ZoomImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomImageViewController.swift; sourceTree = "<group>"; };
+		E034C66B24F190B4006A7949 /* ZoomImageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZoomImageViewController.xib; sourceTree = "<group>"; };
 		E0477B7924E35A2000671827 /* ReviewsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsTVC.swift; sourceTree = "<group>"; };
 		E0477B7B24E35B4200671827 /* ReviewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsModel.swift; sourceTree = "<group>"; };
 		E0477B7D24E4A1C100671827 /* RatingActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingActionViewController.swift; sourceTree = "<group>"; };
@@ -247,6 +251,15 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
+		E076348A24F74E210097FA71 /* ZoomImage */ = {
+			isa = PBXGroup;
+			children = (
+				E034C66A24F190B4006A7949 /* ZoomImageViewController.swift */,
+				E034C66B24F190B4006A7949 /* ZoomImageViewController.xib */,
+			);
+			path = ZoomImage;
+			sourceTree = "<group>";
+		};
 		E081F34D24BBE9470049AB0F = {
 			isa = PBXGroup;
 			children = (
@@ -290,6 +303,7 @@
 				E081F36224BBE95A0049AB0F /* Assets.xcassets */,
 				E081F36724BBE95A0049AB0F /* Info.plist */,
 				E012DDB624DA1A4E00772678 /* EmptyVC.swift */,
+				E076348A24F74E210097FA71 /* ZoomImage */,
 			);
 			path = "Sabot Community";
 			sourceTree = "<group>";
@@ -422,6 +436,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0A7E7E924CF50F20033C510 /* Media.xcassets in Resources */,
+				E034C66D24F190B4006A7949 /* ZoomImageViewController.xib in Resources */,
 				E081F36624BBE95A0049AB0F /* LaunchScreen.storyboard in Resources */,
 				E081F39724BD5D8D0049AB0F /* AppMainContent.storyboard in Resources */,
 				E081F36324BBE95A0049AB0F /* Assets.xcassets in Resources */,
@@ -568,6 +583,7 @@
 				E081F38D24BBEBA10049AB0F /* LoginViewController.swift in Sources */,
 				E081F38E24BBEBA10049AB0F /* RegisterViewController.swift in Sources */,
 				E081F39024BBEBA10049AB0F /* URLConstants.swift in Sources */,
+				E034C66C24F190B4006A7949 /* ZoomImageViewController.swift in Sources */,
 				E081F39524BCE9FD0049AB0F /* ToastMessage.swift in Sources */,
 				E081F35A24BBE9470049AB0F /* AppDelegate.swift in Sources */,
 				1961684624D8B9FC00E5669E /* ContactUsController.swift in Sources */,

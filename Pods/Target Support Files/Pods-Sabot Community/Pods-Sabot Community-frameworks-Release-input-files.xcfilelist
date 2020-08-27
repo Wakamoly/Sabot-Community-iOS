@@ -6,6 +6,7 @@ ${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework
 ${BUILT_PRODUCTS_DIR}/CropViewController/CropViewController.framework
 ${BUILT_PRODUCTS_DIR}/DynamicBlurView/DynamicBlurView.framework
 ${BUILT_PRODUCTS_DIR}/EnhancedCircleImageView/EnhancedCircleImageView.framework
+${BUILT_PRODUCTS_DIR}/ImageScrollView/ImageScrollView.framework
 ${BUILT_PRODUCTS_DIR}/NavigationDrawer/NavigationDrawer.framework
 ${BUILT_PRODUCTS_DIR}/PopupDialog/PopupDialog.framework
 ${BUILT_PRODUCTS_DIR}/RSSelectionMenu/RSSelectionMenu.framework

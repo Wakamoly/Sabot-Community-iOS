@@ -22,7 +22,6 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
         userProfileID = defaultValues.string(forKey: "device_userid")!
         loadProfileTop(userProfileID)
         self.view .setNeedsDisplay()
-        print("This is working")
     }
     
     var profileRefresh:UIRefreshControl!
@@ -37,6 +36,11 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
     let indicator: UIActivityIndicatorView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
     //var platformDropdown:NJDropDown! = nil
     
+    //segue variables
+    var coverPhotoURL:String = ""
+    var profilePhotoURL:String = ""
+    
+    //view setup
     @IBOutlet weak var profileScrollView: UIScrollView!
     @IBOutlet weak var ivCoverPhotoPicker: UIImageView!
     @IBOutlet weak var ivProfilePhotoPicker: UIImageView!
@@ -121,9 +125,15 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
     //These two can't be tapped for some reason
     @IBAction func coverPhotoTap(_ sender: Any) {
         print("Cover photo tapped")
+        let zoomvc = ZoomImageViewController(nibName: "ZoomImageViewController", bundle: nil)
+        zoomvc.image = self.coverPhotoURL
+        navigationController?.pushViewController(zoomvc, animated: true)
     }
     @IBAction func profilePicTap(_ sender: Any) {
         print("Profile pic tapped")
+        let zoomvc = ZoomImageViewController(nibName: "ZoomImageViewController", bundle: nil)
+        zoomvc.image = self.profilePhotoURL
+        navigationController?.pushViewController(zoomvc, animated: true)
     }
     
     
@@ -164,6 +174,9 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
     }
     @IBAction func youtubeTap(_ sender: Any) {
         print("Youtube tapped")
+        let zoomvc = ZoomImageViewController(nibName: "ZoomImageViewController", bundle: nil)
+        zoomvc.image = self.profilePhotoURL
+        navigationController?.pushViewController(zoomvc, animated: true)
     }
     @IBAction func steamTap(_ sender: Any) {
         print("Steam tapped")
@@ -478,6 +491,8 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
                         withURL: URL(string:URLConstants.BASE_URL+profile_pic!)!,
                         imageTransition: .crossDissolve(1)
                     )
+                    self.coverPhotoURL = cover_pic!
+                    self.profilePhotoURL = profile_pic!
                     
                     //TODO followersTextView on click
                     //TODO followingTV on click
