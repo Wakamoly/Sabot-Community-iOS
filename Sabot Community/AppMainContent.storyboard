@@ -1674,7 +1674,7 @@
             <objects>
                 <viewController id="nYN-QP-mJP" customClass="UserListViewController" customModule="Sabot_Community" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bdg-tQ-rud">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="n56-Zu-mMR" userLabel="UserListTableView">
@@ -1807,7 +1807,7 @@
             <objects>
                 <viewController id="VfY-wq-lx2" userLabel="Reviews Controller" customClass="ReviewsViewController" customModule="Sabot_Community" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IXo-rd-nKP">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ckf-bN-XXh" userLabel="CannotLoad">
@@ -2244,17 +2244,17 @@
                                                         <color key="backgroundColor" name="colorPrimary"/>
                                                         <prototypes>
                                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="reviewTableCell" id="Q3Z-ZS-xg0" customClass="ReviewsTVC" customModule="Sabot_Community" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="28" width="414" height="272.66665649414062"/>
+                                                                <rect key="frame" x="0.0" y="28" width="414" height="274"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Q3Z-ZS-xg0" id="s1U-o3-07P">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="272.66665649414062"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="274"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vLN-zf-oAR" userLabel="ContentStackView">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="414" height="272.66666666666669"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="414" height="274"/>
                                                                             <subviews>
                                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YDt-1c-7i7" userLabel="ReviewLayout">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="272.66666666666669"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="274"/>
                                                                                     <subviews>
                                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qtd-85-38g" userLabel="ProfileImageView">
                                                                                             <rect key="frame" x="5" y="5" width="65" height="65"/>
@@ -2299,13 +2299,13 @@
                                                                                             <nil key="highlightedColor"/>
                                                                                         </label>
                                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="249" text="Review body here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jPZ-wO-yBb" userLabel="Body">
-                                                                                            <rect key="frame" x="75" y="25.333333333333329" width="339" height="204.33333333333337"/>
+                                                                                            <rect key="frame" x="75" y="25.333333333333329" width="339" height="205.66666666666669"/>
                                                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                             <nil key="highlightedColor"/>
                                                                                         </label>
                                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BEk-Fh-8d9" userLabel="RatingView" customClass="AARatingBar" customModule="AARatingBar">
-                                                                                            <rect key="frame" x="75" y="232.66666666666666" width="80" height="20"/>
+                                                                                            <rect key="frame" x="75" y="234" width="80" height="20"/>
                                                                                             <color key="tintColor" name="green"/>
                                                                                             <constraints>
                                                                                                 <constraint firstAttribute="width" constant="80" id="FHz-iJ-Oin"/>
@@ -2319,13 +2319,13 @@
                                                                                             </userDefinedRuntimeAttributes>
                                                                                         </view>
                                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Profile Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xsu-Pd-bUz" userLabel="ProfileName">
-                                                                                            <rect key="frame" x="75" y="252.66666666666663" width="83" height="17"/>
+                                                                                            <rect key="frame" x="75" y="254" width="83" height="17"/>
                                                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                             <color key="textColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                             <nil key="highlightedColor"/>
                                                                                         </label>
                                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="A little while ago" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wt0-Bd-p4o" userLabel="Date">
-                                                                                            <rect key="frame" x="309.33333333333331" y="253.33333333333334" width="99.666666666666686" height="15.666666666666657"/>
+                                                                                            <rect key="frame" x="309.33333333333331" y="254.66666666666666" width="99.666666666666686" height="15.666666666666657"/>
                                                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                             <nil key="highlightedColor"/>
@@ -2352,7 +2352,7 @@
                                                                                     </constraints>
                                                                                 </view>
                                                                                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cGo-sH-5tz" userLabel="ReplyLayout">
-                                                                                    <rect key="frame" x="0.0" y="272.66666666666669" width="414" height="0.0"/>
+                                                                                    <rect key="frame" x="0.0" y="274" width="414" height="0.0"/>
                                                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                                                 </view>
                                                                             </subviews>
@@ -2468,7 +2468,7 @@
             <objects>
                 <viewController id="GiI-KV-NWs" customClass="RatingActionViewController" customModule="Sabot_Community" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="P5W-BY-mAa">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating/Review" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Spw-AX-fwY">
@@ -2621,7 +2621,7 @@
             <objects>
                 <viewController title="NotificationsViewController" id="VBc-Oq-gI0" customClass="NotificationsViewController" customModule="Sabot_Community" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VpW-gz-gMh">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="white" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SqY-zb-NeJ" userLabel="NotificationTableView">
@@ -2630,10 +2630,10 @@
                                 <color key="tintColor" name="colorAccent"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="uNE-Ky-hu1" userLabel="NotificationCell">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="130"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="129.33332824707031"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uNE-Ky-hu1" id="Kq1-SS-0pA">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="130"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="129.33332824707031"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="jfp-nP-sQX" userLabel="profileImage" customClass="EnhancedCircleImageView" customModule="EnhancedCircleImageView">
@@ -2665,7 +2665,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="isz-wn-mq5">
-                                                    <rect key="frame" x="51" y="2.0000000000000009" width="58" height="15.333333333333336"/>
+                                                    <rect key="frame" x="51" y="1.9999999999999991" width="58" height="14.666666666666664"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" name="green"/>
                                                     <nil key="highlightedColor"/>
@@ -2677,7 +2677,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f7z-Tl-fI2">
-                                                    <rect key="frame" x="50" y="19.333333333333336" width="359" height="107.66666666666666"/>
+                                                    <rect key="frame" x="50" y="18.666666666666664" width="359" height="107.66666666666669"/>
                                                     <string key="text">Text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2765,7 +2765,7 @@
             <objects>
                 <viewController title="PublicsViewController" id="wBC-2r-Cyc" customClass="PublicsViewController" customModule="Sabot_Community" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BRt-pK-Sqo">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Publics" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lij-7C-yNO">
@@ -2798,7 +2798,7 @@
             <objects>
                 <viewController id="odT-VY-VYv" customClass="SideMenuController" customModule="Sabot_Community" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="29C-ip-4eb">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Q2e-Ke-wEm" userLabel="bannerPLACE">
@@ -3042,7 +3042,7 @@
             <objects>
                 <viewController title="SearchViewController" id="cYY-I4-JN7" customClass="SearchViewController" customModule="Sabot_Community" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cuM-lt-DqU">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" name="colorPrimary"/>
                         <viewLayoutGuide key="safeArea" id="cfb-Si-iLz"/>
@@ -3068,7 +3068,7 @@
             <objects>
                 <viewController id="tdC-4d-IGK" userLabel="Contact Controller" customClass="ContactUsController" customModule="Sabot_Community" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9vD-B3-2oe">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xha-E3-jFf" userLabel="BottomText">
@@ -3178,7 +3178,7 @@
             <objects>
                 <viewController title="DashboardViewController" id="BUx-uh-Eje" customClass="DashboardViewController" customModule="Sabot_Community" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2pg-i4-c2H">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dashboard" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xEf-S2-tfM">
@@ -3359,7 +3359,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="2Ji-fg-loa"/>
         <segue reference="CI8-e4-iyS"/>
         <segue reference="9UL-vX-kQd"/>
         <segue reference="6i3-bD-h60"/>

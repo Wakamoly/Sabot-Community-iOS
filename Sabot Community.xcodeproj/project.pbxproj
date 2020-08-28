@@ -23,6 +23,12 @@
 		E0477B7A24E35A2100671827 /* ReviewsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0477B7924E35A2000671827 /* ReviewsTVC.swift */; };
 		E0477B7C24E35B4200671827 /* ReviewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0477B7B24E35B4200671827 /* ReviewsModel.swift */; };
 		E0477B7E24E4A1C100671827 /* RatingActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0477B7D24E4A1C100671827 /* RatingActionViewController.swift */; };
+		E076348D24F977DC0097FA71 /* SeeAllViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E076348B24F977DC0097FA71 /* SeeAllViewController.swift */; };
+		E076348E24F977DC0097FA71 /* SeeAllViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E076348C24F977DC0097FA71 /* SeeAllViewController.xib */; };
+		E076349124F97B980097FA71 /* ProfilePostsTVC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E076348F24F97B980097FA71 /* ProfilePostsTVC2.swift */; };
+		E076349224F97B980097FA71 /* ProfilePostsTVC2.xib in Resources */ = {isa = PBXBuildFile; fileRef = E076349024F97B980097FA71 /* ProfilePostsTVC2.xib */; };
+		E076349524F9BA720097FA71 /* ClansTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E076349324F9BA720097FA71 /* ClansTVC.swift */; };
+		E076349624F9BA720097FA71 /* ClansTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E076349424F9BA720097FA71 /* ClansTVC.xib */; };
 		E081F35A24BBE9470049AB0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E081F35924BBE9470049AB0F /* AppDelegate.swift */; };
 		E081F35C24BBE9470049AB0F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E081F35B24BBE9470049AB0F /* SceneDelegate.swift */; };
 		E081F36324BBE95A0049AB0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E081F36224BBE95A0049AB0F /* Assets.xcassets */; };
@@ -86,6 +92,12 @@
 		E0477B7924E35A2000671827 /* ReviewsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsTVC.swift; sourceTree = "<group>"; };
 		E0477B7B24E35B4200671827 /* ReviewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsModel.swift; sourceTree = "<group>"; };
 		E0477B7D24E4A1C100671827 /* RatingActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingActionViewController.swift; sourceTree = "<group>"; };
+		E076348B24F977DC0097FA71 /* SeeAllViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeAllViewController.swift; sourceTree = "<group>"; };
+		E076348C24F977DC0097FA71 /* SeeAllViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeeAllViewController.xib; sourceTree = "<group>"; };
+		E076348F24F97B980097FA71 /* ProfilePostsTVC2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePostsTVC2.swift; sourceTree = "<group>"; };
+		E076349024F97B980097FA71 /* ProfilePostsTVC2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfilePostsTVC2.xib; sourceTree = "<group>"; };
+		E076349324F9BA720097FA71 /* ClansTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClansTVC.swift; sourceTree = "<group>"; };
+		E076349424F9BA720097FA71 /* ClansTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClansTVC.xib; sourceTree = "<group>"; };
 		E081F35624BBE9470049AB0F /* Sabot Community.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sabot Community.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E081F35924BBE9470049AB0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E081F35B24BBE9470049AB0F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -194,6 +206,12 @@
 				E0DF7FB824D23A1200C5E449 /* UploadPhotoController.swift */,
 				E0A7E7E424CF3E380033C510 /* ProfilePostsTVC.swift */,
 				E0A7E7E624CF4B920033C510 /* ProfileNewsModel.swift */,
+				E076348B24F977DC0097FA71 /* SeeAllViewController.swift */,
+				E076348C24F977DC0097FA71 /* SeeAllViewController.xib */,
+				E076348F24F97B980097FA71 /* ProfilePostsTVC2.swift */,
+				E076349024F97B980097FA71 /* ProfilePostsTVC2.xib */,
+				E076349324F9BA720097FA71 /* ClansTVC.swift */,
+				E076349424F9BA720097FA71 /* ClansTVC.xib */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -435,11 +453,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E076348E24F977DC0097FA71 /* SeeAllViewController.xib in Resources */,
 				E0A7E7E924CF50F20033C510 /* Media.xcassets in Resources */,
 				E034C66D24F190B4006A7949 /* ZoomImageViewController.xib in Resources */,
 				E081F36624BBE95A0049AB0F /* LaunchScreen.storyboard in Resources */,
 				E081F39724BD5D8D0049AB0F /* AppMainContent.storyboard in Resources */,
 				E081F36324BBE95A0049AB0F /* Assets.xcassets in Resources */,
+				E076349224F97B980097FA71 /* ProfilePostsTVC2.xib in Resources */,
+				E076349624F9BA720097FA71 /* ClansTVC.xib in Resources */,
 				E081F39324BBEBA80049AB0F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -570,6 +591,8 @@
 			files = (
 				E0A7E7E724CF4B920033C510 /* ProfileNewsModel.swift in Sources */,
 				E081F39B24BEABBA0049AB0F /* NotificationsViewController.swift in Sources */,
+				E076349524F9BA720097FA71 /* ClansTVC.swift in Sources */,
+				E076349124F97B980097FA71 /* ProfilePostsTVC2.swift in Sources */,
 				E012DDB724DA1A4E00772678 /* EmptyVC.swift in Sources */,
 				1928761224CBCE77006A09F1 /* SideMenuController.swift in Sources */,
 				E012DDC124DCECD300772678 /* ReviewsViewController.swift in Sources */,
@@ -592,6 +615,7 @@
 				E0477B7C24E35B4200671827 /* ReviewsModel.swift in Sources */,
 				E081F39D24BEABE60049AB0F /* PublicsViewController.swift in Sources */,
 				E081F35C24BBE9470049AB0F /* SceneDelegate.swift in Sources */,
+				E076348D24F977DC0097FA71 /* SeeAllViewController.swift in Sources */,
 				E081F39924BEAB500049AB0F /* DashboardViewController.swift in Sources */,
 				E0477B7A24E35A2100671827 /* ReviewsTVC.swift in Sources */,
 			);

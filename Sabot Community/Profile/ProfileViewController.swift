@@ -156,7 +156,12 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
         performSegue(withIdentifier: "toUploadImage", sender: nil)
     }
     @IBAction func seeAllButton(_ sender: Any) {
-        print("See all posts tapped")
+        //add identifier switch for which elements need to be loaded
+        let seeAllVC = SeeAllViewController(nibName: "SeeAllViewController", bundle: nil)
+        seeAllVC.queryID = self.userUsername
+        seeAllVC.queryIDextra = self.userProfileID
+        seeAllVC.method = "posts"
+        navigationController?.pushViewController(seeAllVC, animated: true)
     }
     @IBAction func clansQueryButton(_ sender: Any) {
         postsQueryButtonClicked(clansQueryButton)
