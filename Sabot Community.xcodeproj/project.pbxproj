@@ -29,6 +29,9 @@
 		E076349224F97B980097FA71 /* ProfilePostsTVC2.xib in Resources */ = {isa = PBXBuildFile; fileRef = E076349024F97B980097FA71 /* ProfilePostsTVC2.xib */; };
 		E076349524F9BA720097FA71 /* ClansTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E076349324F9BA720097FA71 /* ClansTVC.swift */; };
 		E076349624F9BA720097FA71 /* ClansTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E076349424F9BA720097FA71 /* ClansTVC.xib */; };
+		E076349924FAB1480097FA71 /* PublicsTopicsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E076349824FAB1480097FA71 /* PublicsTopicsModel.swift */; };
+		E076349C24FAB3290097FA71 /* PublicsTopicsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E076349A24FAB3290097FA71 /* PublicsTopicsTVC.swift */; };
+		E076349D24FAB3290097FA71 /* PublicsTopicsTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E076349B24FAB3290097FA71 /* PublicsTopicsTVC.xib */; };
 		E081F35A24BBE9470049AB0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E081F35924BBE9470049AB0F /* AppDelegate.swift */; };
 		E081F35C24BBE9470049AB0F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E081F35B24BBE9470049AB0F /* SceneDelegate.swift */; };
 		E081F36324BBE95A0049AB0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E081F36224BBE95A0049AB0F /* Assets.xcassets */; };
@@ -98,6 +101,9 @@
 		E076349024F97B980097FA71 /* ProfilePostsTVC2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfilePostsTVC2.xib; sourceTree = "<group>"; };
 		E076349324F9BA720097FA71 /* ClansTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClansTVC.swift; sourceTree = "<group>"; };
 		E076349424F9BA720097FA71 /* ClansTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClansTVC.xib; sourceTree = "<group>"; };
+		E076349824FAB1480097FA71 /* PublicsTopicsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicsTopicsModel.swift; sourceTree = "<group>"; };
+		E076349A24FAB3290097FA71 /* PublicsTopicsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicsTopicsTVC.swift; sourceTree = "<group>"; };
+		E076349B24FAB3290097FA71 /* PublicsTopicsTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PublicsTopicsTVC.xib; sourceTree = "<group>"; };
 		E081F35624BBE9470049AB0F /* Sabot Community.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sabot Community.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E081F35924BBE9470049AB0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E081F35B24BBE9470049AB0F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -210,8 +216,6 @@
 				E076348C24F977DC0097FA71 /* SeeAllViewController.xib */,
 				E076348F24F97B980097FA71 /* ProfilePostsTVC2.swift */,
 				E076349024F97B980097FA71 /* ProfilePostsTVC2.xib */,
-				E076349324F9BA720097FA71 /* ClansTVC.swift */,
-				E076349424F9BA720097FA71 /* ClansTVC.xib */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -258,6 +262,9 @@
 			isa = PBXGroup;
 			children = (
 				E081F39C24BEABE60049AB0F /* PublicsViewController.swift */,
+				E076349824FAB1480097FA71 /* PublicsTopicsModel.swift */,
+				E076349A24FAB3290097FA71 /* PublicsTopicsTVC.swift */,
+				E076349B24FAB3290097FA71 /* PublicsTopicsTVC.xib */,
 			);
 			path = Publics;
 			sourceTree = "<group>";
@@ -277,6 +284,15 @@
 				E034C66B24F190B4006A7949 /* ZoomImageViewController.xib */,
 			);
 			path = ZoomImage;
+			sourceTree = "<group>";
+		};
+		E076349724FAB0DF0097FA71 /* Clans */ = {
+			isa = PBXGroup;
+			children = (
+				E076349324F9BA720097FA71 /* ClansTVC.swift */,
+				E076349424F9BA720097FA71 /* ClansTVC.xib */,
+			);
+			path = Clans;
 			sourceTree = "<group>";
 		};
 		E081F34D24BBE9470049AB0F = {
@@ -316,6 +332,7 @@
 				E0477B8224E8688900671827 /* Profile */,
 				E0477B8124E8685100671827 /* Reviews */,
 				E0477B8624E86BA400671827 /* Notifications */,
+				E076349724FAB0DF0097FA71 /* Clans */,
 				E0477B8724E86BAE00671827 /* Publics */,
 				E0477B8824E86BBC00671827 /* Search */,
 				E0A7E7E824CF50F20033C510 /* Media.xcassets */,
@@ -459,6 +476,7 @@
 				E081F36624BBE95A0049AB0F /* LaunchScreen.storyboard in Resources */,
 				E081F39724BD5D8D0049AB0F /* AppMainContent.storyboard in Resources */,
 				E081F36324BBE95A0049AB0F /* Assets.xcassets in Resources */,
+				E076349D24FAB3290097FA71 /* PublicsTopicsTVC.xib in Resources */,
 				E076349224F97B980097FA71 /* ProfilePostsTVC2.xib in Resources */,
 				E076349624F9BA720097FA71 /* ClansTVC.xib in Resources */,
 				E081F39324BBEBA80049AB0F /* Main.storyboard in Resources */,
@@ -615,6 +633,8 @@
 				E0477B7C24E35B4200671827 /* ReviewsModel.swift in Sources */,
 				E081F39D24BEABE60049AB0F /* PublicsViewController.swift in Sources */,
 				E081F35C24BBE9470049AB0F /* SceneDelegate.swift in Sources */,
+				E076349C24FAB3290097FA71 /* PublicsTopicsTVC.swift in Sources */,
+				E076349924FAB1480097FA71 /* PublicsTopicsModel.swift in Sources */,
 				E076348D24F977DC0097FA71 /* SeeAllViewController.swift in Sources */,
 				E081F39924BEAB500049AB0F /* DashboardViewController.swift in Sources */,
 				E0477B7A24E35A2100671827 /* ReviewsTVC.swift in Sources */,

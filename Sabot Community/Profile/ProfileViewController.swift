@@ -57,6 +57,7 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
     
     var profileRefresh:UIRefreshControl!
     private var profileNews = [ProfileNewsModel]()
+    private var profilePublics = [PublicsTopicsModel]()
     
     //test here by putting in either user id or username to load profile, or leave blank to load yours
     var userProfileID: String = ""
@@ -82,6 +83,7 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
     var instagramURL:String = ""
     var twitterURL:String = ""
     var discordUserURL:String = ""
+    var seeAllSegue:String = ""
     
     //profile post image variable
     var newPostImage:UIImage? = nil
@@ -156,11 +158,10 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
         performSegue(withIdentifier: "toUploadImage", sender: nil)
     }
     @IBAction func seeAllButton(_ sender: Any) {
-        //add identifier switch for which elements need to be loaded
         let seeAllVC = SeeAllViewController(nibName: "SeeAllViewController", bundle: nil)
         seeAllVC.queryID = self.userUsername
         seeAllVC.queryIDextra = self.userProfileID
-        seeAllVC.method = "posts"
+        seeAllVC.method = seeAllSegue
         navigationController?.pushViewController(seeAllVC, animated: true)
     }
     @IBAction func clansQueryButton(_ sender: Any) {
@@ -684,6 +685,11 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
     
     
     func loadProfileNews(){
+        let nib = UINib(nibName: "ProfilePostsTVC2", bundle: nil)
+        self.profilePostsTableView.register(nib, forCellReuseIdentifier: "ProfilePostsTVC2")
+        
+        self.indicator.startAnimating()
+        self.profileNews.removeAll()
         AF.request(URLConstants.ROOT_URL+"profilenews_api.php?userid="+deviceuserid+"&userprofileid="+userProfileID+"&thisusername="+deviceusername, method: .get).responseJSON{
             response in
             //printing response
@@ -723,10 +729,13 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
                     }
                     //displaying data in tableview
                     self.profilePostsTableView.reloadData()
+                    self.indicator.stopAnimating()
                 }
-                
             case let .failure(error):
                 print(error)
+                self.indicator.stopAnimating()
+                self.view.showToast(toastMessage: "Network Error!", duration:2)
+                self.noProfileView.isHidden = false
             }
         }
     }
@@ -736,13 +745,62 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
     }
     
     func loadProfilePublics(){
-        print("loadPublics")
+        let nib = UINib(nibName: "PublicsTopicsTVC", bundle: nil)
+        self.profilePostsTableView.register(nib, forCellReuseIdentifier: "PublicsTopicsTVC")
+        
+        self.indicator.startAnimating()
+        self.profilePublics.removeAll()
+        AF.request(URLConstants.ROOT_URL+"profilepublicsnews_api.php?username="+userUsername, method: .get).responseJSON{
+            response in
+            //printing response
+            //print(response)
+
+            switch response.result {
+            case .success(let value):
+                let jsonObject = JSON(value)
+                if jsonObject.count == 0 {
+                    self.profilePostsTableView.isHidden = true
+                    self.noPostsToShowView.isHidden = false
+                }else{
+                    self.noPostsToShowView.isHidden = true
+                    for i in 0..<jsonObject.count{
+                        let jsonData = jsonObject[i]
+                        self.profilePublics.append(PublicsTopicsModel(
+                            id: jsonData["id"].int,
+                            numposts: jsonData["numposts"].rawString(),
+                            subject: jsonData["subject"].rawString(),
+                            date: jsonData["date"].rawString(),
+                            cat: jsonData["cat"].rawString(),
+                            topic_by: jsonData["topic_by"].rawString(),
+                            type: jsonData["type"].string,
+                            user_id: jsonData["user_id"].int,
+                            profile_pic: jsonData["profile_pic"].rawString(),
+                            nickname: jsonData["nickname"].rawString(),
+                            username: jsonData["username"].rawString(),
+                            event_date: jsonData["event_date"].rawString(),
+                            zone: jsonData["zone"].rawString(),
+                            context: jsonData["context"].rawString(),
+                            num_players: jsonData["num_players"].int,
+                            num_added: jsonData["num_added"].int,
+                            gamename: jsonData["gamename"].rawString()))
+                    }
+                    //displaying data in tableview
+                    self.profilePostsTableView.reloadData()
+                }
+                self.indicator.stopAnimating()
+            case let .failure(error):
+                print(error)
+                self.indicator.stopAnimating()
+                self.view.showToast(toastMessage: "Network Error!", duration:2)
+            }
+        }
     }
     
     
     //Buttons to load different post cells in tableview
     func postsQueryButtonClicked(_ buttonPressed:UIButton){
         if(buttonPressed == self.postsQueryButton){
+            self.seeAllSegue = "posts"
             self.postsQueryButton.backgroundColor = UIColor(named: "green")
             self.clansQueryButton.backgroundColor = UIColor(named: "grey_80")
             self.publicsPostsQueryButton.backgroundColor = UIColor(named: "grey_80")
@@ -757,12 +815,13 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
             self.profileItemsLabel.text = "Clans Joined"
             self.seeAllButton.isHidden = true
         }else if (buttonPressed == self.publicsPostsQueryButton){
+            self.seeAllSegue = "publics"
             self.postsQueryButton.backgroundColor = UIColor(named: "grey_80")
             self.clansQueryButton.backgroundColor = UIColor(named: "grey_80")
             self.publicsPostsQueryButton.backgroundColor = UIColor(named: "green")
             loadProfilePublics()
-            self.profileItemsLabel.text = "Clans Joined"
-            self.seeAllButton.isHidden = true
+            self.profileItemsLabel.text = "Publics posts"
+            self.seeAllButton.isHidden = false
         }
     }
     
@@ -1034,119 +1093,200 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
     
     ///the method returning size of the list
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return profileNews.count
+        var rowCount:Int? = 0
+        if seeAllSegue == "posts"{
+            rowCount = profileNews.count
+        }else if seeAllSegue == "publics"{
+            rowCount = profilePublics.count
+        }
+        
+        return rowCount!
     }
     
     ///handling cell view for table
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "postsReuse") as! ProfilePostsTVC
-        
-        //getting the hero for the specified position
-        let profilesNewsI: ProfileNewsModel
-        profilesNewsI = profileNews[indexPath.row]
-        
-        //displaying values
-        cell.usernameLabel.text = "@"+profilesNewsI.username!
-        cell.nicknameLabel.text = profilesNewsI.nickname
-        cell.postBody.text = profilesNewsI.body
-        cell.postBody.handleURLTap { (URL) in
-            UIApplication.shared.open(URL as URL, options: [:], completionHandler: nil)
-        }
-        
-        if profilesNewsI.user_to != "none"{
-            cell.toUsernameLabel.text = "to @"+profilesNewsI.user_to!
-        }else{
-            cell.toUsernameLabel.isHidden = true
-        }
-        
-        if profilesNewsI.likedbyuser == "yes"{
-            cell.likeView.isHidden = true
-            cell.likedView.isHidden = false
-        }else{
-            cell.likeView.isHidden = false
-            cell.likedView.isHidden = true
-        }
-        if profilesNewsI.edited == "yes"{
-            cell.editedLabel.isHidden = false
-        }else{
-            cell.editedLabel.isHidden = true
-        }
-        
-        cell.numLikes.text = profilesNewsI.likes
-        cell.numComments.text = profilesNewsI.commentcount
-        cell.dateView.text = profilesNewsI.date_added
-        
-        if profilesNewsI.online == "yes"{
-            cell.onlineView.isHidden = false
-            cell.onlineView.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1.0).cgColor
-            cell.onlineView.layer.masksToBounds = true
-            cell.onlineView.contentMode = .scaleToFill
-            cell.onlineView.layer.borderWidth = 1
-        }else{
-            cell.onlineView.isHidden = true
-        }
-        if profilesNewsI.verified == "yes"{
-            cell.verifiedView.isHidden = false
-        }else{
-            cell.verifiedView.isHidden = true
-        }
-        
-        switch profilesNewsI.type{
-        case "Xbox":
-            cell.platformType.image = UIImage(named: "icons8_xbox_50")
-            break
-        case "PlayStation":
-            cell.platformType.image = UIImage(named: "icons8_playstation_50")
-            break
-        case "Steam":
-            cell.platformType.image = UIImage(named: "icons8_steam_48")
-            break
-        case "PC":
-            cell.platformType.image = UIImage(named: "icons8_workstation_48")
-            break
-        case "Mobile":
-            cell.platformType.image = UIImage(named: "icons8_mobile_48")
-            break
-        case "Switch":
-            cell.platformType.image = UIImage(named: "icons8_nintendo_switch_48")
-            break
-        case "General":
-            cell.platformType.isHidden = true
-            break
-        default:
-            cell.platformType.image = UIImage(named: "icons8_question_mark_64")
-        }
-        
-        let profilePicIndex = profilesNewsI.profile_pic?.firstIndex(of: ".")!
-        let profile_pic = (profilesNewsI.profile_pic?.prefix(upTo: profilePicIndex!))!+"_r.JPG"
-        cell.profilePhoto.af.setImage(
-            withURL: URL(string:URLConstants.BASE_URL+profile_pic)!,
-            imageTransition: .crossDissolve(0.2)
-        )
-        
-        if profilesNewsI.image != "" {
-            cell.postImage.isHidden = false
-            cell.postImage!.af.setImage(
-                withURL: URL(string:URLConstants.BASE_URL+profilesNewsI.image!)!,
+        if seeAllSegue == "posts"{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ProfilePostsTVC2") as! ProfilePostsTVC2
+            
+            //getting the hero for the specified position
+            let profilesNewsI: ProfileNewsModel
+            profilesNewsI = profileNews[indexPath.row]
+            
+            //displaying values
+            cell.usernameLabel.text = "@"+profilesNewsI.username!
+            cell.nicknameLabel.text = profilesNewsI.nickname
+            cell.postBody.text = profilesNewsI.body
+            cell.postBody.handleURLTap { (URL) in
+                UIApplication.shared.open(URL as URL, options: [:], completionHandler: nil)
+            }
+            
+            if profilesNewsI.user_to != "none"{
+                cell.toUsernameLabel.text = "to @"+profilesNewsI.user_to!
+            }else{
+                cell.toUsernameLabel.isHidden = true
+            }
+            
+            if profilesNewsI.likedbyuser == "yes"{
+                cell.likeView.isHidden = true
+                cell.likedView.isHidden = false
+            }else{
+                cell.likeView.isHidden = false
+                cell.likedView.isHidden = true
+            }
+            if profilesNewsI.edited == "yes"{
+                cell.editedLabel.isHidden = false
+            }else{
+                cell.editedLabel.isHidden = true
+            }
+            
+            cell.numLikes.text = profilesNewsI.likes
+            cell.numComments.text = profilesNewsI.commentcount
+            cell.dateView.text = profilesNewsI.date_added
+            
+            if profilesNewsI.online == "yes"{
+                cell.onlineView.isHidden = false
+                cell.onlineView.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1.0).cgColor
+                cell.onlineView.layer.masksToBounds = true
+                cell.onlineView.contentMode = .scaleToFill
+                cell.onlineView.layer.borderWidth = 1
+            }else{
+                cell.onlineView.isHidden = true
+            }
+            if profilesNewsI.verified == "yes"{
+                cell.verifiedView.isHidden = false
+            }else{
+                cell.verifiedView.isHidden = true
+            }
+            
+            switch profilesNewsI.type{
+            case "Xbox":
+                cell.platformType.image = UIImage(named: "icons8_xbox_50")
+                break
+            case "PlayStation":
+                cell.platformType.image = UIImage(named: "icons8_playstation_50")
+                break
+            case "Steam":
+                cell.platformType.image = UIImage(named: "icons8_steam_48")
+                break
+            case "PC":
+                cell.platformType.image = UIImage(named: "icons8_workstation_48")
+                break
+            case "Mobile":
+                cell.platformType.image = UIImage(named: "icons8_mobile_48")
+                break
+            case "Switch":
+                cell.platformType.image = UIImage(named: "icons8_nintendo_switch_48")
+                break
+            case "General":
+                cell.platformType.isHidden = true
+                break
+            default:
+                cell.platformType.image = UIImage(named: "icons8_question_mark_64")
+            }
+            
+            let profilePicIndex = profilesNewsI.profile_pic?.firstIndex(of: ".")!
+            let profile_pic = (profilesNewsI.profile_pic?.prefix(upTo: profilePicIndex!))!+"_r.JPG"
+            cell.profilePhoto.af.setImage(
+                withURL: URL(string:URLConstants.BASE_URL+profile_pic)!,
                 imageTransition: .crossDissolve(0.2)
             )
-        }else{
-            cell.postImage.isHidden = true
+            
+            if profilesNewsI.image != "" {
+                cell.postImage.isHidden = false
+                cell.postImage!.af.setImage(
+                    withURL: URL(string:URLConstants.BASE_URL+profilesNewsI.image!)!,
+                    imageTransition: .crossDissolve(0.2)
+                )
+            }else{
+                cell.postImage.isHidden = true
+            }
+            return cell
+        }else if seeAllSegue == "publics"{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PublicsTopicsTVC") as! PublicsTopicsTVC
+            
+            let publicsTopicI: PublicsTopicsModel
+            publicsTopicI = profilePublics[indexPath.row]
+            
+            cell.postTitle.text = publicsTopicI.subject
+            cell.dateView.text = publicsTopicI.date
+            cell.numComments.text = publicsTopicI.numposts
+            cell.profileName.text = publicsTopicI.nickname
+            cell.gamename.text = publicsTopicI.gamename
+            cell.eventDate.text = publicsTopicI.event_date
+            cell.numPlayersAdded.text = String(publicsTopicI.num_added!)
+            cell.numPlayersNeeded.text = String(publicsTopicI.num_players!)
+            cell.context.text = publicsTopicI.context
+            
+            switch publicsTopicI.type{
+            case "Xbox":
+                cell.platform.image = UIImage(named: "icons8_xbox_50")
+                break
+            case "PlayStation":
+                cell.platform.image = UIImage(named: "icons8_playstation_50")
+                break
+            case "Steam":
+                cell.platform.image = UIImage(named: "icons8_steam_48")
+                break
+            case "PC":
+                cell.platform.image = UIImage(named: "icons8_workstation_48")
+                break
+            case "Mobile":
+                cell.platform.image = UIImage(named: "icons8_mobile_48")
+                break
+            case "Switch":
+                cell.platform.image = UIImage(named: "icons8_nintendo_switch_48")
+                break
+            case "Cross-Platform":
+                cell.platform.image = UIImage(named: "icons8_collect_40")
+                break
+            case "General":
+                cell.platform.isHidden = true
+                break
+            default:
+                cell.platform.image = UIImage(named: "icons8_question_mark_64")
+            }
+            
+            let profilePicIndex = publicsTopicI.profile_pic?.firstIndex(of: ".")!
+            let profile_pic = (publicsTopicI.profile_pic?.prefix(upTo: profilePicIndex!))!+"_r.JPG"
+            cell.profileImage.af.setImage(
+                withURL: URL(string:URLConstants.BASE_URL+profile_pic)!,
+                imageTransition: .crossDissolve(0.2)
+            )
+            
+            if (publicsTopicI.event_date == "ended"){
+                cell.eventDate.textColor = UIColor(named: "pin")
+            }else if (publicsTopicI.event_date == "now"){
+                cell.eventDate.textColor = UIColor(named: "green")
+            }
+            
+            return cell
         }
         
-        return cell
+        
+        
+        return UITableViewCell()
     }
     
     ///handling cell view taps
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let alertController = UIAlertController(title: "Hint", message: "You have selected row \(indexPath.row).", preferredStyle: .alert)
-        
-        let alertAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-        
-        alertController.addAction(alertAction)
-        
-        present(alertController, animated: true, completion: nil)
+        if seeAllSegue == "posts"{
+            let alertController = UIAlertController(title: "Hint", message: "You have profile post row \(indexPath.row).", preferredStyle: .alert)
+            
+            let alertAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+            
+            alertController.addAction(alertAction)
+            
+            present(alertController, animated: true, completion: nil)
+        }else if seeAllSegue == "publics"{
+            let alertController = UIAlertController(title: "Hint", message: "You have publics topic row \(indexPath.row).", preferredStyle: .alert)
+            
+            let alertAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+            
+            alertController.addAction(alertAction)
+            
+            present(alertController, animated: true, completion: nil)
+        }
         
     }
     

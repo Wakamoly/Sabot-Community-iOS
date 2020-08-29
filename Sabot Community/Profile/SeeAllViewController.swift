@@ -17,119 +17,203 @@ class SeeAllViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     ///the method returning size of the list
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return profilePosts.count
+        var rowCount:Int? = 0
+        if method == "posts"{
+            rowCount = profilePosts.count
+        }else if method == "publics"{
+            rowCount = profilePublics.count
+        }
+        
+        return rowCount!
     }
     
     ///handling cell view for table
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ProfilePostsTVC2") as? ProfilePostsTVC2
         
-        //getting the hero for the specified position
-        let profilesNewsI: ProfileNewsModel
-        profilesNewsI = profilePosts[indexPath.row]
-        
-        //displaying values
-        cell!.usernameLabel.text = "@"+profilesNewsI.username!
-        cell!.nicknameLabel.text = profilesNewsI.nickname
-        cell!.postBody.text = profilesNewsI.body
-        cell!.postBody.handleURLTap { (URL) in
-            UIApplication.shared.open(URL as URL, options: [:], completionHandler: nil)
-        }
-        
-        if profilesNewsI.user_to != "none"{
-            cell!.toUsernameLabel.text = "to @"+profilesNewsI.user_to!
-        }else{
-            cell!.toUsernameLabel.isHidden = true
-        }
-        
-        if profilesNewsI.likedbyuser == "yes"{
-            cell!.likeView.isHidden = true
-            cell!.likedView.isHidden = false
-        }else{
-            cell!.likeView.isHidden = false
-            cell!.likedView.isHidden = true
-        }
-        if profilesNewsI.edited == "yes"{
-            cell!.editedLabel.isHidden = false
-        }else{
-            cell!.editedLabel.isHidden = true
-        }
-        
-        cell!.numLikes.text = profilesNewsI.likes
-        cell!.numComments.text = profilesNewsI.commentcount
-        cell!.dateView.text = profilesNewsI.date_added
-        
-        if profilesNewsI.online == "yes"{
-            cell!.onlineView.isHidden = false
-            cell!.onlineView.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1.0).cgColor
-            cell!.onlineView.layer.masksToBounds = true
-            cell!.onlineView.contentMode = .scaleToFill
-            cell!.onlineView.layer.borderWidth = 1
-        }else{
-            cell!.onlineView.isHidden = true
-        }
-        if profilesNewsI.verified == "yes"{
-            cell!.verifiedView.isHidden = false
-        }else{
-            cell!.verifiedView.isHidden = true
-        }
-        
-        switch profilesNewsI.type{
-        case "Xbox":
-            cell!.platformType.image = UIImage(named: "icons8_xbox_50")
-            break
-        case "PlayStation":
-            cell!.platformType.image = UIImage(named: "icons8_playstation_50")
-            break
-        case "Steam":
-            cell!.platformType.image = UIImage(named: "icons8_steam_48")
-            break
-        case "PC":
-            cell!.platformType.image = UIImage(named: "icons8_workstation_48")
-            break
-        case "Mobile":
-            cell!.platformType.image = UIImage(named: "icons8_mobile_48")
-            break
-        case "Switch":
-            cell!.platformType.image = UIImage(named: "icons8_nintendo_switch_48")
-            break
-        case "General":
-            cell!.platformType.isHidden = true
-            break
-        default:
-            cell!.platformType.image = UIImage(named: "icons8_question_mark_64")
-        }
-        
-        let profilePicIndex = profilesNewsI.profile_pic?.firstIndex(of: ".")!
-        let profile_pic = (profilesNewsI.profile_pic?.prefix(upTo: profilePicIndex!))!+"_r.JPG"
-        cell!.profilePhoto.af.setImage(
-            withURL: URL(string:URLConstants.BASE_URL+profile_pic)!,
-            imageTransition: .crossDissolve(0.2)
-        )
-        
-        if profilesNewsI.image != "" {
-            cell!.postImage.isHidden = false
-            cell!.postImage!.af.setImage(
-                withURL: URL(string:URLConstants.BASE_URL+profilesNewsI.image!)!,
+        if method == "posts"{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ProfilePostsTVC2") as! ProfilePostsTVC2
+            
+            //getting the hero for the specified position
+            let profilesNewsI: ProfileNewsModel
+            profilesNewsI = profilePosts[indexPath.row]
+            
+            //displaying values
+            cell.usernameLabel.text = "@"+profilesNewsI.username!
+            cell.nicknameLabel.text = profilesNewsI.nickname
+            cell.postBody.text = profilesNewsI.body
+            cell.postBody.handleURLTap { (URL) in
+                UIApplication.shared.open(URL as URL, options: [:], completionHandler: nil)
+            }
+            
+            if profilesNewsI.user_to != "none"{
+                cell.toUsernameLabel.text = "to @"+profilesNewsI.user_to!
+            }else{
+                cell.toUsernameLabel.isHidden = true
+            }
+            
+            if profilesNewsI.likedbyuser == "yes"{
+                cell.likeView.isHidden = true
+                cell.likedView.isHidden = false
+            }else{
+                cell.likeView.isHidden = false
+                cell.likedView.isHidden = true
+            }
+            if profilesNewsI.edited == "yes"{
+                cell.editedLabel.isHidden = false
+            }else{
+                cell.editedLabel.isHidden = true
+            }
+            
+            cell.numLikes.text = profilesNewsI.likes
+            cell.numComments.text = profilesNewsI.commentcount
+            cell.dateView.text = profilesNewsI.date_added
+            
+            if profilesNewsI.online == "yes"{
+                cell.onlineView.isHidden = false
+                cell.onlineView.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1.0).cgColor
+                cell.onlineView.layer.masksToBounds = true
+                cell.onlineView.contentMode = .scaleToFill
+                cell.onlineView.layer.borderWidth = 1
+            }else{
+                cell.onlineView.isHidden = true
+            }
+            if profilesNewsI.verified == "yes"{
+                cell.verifiedView.isHidden = false
+            }else{
+                cell.verifiedView.isHidden = true
+            }
+            
+            switch profilesNewsI.type{
+            case "Xbox":
+                cell.platformType.image = UIImage(named: "icons8_xbox_50")
+                break
+            case "PlayStation":
+                cell.platformType.image = UIImage(named: "icons8_playstation_50")
+                break
+            case "Steam":
+                cell.platformType.image = UIImage(named: "icons8_steam_48")
+                break
+            case "PC":
+                cell.platformType.image = UIImage(named: "icons8_workstation_48")
+                break
+            case "Mobile":
+                cell.platformType.image = UIImage(named: "icons8_mobile_48")
+                break
+            case "Switch":
+                cell.platformType.image = UIImage(named: "icons8_nintendo_switch_48")
+                break
+            case "General":
+                cell.platformType.isHidden = true
+                break
+            default:
+                cell.platformType.image = UIImage(named: "icons8_question_mark_64")
+            }
+            
+            let profilePicIndex = profilesNewsI.profile_pic?.firstIndex(of: ".")!
+            let profile_pic = (profilesNewsI.profile_pic?.prefix(upTo: profilePicIndex!))!+"_r.JPG"
+            cell.profilePhoto.af.setImage(
+                withURL: URL(string:URLConstants.BASE_URL+profile_pic)!,
                 imageTransition: .crossDissolve(0.2)
             )
-        }else{
-            cell!.postImage.isHidden = true
+            
+            if profilesNewsI.image != "" {
+                cell.postImage.isHidden = false
+                cell.postImage!.af.setImage(
+                    withURL: URL(string:URLConstants.BASE_URL+profilesNewsI.image!)!,
+                    imageTransition: .crossDissolve(0.2)
+                )
+            }else{
+                cell.postImage.isHidden = true
+            }
+            return cell
+        }else if method == "publics"{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PublicsTopicsTVC") as! PublicsTopicsTVC
+            
+            let publicsTopicI: PublicsTopicsModel
+            publicsTopicI = profilePublics[indexPath.row]
+            
+            cell.postTitle.text = publicsTopicI.subject
+            cell.dateView.text = publicsTopicI.date
+            cell.numComments.text = publicsTopicI.numposts
+            cell.profileName.text = publicsTopicI.nickname
+            cell.gamename.text = publicsTopicI.gamename
+            cell.eventDate.text = publicsTopicI.event_date
+            cell.numPlayersAdded.text = String(publicsTopicI.num_added!)
+            cell.numPlayersNeeded.text = String(publicsTopicI.num_players!)
+            cell.context.text = publicsTopicI.context
+            
+            switch publicsTopicI.type{
+            case "Xbox":
+                cell.platform.image = UIImage(named: "icons8_xbox_50")
+                break
+            case "PlayStation":
+                cell.platform.image = UIImage(named: "icons8_playstation_50")
+                break
+            case "Steam":
+                cell.platform.image = UIImage(named: "icons8_steam_48")
+                break
+            case "PC":
+                cell.platform.image = UIImage(named: "icons8_workstation_48")
+                break
+            case "Mobile":
+                cell.platform.image = UIImage(named: "icons8_mobile_48")
+                break
+            case "Switch":
+                cell.platform.image = UIImage(named: "icons8_nintendo_switch_48")
+                break
+            case "Cross-Platform":
+                cell.platform.image = UIImage(named: "icons8_collect_40")
+                break
+            case "General":
+                cell.platform.isHidden = true
+                break
+            default:
+                cell.platform.image = UIImage(named: "icons8_question_mark_64")
+            }
+            
+            let profilePicIndex = publicsTopicI.profile_pic?.firstIndex(of: ".")!
+            let profile_pic = (publicsTopicI.profile_pic?.prefix(upTo: profilePicIndex!))!+"_r.JPG"
+            cell.profileImage.af.setImage(
+                withURL: URL(string:URLConstants.BASE_URL+profile_pic)!,
+                imageTransition: .crossDissolve(0.2)
+            )
+            
+            if (publicsTopicI.event_date == "ended"){
+                cell.eventDate.textColor = UIColor(named: "pin")
+            }else if (publicsTopicI.event_date == "now"){
+                cell.eventDate.textColor = UIColor(named: "green")
+            }
+            
+            return cell
         }
         
-        return cell!
+        
+        
+        return UITableViewCell()
     }
     
     ///handling cell view taps
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let alertController = UIAlertController(title: "Hint", message: "You have selected row \(indexPath.row).", preferredStyle: .alert)
+        if method == "posts"{
+            let alertController = UIAlertController(title: "Hint", message: "You have profile post row \(indexPath.row).", preferredStyle: .alert)
+            
+            let alertAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+            
+            alertController.addAction(alertAction)
+            
+            present(alertController, animated: true, completion: nil)
+        }else if method == "publics"{
+            let alertController = UIAlertController(title: "Hint", message: "You have publics topic row \(indexPath.row).", preferredStyle: .alert)
+            
+            let alertAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+            
+            alertController.addAction(alertAction)
+            
+            present(alertController, animated: true, completion: nil)
+        }
         
-        let alertAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
         
-        alertController.addAction(alertAction)
-        
-        present(alertController, animated: true, completion: nil)
         
     }
     
@@ -147,7 +231,7 @@ class SeeAllViewController: UIViewController, UITableViewDelegate, UITableViewDa
     //table view cell models
     private var profilePosts = [ProfileNewsModel]()
     //private var profileClans = [ClansModel]()
-    //private var profilePublics = [PublicsTopicsModel]()
+    private var profilePublics = [PublicsTopicsModel]()
     
     let defaultValues = UserDefaults.standard
     let deviceusername = UserDefaults.standard.string(forKey: "device_username")!
@@ -162,8 +246,14 @@ class SeeAllViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let nib = UINib(nibName: "ProfilePostsTVC2", bundle: nil)
-        self.seeAllTableView.register(nib, forCellReuseIdentifier: "ProfilePostsTVC2")
+        if method == "posts"{
+            let nib = UINib(nibName: "ProfilePostsTVC2", bundle: nil)
+            self.seeAllTableView.register(nib, forCellReuseIdentifier: "ProfilePostsTVC2")
+        }else if method == "publics"{
+            let nib = UINib(nibName: "PublicsTopicsTVC", bundle: nil)
+            self.seeAllTableView.register(nib, forCellReuseIdentifier: "PublicsTopicsTVC")
+        }
+        
         
         //setting up post table view
         seeAllTableView.dataSource = self
@@ -182,7 +272,7 @@ class SeeAllViewController: UIViewController, UITableViewDelegate, UITableViewDa
         switch method {
         case "publics":
             self.navigationItem.title = "Publics Posts"
-            //loadPublics()
+            loadPublics()
             break
         case "posts":
             self.navigationItem.title = "Profile Posts"
@@ -257,6 +347,58 @@ class SeeAllViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
 
 
+    func loadPublics(){
+        self.profilePosts.removeAll()
+        AF.request(URLConstants.ROOT_URL+"see_all.php?queryid="+queryID+"&queryidextra="+queryIDextra+"&method="+method+"&userid="+deviceuserid+"&deviceusername="+deviceusername, method: .get).responseJSON{
+            response in
+            //printing response
+            print(response)
+
+            switch response.result {
+            case .success(let value):
+                let jsonObject = JSON(value)
+                if jsonObject.count == 0 {
+                    self.seeAllTableView.isHidden = true
+                    self.nothingToShow.isHidden = false
+                }else{
+                    self.nothingToShow.isHidden = true
+                    for i in 0..<jsonObject.count{
+                        let jsonData = jsonObject[i]
+                        self.profilePublics.append(PublicsTopicsModel(
+                            id: jsonData["id"].int,
+                            numposts: jsonData["numposts"].rawString(),
+                            subject: jsonData["subject"].rawString(),
+                            date: jsonData["date"].rawString(),
+                            cat: jsonData["cat"].rawString(),
+                            topic_by: jsonData["topic_by"].rawString(),
+                            type: jsonData["type"].string,
+                            user_id: jsonData["user_id"].int,
+                            profile_pic: jsonData["profile_pic"].rawString(),
+                            nickname: jsonData["nickname"].rawString(),
+                            username: jsonData["username"].rawString(),
+                            event_date: jsonData["event_date"].rawString(),
+                            zone: jsonData["zone"].rawString(),
+                            context: jsonData["context"].rawString(),
+                            num_players: jsonData["num_players"].int,
+                            num_added: jsonData["num_added"].int,
+                            gamename: jsonData["gamename"].rawString()))
+                    }
+                    //displaying data in tableview
+                    self.seeAllTableView.reloadData()
+                }
+                
+                self.indicator.stopAnimating()
+                
+            case let .failure(error):
+                print(error)
+                self.indicator.stopAnimating()
+                self.seeAllTableView.isHidden = true
+                self.errorView.isHidden = false
+                self.view.showToast(toastMessage: "Network Error!", duration:2)
+            }
+        }
+    }
+    
     /*
     // MARK: - Navigation
 
