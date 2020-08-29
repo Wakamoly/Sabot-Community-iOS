@@ -7,9 +7,17 @@
 //
 
 import UIKit
+import AARatingBar
 
 class ClansTVC: UITableViewCell {
-
+    
+    @IBOutlet weak var clanImageView: UIImageView!
+    @IBOutlet weak var clanTag: UILabel!
+    @IBOutlet weak var clanName: UILabel!
+    @IBOutlet weak var numMembers: UILabel!
+    @IBOutlet weak var clanRating: AARatingBar!
+    @IBOutlet weak var clanPosition: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

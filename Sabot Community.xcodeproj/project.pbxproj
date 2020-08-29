@@ -27,11 +27,12 @@
 		E076348E24F977DC0097FA71 /* SeeAllViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E076348C24F977DC0097FA71 /* SeeAllViewController.xib */; };
 		E076349124F97B980097FA71 /* ProfilePostsTVC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E076348F24F97B980097FA71 /* ProfilePostsTVC2.swift */; };
 		E076349224F97B980097FA71 /* ProfilePostsTVC2.xib in Resources */ = {isa = PBXBuildFile; fileRef = E076349024F97B980097FA71 /* ProfilePostsTVC2.xib */; };
-		E076349524F9BA720097FA71 /* ClansTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E076349324F9BA720097FA71 /* ClansTVC.swift */; };
 		E076349624F9BA720097FA71 /* ClansTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E076349424F9BA720097FA71 /* ClansTVC.xib */; };
 		E076349924FAB1480097FA71 /* PublicsTopicsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E076349824FAB1480097FA71 /* PublicsTopicsModel.swift */; };
 		E076349C24FAB3290097FA71 /* PublicsTopicsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E076349A24FAB3290097FA71 /* PublicsTopicsTVC.swift */; };
 		E076349D24FAB3290097FA71 /* PublicsTopicsTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E076349B24FAB3290097FA71 /* PublicsTopicsTVC.xib */; };
+		E076349F24FAFBD30097FA71 /* ClansModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E076349E24FAFBD30097FA71 /* ClansModel.swift */; };
+		E07634A124FB01B20097FA71 /* ClansTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07634A024FB01B10097FA71 /* ClansTVC.swift */; };
 		E081F35A24BBE9470049AB0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E081F35924BBE9470049AB0F /* AppDelegate.swift */; };
 		E081F35C24BBE9470049AB0F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E081F35B24BBE9470049AB0F /* SceneDelegate.swift */; };
 		E081F36324BBE95A0049AB0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E081F36224BBE95A0049AB0F /* Assets.xcassets */; };
@@ -99,11 +100,12 @@
 		E076348C24F977DC0097FA71 /* SeeAllViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeeAllViewController.xib; sourceTree = "<group>"; };
 		E076348F24F97B980097FA71 /* ProfilePostsTVC2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePostsTVC2.swift; sourceTree = "<group>"; };
 		E076349024F97B980097FA71 /* ProfilePostsTVC2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfilePostsTVC2.xib; sourceTree = "<group>"; };
-		E076349324F9BA720097FA71 /* ClansTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClansTVC.swift; sourceTree = "<group>"; };
 		E076349424F9BA720097FA71 /* ClansTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClansTVC.xib; sourceTree = "<group>"; };
 		E076349824FAB1480097FA71 /* PublicsTopicsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicsTopicsModel.swift; sourceTree = "<group>"; };
 		E076349A24FAB3290097FA71 /* PublicsTopicsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicsTopicsTVC.swift; sourceTree = "<group>"; };
 		E076349B24FAB3290097FA71 /* PublicsTopicsTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PublicsTopicsTVC.xib; sourceTree = "<group>"; };
+		E076349E24FAFBD30097FA71 /* ClansModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClansModel.swift; sourceTree = "<group>"; };
+		E07634A024FB01B10097FA71 /* ClansTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClansTVC.swift; sourceTree = "<group>"; };
 		E081F35624BBE9470049AB0F /* Sabot Community.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sabot Community.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E081F35924BBE9470049AB0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E081F35B24BBE9470049AB0F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -289,8 +291,9 @@
 		E076349724FAB0DF0097FA71 /* Clans */ = {
 			isa = PBXGroup;
 			children = (
-				E076349324F9BA720097FA71 /* ClansTVC.swift */,
+				E07634A024FB01B10097FA71 /* ClansTVC.swift */,
 				E076349424F9BA720097FA71 /* ClansTVC.xib */,
+				E076349E24FAFBD30097FA71 /* ClansModel.swift */,
 			);
 			path = Clans;
 			sourceTree = "<group>";
@@ -609,17 +612,18 @@
 			files = (
 				E0A7E7E724CF4B920033C510 /* ProfileNewsModel.swift in Sources */,
 				E081F39B24BEABBA0049AB0F /* NotificationsViewController.swift in Sources */,
-				E076349524F9BA720097FA71 /* ClansTVC.swift in Sources */,
 				E076349124F97B980097FA71 /* ProfilePostsTVC2.swift in Sources */,
 				E012DDB724DA1A4E00772678 /* EmptyVC.swift in Sources */,
 				1928761224CBCE77006A09F1 /* SideMenuController.swift in Sources */,
 				E012DDC124DCECD300772678 /* ReviewsViewController.swift in Sources */,
 				E0A7E7E524CF3E380033C510 /* ProfilePostsTVC.swift in Sources */,
+				E07634A124FB01B20097FA71 /* ClansTVC.swift in Sources */,
 				E012DDB924DB132000772678 /* UserListViewController.swift in Sources */,
 				E081F39F24BEAC060049AB0F /* SearchViewController.swift in Sources */,
 				E081F38F24BBEBA10049AB0F /* ProfileViewController.swift in Sources */,
 				E012DDBB24DB631700772678 /* UserListModel.swift in Sources */,
 				E0DF7FB924D23A1200C5E449 /* UploadPhotoController.swift in Sources */,
+				E076349F24FAFBD30097FA71 /* ClansModel.swift in Sources */,
 				1961684824E1EA2500E5669E /* AboutUsController.swift in Sources */,
 				E081F38D24BBEBA10049AB0F /* LoginViewController.swift in Sources */,
 				E081F38E24BBEBA10049AB0F /* RegisterViewController.swift in Sources */,

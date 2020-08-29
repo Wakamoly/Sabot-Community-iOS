@@ -17,6 +17,7 @@ import iOSDropDown
 import SafariServices
 import CropViewController
 
+// isModal to find out if VC is presented modally, disabling scroll-up refreshing
 extension UIViewController {
     var isModal: Bool {
         if let index = navigationController?.viewControllers.firstIndex(of: self), index > 0 {
@@ -58,6 +59,7 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
     var profileRefresh:UIRefreshControl!
     private var profileNews = [ProfileNewsModel]()
     private var profilePublics = [PublicsTopicsModel]()
+    private var profileClans = [ClansModel]()
     
     //test here by putting in either user id or username to load profile, or leave blank to load yours
     var userProfileID: String = ""
@@ -701,6 +703,7 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
                 if jsonObject.count == 0 {
                     self.profilePostsTableView.isHidden = true
                     self.noPostsToShowView.isHidden = false
+                    self.noPostsToShowView.text = "No posts to show!"
                 }else{
                     self.noPostsToShowView.isHidden = true
                     for i in 0..<jsonObject.count{
@@ -741,7 +744,48 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
     }
     
     func loadJoinedClans(){
-        print("loadClans")
+        let nib = UINib(nibName: "ClansTVC", bundle: nil)
+        self.profilePostsTableView.register(nib, forCellReuseIdentifier: "ClansTVC")
+        
+        self.indicator.startAnimating()
+        self.profileClans.removeAll()
+        AF.request(URLConstants.ROOT_URL+"user_joined_clans.php?userid="+userProfileID+"&username="+userUsername, method: .get).responseJSON{
+            response in
+            //printing response
+            print(response)
+
+            switch response.result {
+            case .success(let value):
+                let jsonObject = JSON(value)
+                let jsonArray = jsonObject["clans"]
+                if jsonArray.count == 0 {
+                    self.profilePostsTableView.isHidden = true
+                    self.noPostsToShowView.isHidden = false
+                    self.noPostsToShowView.text = "No clans to show!"
+                }else{
+                    self.noPostsToShowView.isHidden = true
+                    for i in 0..<jsonArray.count{
+                        let jsonData = jsonArray[i]
+                        self.profileClans.append(ClansModel(
+                            position: jsonData["position"].rawString(),
+                            tag: jsonData["tag"].rawString(),
+                            name: jsonData["name"].rawString(),
+                            num_members: jsonData["num_members"].rawString(),
+                            insignia: jsonData["insignia"].rawString(),
+                            games: jsonData["games"].rawString(),
+                            id: jsonData["id"].int,
+                            avg: jsonData["avg"].rawString()))
+                    }
+                    //displaying data in tableview
+                    self.profilePostsTableView.reloadData()
+                }
+                self.indicator.stopAnimating()
+            case let .failure(error):
+                print(error)
+                self.indicator.stopAnimating()
+                self.view.showToast(toastMessage: "Network Error!", duration:2)
+            }
+        }
     }
     
     func loadProfilePublics(){
@@ -761,6 +805,7 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
                 if jsonObject.count == 0 {
                     self.profilePostsTableView.isHidden = true
                     self.noPostsToShowView.isHidden = false
+                    self.noPostsToShowView.text = "No Publics posts to show!"
                 }else{
                     self.noPostsToShowView.isHidden = true
                     for i in 0..<jsonObject.count{
@@ -808,6 +853,7 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
             self.profileItemsLabel.text = "Profile Posts"
             self.seeAllButton.isHidden = false
         }else if (buttonPressed == self.clansQueryButton){
+            self.seeAllSegue = "clans"
             self.postsQueryButton.backgroundColor = UIColor(named: "grey_80")
             self.clansQueryButton.backgroundColor = UIColor(named: "green")
             self.publicsPostsQueryButton.backgroundColor = UIColor(named: "grey_80")
@@ -1098,6 +1144,8 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
             rowCount = profileNews.count
         }else if seeAllSegue == "publics"{
             rowCount = profilePublics.count
+        }else if seeAllSegue == "clans"{
+            rowCount = profileClans.count
         }
         
         return rowCount!
@@ -1260,9 +1308,35 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
             }
             
             return cell
+        }else if seeAllSegue == "clans"{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ClansTVC") as! ClansTVC
+            
+            let clansI: ClansModel
+            clansI = profileClans[indexPath.row]
+            
+            cell.clanTag.text = clansI.tag?.uppercased()
+            cell.clanName.text = clansI.name
+            cell.numMembers.text = clansI.num_members
+            cell.clanPosition.text = clansI.position
+
+            let averageFloat = Float(clansI.avg!)
+            if(averageFloat != nil && !(averageFloat == 0.0)){
+                cell.clanRating.isHidden = false
+                cell.clanRating.value = CGFloat(averageFloat!)
+            }else{
+                cell.clanRating.color = UIColor(named: "colorPrimary")!
+            }
+            
+            var insignia = clansI.insignia!.replacingOccurrences(of: " ", with: "%20")
+            insignia = URLConstants.BASE_URL+insignia
+            if insignia != URLConstants.BASE_URL{
+                cell.clanImageView.af.setImage(
+                    withURL: URL(string:insignia)!,
+                    imageTransition: .crossDissolve(0.2)
+                )
+            }
+            return cell
         }
-        
-        
         
         return UITableViewCell()
     }
@@ -1280,6 +1354,14 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
             present(alertController, animated: true, completion: nil)
         }else if seeAllSegue == "publics"{
             let alertController = UIAlertController(title: "Hint", message: "You have publics topic row \(indexPath.row).", preferredStyle: .alert)
+            
+            let alertAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+            
+            alertController.addAction(alertAction)
+            
+            present(alertController, animated: true, completion: nil)
+        }else if seeAllSegue == "clans"{
+            let alertController = UIAlertController(title: "Hint", message: "You have clan row \(indexPath.row).", preferredStyle: .alert)
             
             let alertAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
             
