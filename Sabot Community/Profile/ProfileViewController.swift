@@ -16,6 +16,7 @@ import ActiveLabel
 import iOSDropDown
 import SafariServices
 import CropViewController
+import PopupDialog
 
 // isModal to find out if VC is presented modally, disabling scroll-up refreshing
 extension UIViewController {
@@ -86,6 +87,9 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
     var twitterURL:String = ""
     var discordUserURL:String = ""
     var seeAllSegue:String = ""
+    var toPostID:String = ""
+    var toPublicsID:String = ""
+    var toClanID:String = ""
     
     //profile post image variable
     var newPostImage:UIImage? = nil
@@ -976,6 +980,107 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
         }
         platformDropdownTextField.tintColor = UIColor.white
         
+        let longPressOnCell = UILongPressGestureRecognizer(target: self, action: #selector(ProfileViewController.longPressCell))
+        profilePostsTableView.addGestureRecognizer(longPressOnCell)
+        
+    }
+    
+    @objc func longPressCell(longPressGestureRecognizer: UILongPressGestureRecognizer){
+        
+        if longPressGestureRecognizer.state == UIGestureRecognizer.State.began {
+            let touchPoint = longPressGestureRecognizer.location(in: profilePostsTableView)
+            if let indexPath = profilePostsTableView.indexPathForRow(at: touchPoint) {
+                
+                //Briefly fade the cell on selection
+                let cell = profilePostsTableView.cellForRow(at: indexPath)
+                UIView.animate(withDuration: 0.7,
+                               animations: {
+                                //Fade-out
+                                cell?.alpha = 0.5}) { (completed) in
+                                    UIView.animate(withDuration: 0.2,animations: {
+                                        //Fade-out
+                                        cell?.alpha = 1})
+                }
+                
+                if seeAllSegue == "posts"{
+                    let profilesNewsI: ProfileNewsModel
+                    profilesNewsI = profileNews[indexPath.row]
+                    
+                    if profilesNewsI.added_by == deviceusername{
+                        // Prepare the popup assets
+                        let title = "Post Options"
+                        let message = "Select an option below!"
+                        let popup = PopupDialog(title: title, message: message)
+                        let buttonOne = CancelButton(title: "Cancel") {
+                            print("You canceled the dialog.")
+                        }
+                        // This button will not the dismiss the dialog
+                        let buttonTwo = DefaultButton(title: "Delete Post") {
+                            let title2 = "Delete Post"
+                            let message2 = "Are you sure?"
+                            let deletePopup = PopupDialog(title: title2, message: message2)
+                            let cancel = CancelButton(title: "Cancel") {
+                                print("You canceled the delete.")
+                            }
+                            let delete = DefaultButton(title: "Delete") {
+                                let parameters: Parameters=["username":self.deviceusername,"postid":profilesNewsI.id!,"userid":self.deviceuserid]
+                                AF.request(URLConstants.ROOT_URL+"profile_post_action.php/post_delete", method: .post, parameters: parameters).responseJSON{
+                                    response in
+                                    //printing response
+                                    print(response)
+                                    
+                                    switch response.result {
+                                    case .success(let value):
+                                        let jsonData = JSON(value)
+                                        if (jsonData["error"]==false){
+                                            self.view.showToast(toastMessage: "Post deleted!", duration:2)
+                                            self.postSubmitReset()
+                                        }else{
+                                            let message = jsonData["message"].string
+                                            self.view.showToast(toastMessage: message!, duration:2)
+                                        }
+                                    case let .failure(error):
+                                        print(error)
+                                        self.view.showToast(toastMessage: "Network error!", duration:2)
+                                    }
+                                }
+                            }
+                            deletePopup.addButtons([cancel, delete])
+                            self.present(deletePopup, animated: true, completion: nil)
+                        }
+                        let buttonThree = DefaultButton(title: "Edit Post", height: 60) {
+                            print("Edit Post")
+                        }
+                        let buttonFour = DefaultButton(title: "Report Post", height: 60) {
+                            print("Report post")
+                        }
+                        popup.addButtons([buttonOne, buttonTwo, buttonThree, buttonFour])
+                        self.present(popup, animated: true, completion: nil)
+                    }else{
+                        let title = "Post Options"
+                        let message = "Select an option below!"
+                        let popup = PopupDialog(title: title, message: message)
+                        let buttonOne = CancelButton(title: "Cancel") {
+                            print("You canceled the dialog.")
+                        }
+                        let buttonFour = DefaultButton(title: "Report Post", height: 60) {
+                            print("Report post")
+                        }
+                        popup.addButtons([buttonOne, buttonFour])
+                        self.present(popup, animated: true, completion: nil)
+                    }
+                    
+                    
+                }else if seeAllSegue == "publics"{
+                    let publicsTopicI: PublicsTopicsModel
+                    publicsTopicI = profilePublics[indexPath.row]
+                }else if seeAllSegue == "clans"{
+                    let clansI: ClansModel
+                    clansI = profileClans[indexPath.row]
+                }
+                
+            }
+        }
     }
     
     
@@ -1344,30 +1449,29 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
     ///handling cell view taps
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        //Briefly fade the cell on selection
+        let cell = tableView.cellForRow(at: indexPath)
+        UIView.animate(withDuration: 0.2,
+                       animations: {
+                        //Fade-out
+                        cell?.alpha = 0.5}) { (completed) in
+                            UIView.animate(withDuration: 0.2,animations: {
+                                //Fade-out
+                                cell?.alpha = 1})
+        }
+        
         if seeAllSegue == "posts"{
-            let alertController = UIAlertController(title: "Hint", message: "You have profile post row \(indexPath.row).", preferredStyle: .alert)
-            
-            let alertAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-            
-            alertController.addAction(alertAction)
-            
-            present(alertController, animated: true, completion: nil)
+            let profilesNewsI: ProfileNewsModel
+            profilesNewsI = profileNews[indexPath.row]
+            toPostID = String(profilesNewsI.id!)
         }else if seeAllSegue == "publics"{
-            let alertController = UIAlertController(title: "Hint", message: "You have publics topic row \(indexPath.row).", preferredStyle: .alert)
-            
-            let alertAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-            
-            alertController.addAction(alertAction)
-            
-            present(alertController, animated: true, completion: nil)
+            let publicsTopicI: PublicsTopicsModel
+            publicsTopicI = profilePublics[indexPath.row]
+            toPublicsID = String(publicsTopicI.id!)
         }else if seeAllSegue == "clans"{
-            let alertController = UIAlertController(title: "Hint", message: "You have clan row \(indexPath.row).", preferredStyle: .alert)
-            
-            let alertAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-            
-            alertController.addAction(alertAction)
-            
-            present(alertController, animated: true, completion: nil)
+            let clansI: ClansModel
+            clansI = profileClans[indexPath.row]
+            toClanID = String(clansI.id!)
         }
         
     }
