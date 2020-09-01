@@ -317,7 +317,6 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
         self.platformDropdownTextField.touchAction()
     }
     @IBAction func postSubmit(_ sender: Any) {
-        print("Submit button pressed")
         let spinnerText = self.platformDropdownTextField.text!
         let form = "user"
         if(!(statusUpdate.text == "") && !(statusUpdate.text == "Let your followers know what you're up to...") && !(platformDropdownTextField.text == "")){
@@ -736,8 +735,8 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
                     }
                     //displaying data in tableview
                     self.profilePostsTableView.reloadData()
-                    self.indicator.stopAnimating()
                 }
+                self.indicator.stopAnimating()
             case let .failure(error):
                 print(error)
                 self.indicator.stopAnimating()
@@ -1049,7 +1048,9 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
                             self.present(deletePopup, animated: true, completion: nil)
                         }
                         let buttonThree = DefaultButton(title: "Edit Post", height: 60) {
-                            print("Edit Post")
+                            let editPostVC = EditProfilePostVC(nibName: "EditProfilePostVC", bundle: nil)
+                            editPostVC.postID = String(profilesNewsI.id!)
+                            self.navigationController?.pushViewController(editPostVC, animated: true)
                         }
                         let buttonFour = DefaultButton(title: "Report Post", height: 60) {
                             print("Report post")
@@ -1074,9 +1075,13 @@ class ProfileViewController: UIViewController, UITextViewDelegate, UITableViewDa
                 }else if seeAllSegue == "publics"{
                     let publicsTopicI: PublicsTopicsModel
                     publicsTopicI = profilePublics[indexPath.row]
+                    
+                    print(publicsTopicI.context!)
                 }else if seeAllSegue == "clans"{
                     let clansI: ClansModel
                     clansI = profileClans[indexPath.row]
+                    
+                    print(clansI.name!)
                 }
                 
             }
